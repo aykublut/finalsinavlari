@@ -781,4 +781,524 @@ export const mockQuestions: Question[] = [
     ],
     correctAnswer: "B) Oranlı ölçülendirilmiş değişken",
   },
+  {
+    id: 61,
+    questionText:
+      "67-) Aşağıdakilerden hangisi temel değişken tiplerinden değildir?",
+    options: [
+      "A) Tam sayılı (Integer) Değişkenler",
+      "B) Oranlı Ölçümlendirilmiş (Ratio-Scaled) Değişkenler",
+      "C) Aralıklı Ölçümlendirilmiş (Interval-Scaled) Değişkenler",
+      "D) İkili (Binary) Değişkenler",
+      "E) Sıralı Deşikenler",
+    ],
+    correctAnswer: "E) Sıralı Deşikenler",
+  },
+  {
+    id: 62,
+    questionText:
+      "68-) İşletmelerde iç veri kaynakları ile dış veri kaynaklarının birleştirilmesi ve düzenlenmesi ile oluşturulmuş, üzerinde veri madenciliği işlemlerinin gerçekleştirileceği veriyi sağlayan daha geniş ve özel veritabanlarına verilen isim nedir?",
+    options: [
+      "A) Veri Ambarı",
+      "B) İç Veri",
+      "C) Üst Veri",
+      "D) Veri Deposu",
+      "E) İç Veri Kaynakları",
+    ],
+    correctAnswer: "A) Veri Ambarı",
+  },
+  {
+    id: 63,
+    questionText:
+      "69-) Aşağıdakilerden hangisi veri madenciliği tekniği ile analiz edilmek istenilen verilerdeki beklenen değerlerden sapan aykırı değerler veya hatalardır?",
+    options: [
+      "A) Eksik Veri",
+      "B) Tutarsız Veri",
+      "C) Gürültülü Veri",
+      "D) Hatalı Veri",
+      "E) Yanlış Veri",
+    ],
+    correctAnswer: "C) Gürültülü Veri",
+  },
+  {
+    id: 64,
+    questionText:
+      "70-) Aşağıdakilerden hangisi Veri tabanlarında Bilgi Keşif sürecinde izlenmesi gereken temel aşamalardan değildir?",
+    options: [
+      "A) Amacın Tanımlanması",
+      "B) Veriler Üzerinde Ön İşlemlerin Yapılması",
+      "C) Modelin Kullanılması ve Yorumlanması",
+      "D) Modelin İzlenmesi",
+      "E) Modelin Taranması",
+    ],
+    correctAnswer: "E) Modelin Taranması",
+  },
+  {
+    id: 65,
+    questionText:
+      "71-) Bazı veri madenciliği algoritmaları sadece ayrık veriler ile çalışır. Sürekli bir nitelik değerini bölerek her aralığı etiketler, kavram oluşturmak için kullanılır. Tanımı verilen ifade aşağıdakilerden hangisidir?",
+    options: [
+      "A) Veri Ayrıştırma",
+      "B) Data Mart",
+      "C) Değer Kümeleri",
+      "D) Gürültülü Veri",
+      "E) Bölmeleme",
+    ],
+    correctAnswer: "A) Veri Ayrıştırma",
+  },
+  {
+    id: 66,
+    questionText:
+      "72-) Veri bir fonksiyona uydurulur. Bir değişkenin değeri diğer bir değişken kullanılarak bulunabilir. Tanımı verilen ifade aşağıdakilerden hangisidir?",
+    options: [
+      "A) Veri Birleştirme",
+      "B) Gereksiz Veri",
+      "C) Veri Dönüşümü",
+      "D) Normalizasyon",
+      "E) Eğri Uydurma",
+    ],
+    correctAnswer: "E) Eğri Uydurma",
+  },
+  {
+    id: 67,
+    questionText:
+      "73-) I. Amacın tanımlanması, II. Modelin izlenmesi, III. Modelin kullanılması ve yorumlanması, IV. Veriler üzerinde ön işlemlerin yapılması, V. Modelin kurulması ve değerlendirilmesi. Veritabanlarında bilgi keşfi sürecinin adımları hangi şıkta doğru sıralanmıştır?",
+    options: [
+      "A) I-III-V-II-IV",
+      "B) I-IV-V-III-II",
+      "C) V-I-III-IV-II",
+      "D) I-IV-III-II-V",
+      "E) V-IV-I-II-III",
+    ],
+    correctAnswer: "B) I-IV-V-III-II",
+  },
+  {
+    id: 68,
+    questionText:
+      "74-) Veri madenciliğinde kullanılan kümeleme algoritması olan K-means, hangi temel prensibe dayanır?",
+    options: [
+      "A) Hiyerarşik kümeleme",
+      "B) Yoğunluk temelli kümeleme",
+      "C) Merkez tabanlı kümeleme",
+      "D) Doğrusal regresyon",
+    ],
+    correctAnswer: "C) Merkez tabanlı kümeleme",
+  },
+  {
+    id: 69,
+    questionText:
+      "75-) Karar ağaçları hakkında aşağıdaki ifadelerden hangisi doğrudur?",
+    options: [
+      "A) Karar ağaçları sadece sınıflandırma problemleri için kullanılır.",
+      "B) Karar ağaçları, regresyon problemleri için uygun değildir.",
+      "C) Karar ağaçları, veri setindeki özellikleri ve hedef değişkeni kullanarak bir dizi karar kuralı oluşturur.",
+      "D) Karar ağaçları, yalnızca küçük boyutlu veri setleri üzerinde etkili çalışır.",
+    ],
+    correctAnswer:
+      "C) Karar ağaçları, veri setindeki özellikleri ve hedef değişkeni kullanarak bir dizi karar kuralı oluşturur.",
+  },
+  {
+    id: 70,
+    questionText:
+      "76-) Tanımlayıcı modeller, veri madenciliğinde hangi amaçla kullanılır?",
+    options: [
+      "A) Gelecekteki olayları tahmin etmek için",
+      "B) Veriler arasındaki ilişkileri tanımlamak ve özellikleri incelemek için",
+      "C) Müşteri memnuniyetini artırmak için",
+      "D) Rekabet avantajı sağlamak için",
+      "E) Pazar payını artırmak için",
+    ],
+    correctAnswer:
+      "B) Veriler arasındaki ilişkileri tanımlamak ve özellikleri incelemek için",
+  },
+  {
+    id: 71,
+    questionText:
+      "77-) Aşağıdakilerden hangisi Veri Tabanlarında Bilgi Keşfi sürecinin ilk iki aşamasıdır?",
+    options: [
+      "A) Veriler Üzerinde Ön İşlemlerin Yapılması - Modelin İzlenmesi",
+      "B) Amacın Tanımlanması - Veriler Üzerinde Ön İşlemlerin Yapılması",
+      "C) Modelin İzlenmesi - Modelin Kullanılması ve Yorumlanması",
+      "D) Modelin Kullanılması ve Yorumlanması - Modelin Kurulması ve Değerlendirilmesi",
+      "E) Amacın Tanımlanması - Modelin İzlenmesi",
+    ],
+    correctAnswer:
+      "B) Amacın Tanımlanması - Veriler Üzerinde Ön İşlemlerin Yapılması",
+  },
+  {
+    id: 72,
+    questionText:
+      "78-) İşletmeler günlük faaliyetlerine ilişkin basit sorgulamaları ve analizleri işlemsel veri tabanları üzerinde kolaylıkla gerçekleştirebilirler. Buna karşın, çok yönlü veri analizi ve sorgulama yapmak istediklerinde normal veri analizi ve sorgulamadan farklı bir sistem kullanırlar. Çevrimiçi Analitik İşleme olarak adlandırılan bu sistem aşağıdakilerden hangisidir?",
+    options: [
+      "A) OLAP",
+      "B) Veri Deposu",
+      "C) Veri Ambarı",
+      "D) NoSQL Veritabanı",
+      "E) Veri Madenciliği",
+    ],
+    correctAnswer: "A) OLAP",
+  },
+  {
+    id: 73,
+    questionText:
+      "79-) Veri Madenciliği’nin etkileşimde olduğu disiplinler hangisi veya hangileridir? I) Makine Öğrenimi II) Örüntü Tanıma III) İstatistik IV) Görselleştirme V) Veritabanı Sistemleri",
+    options: [
+      "A) I,II,III",
+      "B) III,V,IV",
+      "C) V,IV",
+      "D) V,III",
+      "E) I,II,III,IV,V",
+    ],
+    correctAnswer: "E) I,II,III,IV,V",
+  },
+  {
+    id: 74,
+    questionText:
+      "80-) Aşağıda verilen maddellerden hangisi veriler üzerinde yapılan ön işlemlerdendir? I. Verilerin toplanması ve birleştirilmesi II. Verilen temizlenmesi III. Verilerin hangi kaynaklardan alındığı tespit edilmesi IV. Verilerin yeniden yapılandırılması",
+    options: [
+      "A) Hiçbiri",
+      "B) I. II. ve III.",
+      "C) I. II. ve IV.",
+      "D) II. III. ve IV.",
+      "E) Hepsi",
+    ],
+    correctAnswer: "C) I. II. ve IV.",
+  },
+  {
+    id: 75,
+    questionText:
+      "81-) Temel değişken veri tiplerinden hangisi 0 ve1, doğru ve yanlış, pozitif ve negatif şekilde olan veri tipi hangisidir?",
+    options: [
+      "A) İkili veri",
+      "B) Sıra gösteren değişken",
+      "C) Tam sayılı değişken",
+      "D) Aralıklı değişken",
+      "E) Oranlı değişken",
+    ],
+    correctAnswer: "A) İkili veri",
+  },
+  {
+    id: 76,
+    questionText: "82-) Aşağıdaki tanımlardan hangisi yanlıştır?",
+    options: [
+      "A) OLAP “Ne” sorusunun cevabıdır.",
+      "B) Canlı veritabanlı en çok 1 yıl geçmiş veri bulundurur.",
+      "C) Enformasyon verilerin işlenmiş ve anlamlandırılmış halidir.",
+      "D) Data Mart veri ambarının alt kümesidir.",
+      "E) Veri ambarı ilişkili verilerin depolandığı yerdir.",
+    ],
+    correctAnswer: "E) Veri ambarı ilişkili verilerin depolandığı yerdir.",
+  },
+  {
+    id: 77,
+    questionText:
+      "83-) “Bazı veritabanı algoritmaları sadece ………..... ile çalışır.” Yukarıda verilen boşluk için aşağıdakilerden hangisi gelirse uygun bir tanım olur?",
+    options: [
+      "A) Veri madenciliği.",
+      "B) Veri azaltma.",
+      "C) Histogram ile veri küçültme.",
+      "D) Ayrık veriler.",
+      "E) Veri dönüşmü.",
+    ],
+    correctAnswer: "D) Ayrık veriler.",
+  },
+  {
+    id: 78,
+    questionText:
+      "84-) Bootstrapping ile ilgili aşağıdakilerden hangisi doğrudur?",
+    options: [
+      "A) Göresel veriler üzerinde yapılan iyileştirme işlemidir.",
+      "B) Bir bağımsız değişkenin tahmin etme işlemidir.",
+      "C) Veri Madenciliği uygulaması geliştirme programıdır.",
+      "D) Sonuçları bilinen verilerden hareket edilerek bir model geliştirilmesidir ve bu modelden yararlanarak veri kümeleri için sonuç değerlerin tahmin edilmesidir.",
+      "E) Küçük veri kümelerinin modelinde hata düzeyi tahmininde kullanılan tekniktir.",
+    ],
+    correctAnswer:
+      "E) Küçük veri kümelerinin modelinde hata düzeyi tahmininde kullanılan tekniktir.",
+  },
+  {
+    id: 79,
+    questionText:
+      "85-) Aşağıdakilerden hangisi veri madenciliği yöntemlerinden olan öngörü yöntemlerinden biri değildir?",
+    options: [
+      "A) Karar Ağaçları",
+      "B) Yapay Sinir Ağları",
+      "C) Sıralı Dizi Analizi",
+      "D) En Yakın Komşu",
+      "E) Bayes Sınıflandırma",
+    ],
+    correctAnswer: "C) Sıralı Dizi Analizi",
+  },
+  {
+    id: 80,
+    questionText:
+      "86-) Aşağıdakilerden hangisi veri ayrıştırma özelliklerinden biri değildir?",
+    options: [
+      "A) Verinin değeri, bulunduğu etiketi ile değişir",
+      "B) Veri boyutu küçülür",
+      "C) Kavram oluşturmak için kullanılır",
+      "D) Veri değeri bulunduğu aralığın etiketi ile değişir",
+      "E) Veri boyutunu azaltır",
+    ],
+    correctAnswer: "E) Veri boyutunu azaltır",
+  },
+  {
+    id: 81,
+    questionText: "87-) Aşağıdakilerden hangisi VTBK sorgularından biridir?",
+    options: [
+      "A) Kümeleme",
+      "B) Veri Hazırlama",
+      "C) Modelleme",
+      "D) Yayma",
+      "E) Veri Hazırlama",
+    ],
+    correctAnswer: "A) Kümeleme",
+  },
+  {
+    id: 82,
+    questionText:
+      "88-) Bir kümenin tanımlanması için başlangıçta evrenin elemanları hakkında bazı bilgilere gereksinim olduğu varsayımına dayanan yaklaşım aşağıdakilerden hangisidir?",
+    options: [
+      "A) Metadata",
+      "B) Naive Bayes",
+      "C) Hipotez",
+      "D) Parametre",
+      "E) Kaba Küme",
+    ],
+    correctAnswer: "E) Kaba Küme",
+  },
+  {
+    id: 83,
+    questionText:
+      "89-) 1. Naive Bayes, 2. Karar Ağaçları, 3. Korelasyon Analizi, 4. Regresyon Analizi, 5. Kaba Kümeler. Yukarıda sayılarla belirtilen algoritmalardan hangisi sınıflama algoritmasına ait değildir?",
+    options: [
+      "A) Naive Bayes",
+      "B) Karar Ağaçları",
+      "C) Korelasyon Analizi",
+      "D) Regresyon Analizi",
+      "E) Kaba Kümeler",
+    ],
+    correctAnswer: "C) Korelasyon Analizi",
+  },
+  {
+    id: 84,
+    questionText:
+      "90-) Aşağıdakilerden hangisi veri tabanını yormamak için oluşturulmuş bir programdır?",
+    options: [
+      "A) Veri tabanı",
+      "B) Data Mart",
+      "C) Veri",
+      "D) Veri Ambarı",
+      "E) Veri Madenciliği",
+    ],
+    correctAnswer: "D) Veri Ambarı",
+  },
+  {
+    id: 85,
+    questionText:
+      "91-) Aşağıdakilerden hangisi verinin gürültülü olma nedenlerinden birisi değildir?",
+    options: [
+      "A) İnsan, yazılım ya da donanım problemleri",
+      "B) Veri toplandığı sırada bir nitelik değerinin elde edilememesi, bilinmemesi",
+      "C) Boyutu büyük olan veri setlerinin bulunması",
+      "D) Veri iletimi sırasında yaşanan problemler",
+      "E) Verinin farklı veri kaynaklarında tutulması",
+    ],
+    correctAnswer: "C) Boyutu büyük olan veri setlerinin bulunması",
+  },
+  {
+    id: 86,
+    questionText:
+      "92-) Uzun araştırmalar ve uzun çalışmalar sonucunda bir bilgi keşfi yaptığımızı varsayalım. Bulduğumuz bu bilginin aşağıdaki özelliklerden hangisine sahip olması gerekmez?",
+    options: [
+      "A) Anlaşılabilir bir bilgi olmalıdır.",
+      "B) Önemli bir bilgi olmalıdır.",
+      "C) Gizli bir bilgi olmalıdır.",
+      "D) Yararlı bir bilgi olmalıdır.",
+      "E) Önceden bilinmeyen bir bilgi olmalıdır.",
+    ],
+    correctAnswer: "A) Anlaşılabilir bir bilgi olmalıdır.",
+  },
+  {
+    id: 87,
+    questionText:
+      "93-) Aşağıdakilerden hangisi Veri Madenciliği çalışmalarından birisi değildir?",
+    options: [
+      "A) Kümeleme",
+      "B) Veri Bulma",
+      "C) İlişki Kurma",
+      "D) Veri Özetleme",
+      "E) Regresyon",
+    ],
+    correctAnswer: "B) Veri Bulma",
+  },
+  {
+    id: 88,
+    questionText: "94-) Veri pazarlarının iş yükünü azaltmadaki görevi nedir?",
+    options: [
+      "A) Veriyi kopyalayıp karar verme işlemi için saklar.",
+      "B) Veri ambarının tamamına bakış sağlar.",
+      "C) Veri tabanın küçük bir kopyasıdır.",
+      "D) Farklı iş birimlerine uygun veri sunar.",
+      "E) ilişkili verilerin sorgulanıp analizlerinin yapıldığı depo.",
+    ],
+    correctAnswer: "D) Farklı iş birimlerine uygun veri sunar.",
+  },
+  {
+    id: 89,
+    questionText:
+      "95-) Veri seçme sürecinde hangi faktörler göz önünde bulundurulmalıdır?",
+    options: [
+      "A) Verinin hedeflerle ilişkisi",
+      "B) Verinin teknik limitleri",
+      "C) Verinin kalitesi",
+      "D) Dengeli veri kullanımı",
+      "E) Hepsine",
+    ],
+    correctAnswer: "E) Hepsine",
+  },
+  {
+    id: 90,
+    questionText:
+      "96-) Bir anket yapılmış ve katılımcılara “sosyal medya kullanıyor musunuz?” sorusu sorulmuştur ve “evet/hayır” cevabı alınmıştır. Bu hangi veri türüne örnektir?",
+    options: [
+      "A) Nümerik veriler",
+      "B) Ordinal veriler",
+      "C) Aralıklı nümerik veriler",
+      "D) Binary veriler",
+      "E) Ratio veriler",
+    ],
+    correctAnswer: "D) Binary veriler",
+  },
+  {
+    id: 91,
+    questionText:
+      "97-) Aşağıdakilerden hangisi veri birleştirme aşamasında karşılaşabileceğiniz uyumsuzluklardan biri değildir?",
+    options: [
+      "A) Farklı zamanlara ait veriler",
+      "B) farklı ölçü birimleri",
+      "C) Güncelleme hataları",
+      "D) Aynı formatta veriler",
+      "E) Kodlama Farklılıkları",
+    ],
+    correctAnswer: "D) Aynı formatta veriler",
+  },
+  {
+    id: 92,
+    questionText:
+      "98-) Aşağıdakilerden hangisi model kurma aşamalarından değildir?",
+    options: [
+      "A) Model Test Tasarımı Yapmak",
+      "B) Model Tekniğini Seçmek",
+      "C) Modeli Değerlendirmek",
+      "D) Modeli Kurmak",
+      "E) Modeli Analiz Etmek",
+    ],
+    correctAnswer: "E) Modeli Analiz Etmek",
+  },
+  {
+    id: 93,
+    questionText:
+      "99-) Aşağıdakilerden hangisi Betimsel ve Keşifsel Yöntemlerden değildir?",
+    options: [
+      "A) Hiyerarşik Kümeleme Analizi",
+      "B) K-ortalamalar Kümeleme Analizi",
+      "C) Sınıflandırma Analizi",
+      "D) Birliktelik Kuralları",
+      "E) Kohonen Ağlar",
+    ],
+    correctAnswer: "C) Sınıflandırma Analizi",
+  },
+  {
+    id: 94,
+    questionText:
+      "100-) K-means algoritmasının seçilmesinde aşağıdaki özelliklerden hangisi etkili değildir?",
+    options: [
+      "A) Küme sayısının okunan bir parametre olması analizi dar hale getirmektedir.",
+      "B) Algoritmanın uygulanması kolaydır ve hızlı çalışmaktadır.",
+      "C) Değişik dağılımlarda başarılı sonuçlar alınabilmektedir.",
+      "D) Kategorik verilerle çalışacak şekilde adapte edilebilmektedir.",
+      "E) Kümeleme sonuçları hem grafik olarak hem de yazı ve rakamlarla kolayca ifade edilebilmektedir.",
+    ],
+    correctAnswer:
+      "A) Küme sayısının okunan bir parametre olması analizi dar hale getirmektedir.",
+  },
+  {
+    id: 95,
+    questionText:
+      "101-) “Verilerin ilişkilendirilmiş, düzenlenmiş, anlamlandırılmış, işlenmiş halidir yani potansiyel olarak içinde bilgi barındıran bir veridir” Tanımı verilen kavram Aşağıdakilerden hangisidir?",
+    options: [
+      "A) Veri",
+      "B) Bilgelik",
+      "C) Bilgi",
+      "D) Enformasyon",
+      "E) Bilgi piramidi",
+    ],
+    correctAnswer: "D) Enformasyon",
+  },
+  {
+    id: 96,
+    questionText:
+      "102-) “ Nümerik velilere benzer 100 santigrat derece 50 santigrat derecenin 2 katı denilemez ama derece kelvine çevrilirse 60 Kelvin 30 kelvinin 2 misli sıcak denilebilir. Yani oran verilebilir veri türlerine ..... Denir.” Tanımı verilen veri türü nedir?",
+    options: [
+      "A) Ratio veriler",
+      "B) Orijinal veriler",
+      "C) Nümerik veriler",
+      "D) Binary veriler",
+      "E) Nominal veriler",
+    ],
+    correctAnswer: "A) Ratio veriler",
+  },
+  {
+    id: 97,
+    questionText:
+      "103-) Aşağıdakilerden hangisi eksik veri oluşmasına neden olmaz?",
+    options: [
+      "A) diğer veri kayıtlarıyla tutarsızlığı nedeniyle silinmesi",
+      "B) Fazlasıyla veri kaydı ekleme",
+      "C) Yanlış anlama sonucu kaydedilmeme",
+      "D) Bazı nitelik değerleri hatalı olması dolayısıyla silinmesi",
+      "E) Veri girişi sırasında bazı nitelikleri önemsiz görme",
+    ],
+    correctAnswer: "B) Fazlasıyla veri kaydı ekleme",
+  },
+  {
+    id: 98,
+    questionText:
+      "104-) Derin öğrenme alanında kullanılan bir model olan CNN (Convolutional Neural Network), genellikle hangi tür veri setlerinde etkilidir?",
+    options: [
+      "A) Metin verileri",
+      "B) Görüntü verileri",
+      "C) Zamansal veriler",
+      "D) Kategorik veriler",
+      "E) Yapısal veriler",
+    ],
+    correctAnswer: "B) Görüntü verileri",
+  },
+  {
+    id: 99,
+    questionText:
+      "105-) Bir veri setindeki ilişkileri ve desenleri keşfetmek için kullanılan bir derin öğrenme modeli hangisidir?",
+    options: [
+      "A) CNN (Convolutional Neural Network)",
+      "B) LSTM (Uzun Kısa Süreli Bellek)",
+      "C) RNN (Recurrent Neural Network)",
+      "D) Decision Tree (Karar Ağacı)",
+      "E) Naive Bayes",
+    ],
+    correctAnswer: "D) Decision Tree (Karar Ağacı)",
+  },
+  {
+    id: 100,
+    questionText:
+      "106-) Veri dönüştürme sürecinde, veri değerlerinin 0 ile 1 arasında ölçeklenmesini sağlayan bir yöntem hangisidir?",
+    options: [
+      "A) Enk-Enb Normalleştirme",
+      "B) z-Skor Normalleştirme",
+      "C) Ondalık Ölçekleme",
+      "D) Aralıklı Ölçümlendirilmiş Değişkenler",
+      "E) Tam sayılı Değişkenler",
+    ],
+    correctAnswer: "C) Ondalık Ölçekleme",
+  },
 ];
