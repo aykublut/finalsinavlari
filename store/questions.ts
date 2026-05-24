@@ -1851,14 +1851,14 @@ export const lessons: Lesson[] = [
   },
   {
     id: "Dijital Pazarlama",
-    title: "Ders 2",
+    title: "Dijital Pazarlama",
     description: `${DijitalPazarlama.length} — soruları sen ekleyeceksin.`,
     accent: "fuchsia",
     questions: DijitalPazarlama,
   },
   {
-    id: "easteregg",
-    title: "???",
+    id: "Stratejik Yönetim",
+    title: "Stratejik Yönetim",
     description: `${ders3Ornek.length} — soruları sen ekleyeceksin.`,
     accent: "emerald",
     questions: ders3Ornek,

@@ -225,42 +225,56 @@ export default function QuizApp() {
           <div className="grid gap-4 sm:gap-5">
             {lessons.map((lesson) => {
               const accent = ACCENT_STYLES[lesson.accent];
+              const isLocked = lesson.id !== "Açık Kaynak İşletim Sistemleri";
               return (
                 <button
                   key={lesson.id}
-                  onClick={() => selectLesson(lesson.id)}
-                  className={`group relative text-left bg-white/[0.03] backdrop-blur-xl border-2 ${accent.ring} rounded-3xl p-6 sm:p-7 transition-all duration-300 active:scale-[0.98] hover:bg-white/[0.05] overflow-hidden`}
+                  onClick={() => !isLocked && selectLesson(lesson.id)}
+                  disabled={isLocked}
+                  className={`group relative text-left backdrop-blur-xl border-2 rounded-3xl p-6 sm:p-7 transition-all duration-300 overflow-hidden
+                    ${isLocked
+                      ? "bg-white/[0.015] border-white/5 cursor-not-allowed opacity-50 grayscale"
+                      : `bg-white/[0.03] ${accent.ring} hover:bg-white/[0.05] active:scale-[0.98]`
+                    }`}
                 >
-                  <div
-                    className={`absolute -top-12 -right-12 w-40 h-40 ${accent.glow} blur-3xl rounded-full pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity`}
-                  />
+                  {!isLocked && (
+                    <div
+                      className={`absolute -top-12 -right-12 w-40 h-40 ${accent.glow} blur-3xl rounded-full pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity`}
+                    />
+                  )}
                   <div className="relative flex items-center gap-4">
                     <div
-                      className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border ${accent.chip} flex items-center justify-center font-black text-lg sm:text-xl`}
+                      className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center font-black text-lg sm:text-xl
+                        ${isLocked ? "border-white/10 text-white/30" : accent.chip}`}
                     >
-                      {lesson.questions.length}
+                      {isLocked ? (
+                        <svg className="w-5 h-5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                          />
+                        </svg>
+                      ) : (
+                        lesson.questions.length
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                      <h2 className={`text-lg sm:text-xl font-bold tracking-tight ${isLocked ? "text-white/30" : "text-white"}`}>
                         {lesson.title}
                       </h2>
-                      <p className="text-xs sm:text-sm text-slate-400 mt-1 line-clamp-2">
-                        {lesson.description}
+                      <p className={`text-xs sm:text-sm mt-1 line-clamp-2 ${isLocked ? "text-white/20" : "text-slate-400"}`}>
+                        {isLocked ? "Yakında açılacak" : lesson.description}
                       </p>
                     </div>
-                    <svg
-                      className={`shrink-0 w-5 h-5 ${accent.text} transition-transform group-hover:translate-x-1`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2.5"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+                    {!isLocked && (
+                      <svg
+                        className={`shrink-0 w-5 h-5 ${accent.text} transition-transform group-hover:translate-x-1`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                      </svg>
+                    )}
                   </div>
                 </button>
               );
