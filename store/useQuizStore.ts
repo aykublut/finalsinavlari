@@ -1,83 +1,131 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { QuizState, Question } from "../types/quiz";
+import { lessons } from "./questions";
 
-export const useQuizStore = create<QuizState>((set, get) => ({
-  questions: [],
-  activeQuestionIndex: 0,
-  userAnswers: {},
-  isQuizFinished: false,
-  isWrongAnswersMode: false,
-  wrongQuestions: [],
+const fisherYatesShuffle = <T>(arr: T[]): T[] => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
 
-  setQuestions: (questions: Question[]) => set({ questions }),
+const findLesson = (id: string | null) =>
+  id ? lessons.find((l) => l.id === id) : undefined;
 
-  answerQuestion: (questionId: number, answer: string) =>
-    set((state) => ({
-      userAnswers: { ...state.userAnswers, [questionId]: answer },
-    })),
+export const getActiveQuestions = (state: QuizState): Question[] => {
+  if (state.isWrongAnswersMode) return state.wrongQuestions;
+  if (state.shuffledQuestions) return state.shuffledQuestions;
+  return findLesson(state.selectedLessonId)?.questions ?? [];
+};
 
-  nextQuestion: () =>
-    set((state) => {
-      const currentList = state.isWrongAnswersMode
-        ? state.wrongQuestions
-        : state.questions;
-      if (state.activeQuestionIndex < currentList.length - 1) {
-        return { activeQuestionIndex: state.activeQuestionIndex + 1 };
-      }
-      return {};
-    }),
-
-  prevQuestion: () =>
-    set((state) => {
-      if (state.activeQuestionIndex > 0) {
-        return { activeQuestionIndex: state.activeQuestionIndex - 1 };
-      }
-      return {};
-    }),
-
-  finishQuiz: () =>
-    set((state) => {
-      // Eğer yanlış modundaysak sadece yanlış soruları, değilse tüm soruları değerlendir
-      const currentList = state.isWrongAnswersMode
-        ? state.wrongQuestions
-        : state.questions;
-
-      // O an çözülen listedeki yanlışları bul
-      const newWrongQs = currentList.filter(
-        (q) => state.userAnswers[q.id] !== q.correctAnswer,
-      );
-
-      return { isQuizFinished: true, wrongQuestions: newWrongQs };
-    }),
-  // === YENİ: SORULARI KARIŞTIRMA FONKSİYONU ===
-  shuffleQuestions: () =>
-    set((state) => {
-      const shuffled = [...state.questions];
-      // Fisher-Yates Karıştırma Algoritması
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      return {
-        questions: shuffled,
-        activeQuestionIndex: 0, // 1. soruya dön
-        userAnswers: {}, // Verilen cevapları sıfırla
-      };
-    }),
-  restartQuiz: () =>
-    set({
+export const useQuizStore = create<QuizState>()(
+  persist(
+    (set) => ({
+      lessons,
+      selectedLessonId: null,
       activeQuestionIndex: 0,
       userAnswers: {},
       isQuizFinished: false,
       isWrongAnswersMode: false,
       wrongQuestions: [],
-    }),
+      shuffledQuestions: null,
 
-  retryWrongAnswers: () =>
-    set({
-      activeQuestionIndex: 0,
-      userAnswers: {}, // Yeniden çözerken eski cevapları sıfırlıyoruz
-      isQuizFinished: false,
-      isWrongAnswersMode: true,
+      selectLesson: (lessonId) =>
+        set({
+          selectedLessonId: lessonId,
+          activeQuestionIndex: 0,
+          userAnswers: {},
+          isQuizFinished: false,
+          isWrongAnswersMode: false,
+          wrongQuestions: [],
+          shuffledQuestions: null,
+        }),
+
+      goToLessonSelection: () =>
+        set({
+          selectedLessonId: null,
+          activeQuestionIndex: 0,
+          userAnswers: {},
+          isQuizFinished: false,
+          isWrongAnswersMode: false,
+          wrongQuestions: [],
+          shuffledQuestions: null,
+        }),
+
+      answerQuestion: (questionId, answer) =>
+        set((state) => ({
+          userAnswers: { ...state.userAnswers, [questionId]: answer },
+        })),
+
+      nextQuestion: () =>
+        set((state) => {
+          const list = getActiveQuestions(state);
+          if (state.activeQuestionIndex < list.length - 1) {
+            return { activeQuestionIndex: state.activeQuestionIndex + 1 };
+          }
+          return {};
+        }),
+
+      prevQuestion: () =>
+        set((state) => {
+          if (state.activeQuestionIndex > 0) {
+            return { activeQuestionIndex: state.activeQuestionIndex - 1 };
+          }
+          return {};
+        }),
+
+      finishQuiz: () =>
+        set((state) => {
+          const list = getActiveQuestions(state);
+          const newWrongQs = list.filter(
+            (q) => state.userAnswers[q.id] !== q.correctAnswer,
+          );
+          return { isQuizFinished: true, wrongQuestions: newWrongQs };
+        }),
+
+      shuffleQuestions: () =>
+        set((state) => {
+          const base = findLesson(state.selectedLessonId)?.questions ?? [];
+          return {
+            shuffledQuestions: fisherYatesShuffle(base),
+            activeQuestionIndex: 0,
+            userAnswers: {},
+          };
+        }),
+
+      restartQuiz: () =>
+        set({
+          activeQuestionIndex: 0,
+          userAnswers: {},
+          isQuizFinished: false,
+          isWrongAnswersMode: false,
+          wrongQuestions: [],
+          shuffledQuestions: null,
+        }),
+
+      retryWrongAnswers: () =>
+        set({
+          activeQuestionIndex: 0,
+          userAnswers: {},
+          isQuizFinished: false,
+          isWrongAnswersMode: true,
+        }),
     }),
-}));
+    {
+      name: "quiz-state-v1",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        selectedLessonId: state.selectedLessonId,
+        activeQuestionIndex: state.activeQuestionIndex,
+        userAnswers: state.userAnswers,
+        isQuizFinished: state.isQuizFinished,
+        isWrongAnswersMode: state.isWrongAnswersMode,
+        wrongQuestions: state.wrongQuestions,
+        shuffledQuestions: state.shuffledQuestions,
+      }),
+    },
+  ),
+);

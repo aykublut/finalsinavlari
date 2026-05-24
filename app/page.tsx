@@ -1,60 +1,112 @@
 "use client";
 
-import { mockQuestions } from "@/store/questions";
-import { useQuizStore } from "@/store/useQuizStore";
-import { useEffect, useState, useCallback } from "react";
+import { useQuizStore, getActiveQuestions } from "@/store/useQuizStore";
+import { useEffect, useCallback, useMemo, useSyncExternalStore, useState } from "react";
+import type { Lesson } from "@/types/quiz";
+import { suspiciousQuestions } from "@/store/suspiciousQuestions";
+
+const subscribeHydration = (cb: () => void) =>
+  useQuizStore.persist.onFinishHydration(cb);
+const getHydrated = () => useQuizStore.persist.hasHydrated();
+const getHydratedServer = () => false;
+
+const ACCENT_STYLES: Record<
+  Lesson["accent"],
+  { ring: string; text: string; glow: string; chip: string }
+> = {
+  indigo: {
+    ring: "border-indigo-500/30 hover:border-indigo-400/60",
+    text: "text-indigo-300",
+    glow: "bg-indigo-600/20",
+    chip: "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+  },
+  fuchsia: {
+    ring: "border-fuchsia-500/30 hover:border-fuchsia-400/60",
+    text: "text-fuchsia-300",
+    glow: "bg-fuchsia-600/20",
+    chip: "bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/20",
+  },
+  emerald: {
+    ring: "border-emerald-500/30 hover:border-emerald-400/60",
+    text: "text-emerald-300",
+    glow: "bg-emerald-600/20",
+    chip: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
+  },
+  amber: {
+    ring: "border-amber-500/30 hover:border-amber-400/60",
+    text: "text-amber-300",
+    glow: "bg-amber-600/20",
+    chip: "bg-amber-500/10 text-amber-300 border-amber-500/20",
+  },
+  sky: {
+    ring: "border-sky-500/30 hover:border-sky-400/60",
+    text: "text-sky-300",
+    glow: "bg-sky-600/20",
+    chip: "bg-sky-500/10 text-sky-300 border-sky-500/20",
+  },
+};
 
 export default function QuizApp() {
-  const {
-    questions,
-    activeQuestionIndex,
-    userAnswers,
-    isQuizFinished,
-    isWrongAnswersMode,
-    wrongQuestions,
-    setQuestions,
-    answerQuestion,
-    nextQuestion,
-    prevQuestion,
-    finishQuiz,
-    restartQuiz,
-    retryWrongAnswers,
-    shuffleQuestions, // YENİ: Store'dan çektik
-  } = useQuizStore();
+  const lessons = useQuizStore((s) => s.lessons);
+  const selectedLessonId = useQuizStore((s) => s.selectedLessonId);
+  const activeQuestionIndex = useQuizStore((s) => s.activeQuestionIndex);
+  const userAnswers = useQuizStore((s) => s.userAnswers);
+  const isQuizFinished = useQuizStore((s) => s.isQuizFinished);
+  const isWrongAnswersMode = useQuizStore((s) => s.isWrongAnswersMode);
+  const wrongQuestions = useQuizStore((s) => s.wrongQuestions);
+  const shuffledQuestions = useQuizStore((s) => s.shuffledQuestions);
 
-  const [mounted, setMounted] = useState(false);
+  const selectLesson = useQuizStore((s) => s.selectLesson);
+  const goToLessonSelection = useQuizStore((s) => s.goToLessonSelection);
+  const answerQuestion = useQuizStore((s) => s.answerQuestion);
+  const nextQuestion = useQuizStore((s) => s.nextQuestion);
+  const prevQuestion = useQuizStore((s) => s.prevQuestion);
+  const finishQuiz = useQuizStore((s) => s.finishQuiz);
+  const restartQuiz = useQuizStore((s) => s.restartQuiz);
+  const retryWrongAnswers = useQuizStore((s) => s.retryWrongAnswers);
+  const shuffleQuestions = useQuizStore((s) => s.shuffleQuestions);
 
-  useEffect(() => {
-    setQuestions(mockQuestions);
-    setMounted(true);
-  }, [setQuestions]);
+  const mounted = useSyncExternalStore(
+    subscribeHydration,
+    getHydrated,
+    getHydratedServer,
+  );
 
-  const currentQuestionsList = isWrongAnswersMode ? wrongQuestions : questions;
+  const selectedLesson = useMemo(
+    () => lessons.find((l) => l.id === selectedLessonId) ?? null,
+    [lessons, selectedLessonId],
+  );
+
+  const currentQuestionsList = useMemo(
+    () =>
+      getActiveQuestions({
+        isWrongAnswersMode,
+        wrongQuestions,
+        shuffledQuestions,
+        selectedLessonId,
+      } as never),
+    [isWrongAnswersMode, wrongQuestions, shuffledQuestions, selectedLessonId],
+  );
+
   const currentQuestion = currentQuestionsList[activeQuestionIndex];
   const isLastQuestion =
     activeQuestionIndex === currentQuestionsList.length - 1;
   const hasAnswered = currentQuestion
     ? !!userAnswers[currentQuestion.id]
     : false;
-
-  const totalAnswered = Object.keys(userAnswers).length;
-  const correctAnswersCount = questions.filter(
-    (q) => userAnswers[q.id] === q.correctAnswer,
-  ).length;
-  const accuracy =
-    totalAnswered > 0
-      ? Math.round((correctAnswersCount / totalAnswered) * 100)
-      : 0;
   const progressPercentage =
     currentQuestionsList.length > 0
       ? ((activeQuestionIndex + 1) / currentQuestionsList.length) * 100
       : 0;
 
+  const [suspiciousModalOpen, setSuspiciousModalOpen] = useState(false);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (isQuizFinished || !currentQuestion) return;
+      if (!selectedLesson || isQuizFinished || !currentQuestion) return;
       if (e.key === "ArrowRight" && hasAnswered) {
-        isLastQuestion ? finishQuiz() : nextQuestion();
+        if (isLastQuestion) finishQuiz();
+        else nextQuestion();
       } else if (e.key === "ArrowLeft" && activeQuestionIndex > 0) {
         prevQuestion();
       }
@@ -65,6 +117,7 @@ export default function QuizApp() {
       }
     },
     [
+      selectedLesson,
       isQuizFinished,
       currentQuestion,
       hasAnswered,
@@ -82,7 +135,7 @@ export default function QuizApp() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
-  if (!mounted || questions.length === 0) {
+  if (!mounted) {
     return (
       <div className="h-[100dvh] w-full flex items-center justify-center bg-[#050505]">
         <div className="relative w-16 h-16 flex items-center justify-center">
@@ -93,6 +146,84 @@ export default function QuizApp() {
     );
   }
 
+  // === DERS SEÇİM EKRANI ===
+  if (!selectedLesson) {
+    return (
+      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-y-auto relative selection:bg-indigo-500/30">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-indigo-600/10 blur-[100px] pointer-events-none rounded-full" />
+
+        <div className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-16 z-10 flex flex-col">
+          <header className="mb-10 sm:mb-14 text-center">
+            <span className="inline-block px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase rounded-lg border bg-indigo-500/10 text-indigo-300 border-indigo-500/20 mb-4">
+              Ders Seçimi
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 tracking-tighter">
+              Hangi derse çalışalım?
+            </h1>
+            <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-md mx-auto">
+              Bir ders seç, sorular yüklensin. İstediğin zaman üstteki{" "}
+              <span className="text-slate-200 font-semibold">Dersler</span>{" "}
+              butonundan geri dönebilirsin.
+            </p>
+          </header>
+
+          <div className="grid gap-4 sm:gap-5">
+            {lessons.map((lesson) => {
+              const accent = ACCENT_STYLES[lesson.accent];
+              return (
+                <button
+                  key={lesson.id}
+                  onClick={() => selectLesson(lesson.id)}
+                  className={`group relative text-left bg-white/[0.03] backdrop-blur-xl border-2 ${accent.ring} rounded-3xl p-6 sm:p-7 transition-all duration-300 active:scale-[0.98] hover:bg-white/[0.05] overflow-hidden`}
+                >
+                  <div
+                    className={`absolute -top-12 -right-12 w-40 h-40 ${accent.glow} blur-3xl rounded-full pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity`}
+                  />
+                  <div className="relative flex items-center gap-4">
+                    <div
+                      className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border ${accent.chip} flex items-center justify-center font-black text-lg sm:text-xl`}
+                    >
+                      {lesson.questions.length}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                        {lesson.title}
+                      </h2>
+                      <p className="text-xs sm:text-sm text-slate-400 mt-1 line-clamp-2">
+                        {lesson.description}
+                      </p>
+                    </div>
+                    <svg
+                      className={`shrink-0 w-5 h-5 ${accent.text} transition-transform group-hover:translate-x-1`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.5"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          <footer className="mt-auto pt-10 text-center text-[11px] text-slate-600">
+            İlerlemen tarayıcına kaydedilir. Bir sonraki açılışta kaldığın
+            yerden devam edersin.
+          </footer>
+        </div>
+      </div>
+    );
+  }
+
+  const accent = ACCENT_STYLES[selectedLesson.accent];
+
   // === SONUÇ EKRANI ===
   if (isQuizFinished) {
     const currentListWrongCount = currentQuestionsList.filter(
@@ -100,16 +231,59 @@ export default function QuizApp() {
     ).length;
     const currentListCorrectCount =
       currentQuestionsList.length - currentListWrongCount;
-    const isPerfect = currentListWrongCount === 0;
+    const isPerfect =
+      currentListWrongCount === 0 && currentQuestionsList.length > 0;
+
+    const wrongPct =
+      currentQuestionsList.length > 0
+        ? (currentListWrongCount / currentQuestionsList.length) * 100
+        : 0;
+
+    // v1 = kusursuz, v2 = ≤%10, v3 = ≤%20, v4 = ≤%30, v5 = >%30
+    const videoSrc =
+      currentListWrongCount === 0
+        ? "/videos/v1.mp4"
+        : wrongPct <= 10
+          ? "/videos/v2.mp4"
+          : wrongPct <= 20
+            ? "/videos/v3.mp4"
+            : wrongPct <= 30
+              ? "/videos/v4.mp4"
+              : "/videos/v5.mp4";
 
     return (
-      <div className="h-[100dvh] w-full bg-[#030303] text-slate-200 flex items-center justify-center p-4 overflow-hidden relative">
-        <div
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vh] opacity-20 blur-[120px] pointer-events-none transition-colors duration-1000 ${isPerfect ? "bg-[radial-gradient(circle,rgba(16,185,129,0.4)_0%,transparent_60%)]" : "bg-[radial-gradient(circle,rgba(99,102,241,0.4)_0%,transparent_60%)]"}`}
-        ></div>
-        <div className="w-full max-w-md z-10 flex flex-col gap-6">
-          <div className="text-center space-y-2">
-            <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 tracking-tighter">
+      <div className="h-[100dvh] w-full text-slate-200 flex items-end justify-center overflow-hidden relative">
+        {/*
+         * VIDEO ARKAPLAN
+         * preload="none"  → tarayıcı hiç veri indirmez ta kullanıcı sonuç ekranına gelene kadar
+         * autoPlay muted playsInline loop → mobil otomatik oynatma için zorunlu üçlü
+         * key={videoSrc}  → farklı video gelince React elemanı yeniden mount eder,
+         *                    böylece eski videonun buffer'ı bellekte kalmaz
+         */}
+        <video
+          key={videoSrc}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+
+        {/* Gradient overlay — altta içerik okunabilir olsun */}
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/95 via-black/55 to-black/10 pointer-events-none" />
+
+        {/* İçerik */}
+        <div className="relative z-[2] w-full max-w-md px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] flex flex-col gap-4">
+          <div className="text-center space-y-1">
+            <span
+              className={`inline-block px-2.5 py-1 text-[10px] font-bold tracking-widest uppercase rounded-lg border ${accent.chip}`}
+            >
+              {selectedLesson.title}
+            </span>
+            <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 tracking-tighter">
               {isPerfect ? "KUSURSUZ!" : "RAPOR"}
             </h1>
             <p className="text-sm font-medium text-slate-400">
@@ -118,8 +292,9 @@ export default function QuizApp() {
                 : "Test oturumu sona erdi."}
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white/[0.03] border border-emerald-500/20 rounded-3xl p-6 text-center backdrop-blur-md">
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-black/40 border border-emerald-500/30 rounded-3xl p-5 text-center backdrop-blur-md">
               <span className="text-4xl font-black text-emerald-400 block mb-1">
                 {currentListCorrectCount}
               </span>
@@ -127,7 +302,7 @@ export default function QuizApp() {
                 Doğru
               </span>
             </div>
-            <div className="bg-white/[0.03] border border-rose-500/20 rounded-3xl p-6 text-center backdrop-blur-md">
+            <div className="bg-black/40 border border-rose-500/30 rounded-3xl p-5 text-center backdrop-blur-md">
               <span className="text-4xl font-black text-rose-400 block mb-1">
                 {currentListWrongCount}
               </span>
@@ -136,20 +311,40 @@ export default function QuizApp() {
               </span>
             </div>
           </div>
-          <div className="flex flex-col gap-3 mt-4">
+
+          <div className="flex flex-col gap-2.5">
             {currentListWrongCount > 0 && (
               <button
                 onClick={retryWrongAnswers}
-                className="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl transition-all active:scale-[0.98] shadow-[0_0_30px_rgba(79,70,229,0.3)] flex items-center justify-center gap-2"
+                className="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl transition-all active:scale-[0.98] shadow-[0_0_30px_rgba(79,70,229,0.4)] flex items-center justify-center gap-2"
               >
                 Sadece Yanlışları Çöz
               </button>
             )}
             <button
               onClick={restartQuiz}
-              className="w-full py-4 bg-white/[0.05] hover:bg-white/[0.1] text-white font-bold rounded-2xl border border-white/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+              className="w-full py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl border border-white/15 backdrop-blur-sm transition-all active:scale-[0.98]"
             >
-              Tüm Sistemi Sıfırla
+              Bu Dersi Sıfırla
+            </button>
+            <button
+              onClick={goToLessonSelection}
+              className="w-full py-3 text-slate-400 hover:text-white text-sm font-semibold rounded-2xl transition-colors active:scale-[0.98] flex items-center justify-center gap-2"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              Derslere Dön
             </button>
           </div>
         </div>
@@ -158,6 +353,16 @@ export default function QuizApp() {
   }
 
   // === TEST EKRANI ===
+  if (!currentQuestion) {
+    return (
+      <div className="h-[100dvh] w-full flex items-center justify-center bg-[#050505] text-slate-400 text-sm">
+        Bu derste soru bulunamadı.
+      </div>
+    );
+  }
+
+  const currentSuspicion = suspiciousQuestions[currentQuestion.id] ?? null;
+
   return (
     <div className="h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-hidden relative selection:bg-indigo-500/30">
       <div className="absolute top-0 left-0 w-full h-1 bg-white/5 z-50">
@@ -170,20 +375,43 @@ export default function QuizApp() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-indigo-600/10 blur-[100px] pointer-events-none rounded-full" />
 
-      {/* === ÜST BAR & KARIŞTIR BUTONU === */}
-      <div className="w-full max-w-3xl mx-auto px-4 pt-4 sm:pt-6 pb-2 flex items-center justify-between shrink-0 z-10">
-        <div className="flex items-center gap-2">
-          <span
-            className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border ${isWrongAnswersMode ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"}`}
+      {/* === ÜST BAR === */}
+      <div className="w-full max-w-3xl mx-auto px-4 pt-4 sm:pt-6 pb-2 flex items-center justify-between shrink-0 z-10 gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          {/* DERSLER BUTONU */}
+          <button
+            onClick={goToLessonSelection}
+            className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
+            aria-label="Derslere dön"
           >
-            {isWrongAnswersMode ? "Hata Modu" : "Aktif Test"}
+            <svg
+              className="w-[14px] h-[14px]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2.5"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            Dersler
+          </button>
+
+          {/* DERS / MOD BADGE */}
+          <span
+            className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${isWrongAnswersMode ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : accent.chip}`}
+          >
+            {isWrongAnswersMode ? "Hata Modu" : selectedLesson.title}
           </span>
 
-          {/* SADECE 1. SORUDA ÇIKAN KARIŞTIR BUTONU */}
+          {/* KARIŞTIR BUTONU - sadece 1. soruda */}
           {!isWrongAnswersMode && activeQuestionIndex === 0 && (
             <button
               onClick={shuffleQuestions}
-              className="px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20 hover:bg-fuchsia-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 animate-in fade-in slide-in-from-left-2 duration-300"
+              className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20 hover:bg-fuchsia-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 animate-in fade-in slide-in-from-left-2 duration-300"
             >
               <svg
                 className="w-[14px] h-[14px]"
@@ -201,8 +429,36 @@ export default function QuizApp() {
               Karıştır
             </button>
           )}
+
+          {/* ŞÜPHELİ SORU BADGE */}
+          {currentSuspicion && (
+            <button
+              onClick={() => setSuspiciousModalOpen(true)}
+              className="shrink-0 relative flex items-center gap-1 animate-in fade-in slide-in-from-left-2 duration-300"
+              aria-label="Şüpheli soru açıklamasını gör"
+            >
+              {/* Dış halka animasyonu */}
+              <span
+                className={`absolute inset-0 rounded-full animate-ping opacity-40 ${
+                  currentSuspicion.level === "strongly-suspicious"
+                    ? "bg-rose-500"
+                    : "bg-amber-400"
+                }`}
+              />
+              <span
+                className={`relative flex items-center justify-center w-7 h-7 rounded-full font-black text-[13px] transition-transform hover:scale-110 active:scale-95 ${
+                  currentSuspicion.level === "strongly-suspicious"
+                    ? "bg-rose-500/20 text-rose-400 border border-rose-500/40"
+                    : "bg-amber-400/20 text-amber-400 border border-amber-400/40"
+                }`}
+                style={{ animation: "suspWiggle 2.4s ease-in-out infinite" }}
+              >
+                !
+              </span>
+            </button>
+          )}
         </div>
-        <div className="text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
+        <div className="shrink-0 text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
           <span className="text-white">{activeQuestionIndex + 1}</span> /{" "}
           {currentQuestionsList.length}
         </div>
@@ -210,93 +466,144 @@ export default function QuizApp() {
 
       <div className="flex-1 min-h-0 w-full max-w-3xl mx-auto flex flex-col px-4 pb-4 sm:px-6 z-10">
         <div className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2.5rem)] flex flex-col shadow-2xl relative">
-          {currentQuestion && (
-            <>
-              <div className="shrink-0 mb-[clamp(1rem,3dvh,2.5rem)]">
-                <h2 className="text-[clamp(1.1rem,2.8dvh,1.75rem)] font-semibold text-slate-100 leading-[1.3] tracking-tight">
-                  {currentQuestion.questionText}
-                </h2>
-              </div>
-              <div className="flex-1 min-h-0 flex flex-col justify-center gap-[clamp(0.5rem,1.5dvh,1rem)]">
-                {currentQuestion.options.map((option, index) => {
-                  const isSelected = userAnswers[currentQuestion.id] === option;
-                  const isCorrectAnswer =
-                    option === currentQuestion.correctAnswer;
-                  let baseStyle =
-                    "border-white/5 bg-white/[0.03] text-slate-300 hover:border-indigo-500/30 hover:bg-indigo-500/10";
-                  let icon = null;
+          <div className="shrink-0 mb-[clamp(1rem,3dvh,2.5rem)]">
+            <h2 className="text-[clamp(1.1rem,2.8dvh,1.75rem)] font-semibold text-slate-100 leading-[1.3] tracking-tight">
+              {currentQuestion.questionText}
+            </h2>
+          </div>
+          <div className="flex-1 min-h-0 flex flex-col justify-center gap-[clamp(0.5rem,1.5dvh,1rem)]">
+            {currentQuestion.options.map((option, index) => {
+              const isSelected = userAnswers[currentQuestion.id] === option;
+              const isCorrectAnswer = option === currentQuestion.correctAnswer;
+              let baseStyle =
+                "border-white/5 bg-white/[0.03] text-slate-300 hover:border-indigo-500/30 hover:bg-indigo-500/10";
+              let icon = null;
 
-                  if (hasAnswered) {
-                    if (isCorrectAnswer) {
-                      baseStyle =
-                        "border-emerald-500/50 bg-emerald-500/10 text-emerald-300 z-10 scale-[1.02] shadow-[0_0_20px_rgba(16,185,129,0.15)]";
-                      icon = (
-                        <svg
-                          className="w-[clamp(1.2rem,2.5dvh,1.5rem)] h-[clamp(1.2rem,2.5dvh,1.5rem)] text-emerald-400 shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2.5"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      );
-                    } else if (isSelected && !isCorrectAnswer) {
-                      baseStyle =
-                        "border-rose-500/50 bg-rose-500/10 text-rose-300 opacity-90";
-                      icon = (
-                        <svg
-                          className="w-[clamp(1.2rem,2.5dvh,1.5rem)] h-[clamp(1.2rem,2.5dvh,1.5rem)] text-rose-400 shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2.5"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      );
-                    } else {
-                      baseStyle =
-                        "border-transparent bg-white/[0.01] text-slate-600 opacity-30 grayscale";
-                    }
-                  }
-
-                  return (
-                    <button
-                      key={index}
-                      disabled={hasAnswered}
-                      onClick={() => answerQuestion(currentQuestion.id, option)}
-                      className={`group w-full flex items-center justify-between p-[clamp(0.75rem,2dvh,1.25rem)] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-300 outline-none text-left ${baseStyle} ${!hasAnswered && "active:scale-[0.98]"}`}
+              if (hasAnswered) {
+                if (isCorrectAnswer) {
+                  baseStyle =
+                    "border-emerald-500/50 bg-emerald-500/10 text-emerald-300 z-10 scale-[1.02] shadow-[0_0_20px_rgba(16,185,129,0.15)]";
+                  icon = (
+                    <svg
+                      className="w-[clamp(1.2rem,2.5dvh,1.5rem)] h-[clamp(1.2rem,2.5dvh,1.5rem)] text-emerald-400 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      <span className="text-[clamp(0.85rem,2.2dvh,1.1rem)] font-medium leading-[1.3] pr-4 line-clamp-4">
-                        {option}
-                      </span>
-                      {icon && (
-                        <span className="animate-in zoom-in duration-300">
-                          {icon}
-                        </span>
-                      )}
-                    </button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.5"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
                   );
-                })}
-              </div>
-            </>
-          )}
+                } else if (isSelected && !isCorrectAnswer) {
+                  baseStyle =
+                    "border-rose-500/50 bg-rose-500/10 text-rose-300 opacity-90";
+                  icon = (
+                    <svg
+                      className="w-[clamp(1.2rem,2.5dvh,1.5rem)] h-[clamp(1.2rem,2.5dvh,1.5rem)] text-rose-400 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.5"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  );
+                } else {
+                  baseStyle =
+                    "border-transparent bg-white/[0.01] text-slate-600 opacity-30 grayscale";
+                }
+              }
+
+              return (
+                <button
+                  key={index}
+                  disabled={hasAnswered}
+                  onClick={() => answerQuestion(currentQuestion.id, option)}
+                  className={`group w-full flex items-center justify-between p-[clamp(0.75rem,2dvh,1.25rem)] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-300 outline-none text-left ${baseStyle} ${!hasAnswered && "active:scale-[0.98]"}`}
+                >
+                  <span className="text-[clamp(0.85rem,2.2dvh,1.1rem)] font-medium leading-[1.3] pr-4 line-clamp-4">
+                    {option}
+                  </span>
+                  {icon && (
+                    <span className="animate-in zoom-in duration-300">
+                      {icon}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {/* ŞÜPHELİ SORU MODAL */}
+        {suspiciousModalOpen && currentSuspicion && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={() => setSuspiciousModalOpen(false)}
+          >
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+            <div
+              className={`relative w-full max-w-sm rounded-3xl border p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-200 ${
+                currentSuspicion.level === "strongly-suspicious"
+                  ? "bg-[#120808] border-rose-500/30"
+                  : "bg-[#120e04] border-amber-400/30"
+              }`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start gap-3 mb-4">
+                <span
+                  className={`shrink-0 flex items-center justify-center w-9 h-9 rounded-full font-black text-lg ${
+                    currentSuspicion.level === "strongly-suspicious"
+                      ? "bg-rose-500/20 text-rose-400 border border-rose-500/40"
+                      : "bg-amber-400/20 text-amber-400 border border-amber-400/40"
+                  }`}
+                >
+                  !
+                </span>
+                <div>
+                  <p
+                    className={`text-xs font-bold tracking-widest uppercase mb-0.5 ${
+                      currentSuspicion.level === "strongly-suspicious"
+                        ? "text-rose-400"
+                        : "text-amber-400"
+                    }`}
+                  >
+                    {currentSuspicion.level === "strongly-suspicious"
+                      ? "Kuvvetle Şüpheli Cevap"
+                      : "Şüpheli Cevap"}
+                  </p>
+                  <p className="text-[11px] text-slate-500">
+                    Soru {currentQuestion.id}
+                  </p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                {currentSuspicion.explanation}
+              </p>
+              <button
+                onClick={() => setSuspiciousModalOpen(false)}
+                className="mt-5 w-full py-2.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-slate-300 text-sm font-semibold transition-all active:scale-95"
+              >
+                Tamam, anladım
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="shrink-0 pt-4 pb-2 flex items-center justify-between gap-4">
           <button
             onClick={prevQuestion}
             disabled={activeQuestionIndex === 0}
             className="w-[3.5rem] h-[3.5rem] sm:w-[4rem] sm:h-[4rem] flex items-center justify-center bg-white/[0.05] rounded-full text-slate-400 hover:text-white hover:bg-white/10 disabled:opacity-20 transition-all border border-white/5 active:scale-95"
+            aria-label="Önceki soru"
           >
             <svg
               className="w-6 h-6"

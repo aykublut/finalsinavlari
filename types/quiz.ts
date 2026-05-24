@@ -5,20 +5,31 @@ export type Question = {
   correctAnswer: string;
 };
 
-export interface QuizState {
+export type Lesson = {
+  id: string;
+  title: string;
+  description: string;
+  accent: "indigo" | "fuchsia" | "emerald" | "amber" | "sky";
   questions: Question[];
+};
+
+export interface QuizState {
+  lessons: Lesson[];
+  selectedLessonId: string | null;
   activeQuestionIndex: number;
-  userAnswers: Record<number, string>; // { 1: "A", 2: "B" }
+  userAnswers: Record<number, string>;
   isQuizFinished: boolean;
   isWrongAnswersMode: boolean;
   wrongQuestions: Question[];
-  shuffleQuestions: () => void; // BUNA EKLENECEK
-  // Aksiyonlar
-  setQuestions: (questions: Question[]) => void;
+  shuffledQuestions: Question[] | null;
+
+  selectLesson: (lessonId: string) => void;
+  goToLessonSelection: () => void;
   answerQuestion: (questionId: number, answer: string) => void;
   nextQuestion: () => void;
   prevQuestion: () => void;
   finishQuiz: () => void;
   restartQuiz: () => void;
   retryWrongAnswers: () => void;
+  shuffleQuestions: () => void;
 }
