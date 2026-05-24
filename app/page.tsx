@@ -1,7 +1,14 @@
 "use client";
 
 import { useQuizStore, getActiveQuestions } from "@/store/useQuizStore";
-import { useEffect, useCallback, useMemo, useSyncExternalStore, useState } from "react";
+import {
+  useEffect,
+  useCallback,
+  useMemo,
+  useSyncExternalStore,
+  useState,
+  useRef,
+} from "react";
 import type { Lesson } from "@/types/quiz";
 import { suspiciousQuestions } from "@/store/suspiciousQuestions";
 
@@ -100,6 +107,53 @@ export default function QuizApp() {
       : 0;
 
   const [suspiciousModalOpen, setSuspiciousModalOpen] = useState(false);
+
+  // Son 3 soruda tahmin edilen video önceden prefetch edilir
+  const prefetchedVideoRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (isWrongAnswersMode) return;
+    if (!selectedLessonId) return;
+
+    const remaining = currentQuestionsList.length - activeQuestionIndex;
+    if (remaining > 3) return;
+
+    const wrongSoFar = currentQuestionsList.filter(
+      (q) => userAnswers[q.id] && userAnswers[q.id] !== q.correctAnswer,
+    ).length;
+    const predictedWrongPct =
+      currentQuestionsList.length > 0
+        ? (wrongSoFar / currentQuestionsList.length) * 100
+        : 0;
+
+    const predictedSrc =
+      selectedLessonId === "easteregg"
+        ? "/videos/easteregg.mp4"
+        : wrongSoFar === 0
+          ? "/videos/v1.mp4"
+          : predictedWrongPct <= 10
+            ? "/videos/v2.mp4"
+            : predictedWrongPct <= 20
+              ? "/videos/v3.mp4"
+              : predictedWrongPct <= 30
+                ? "/videos/v4.mp4"
+                : "/videos/v5.mp4";
+
+    if (prefetchedVideoRef.current === predictedSrc) return;
+    prefetchedVideoRef.current = predictedSrc;
+
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.href = predictedSrc;
+    link.as = "video";
+    document.head.appendChild(link);
+  }, [
+    activeQuestionIndex,
+    currentQuestionsList,
+    userAnswers,
+    selectedLessonId,
+    isWrongAnswersMode,
+  ]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -226,30 +280,49 @@ export default function QuizApp() {
 
   // === SONUÇ EKRANI ===
   if (isQuizFinished) {
-    const currentListWrongCount = currentQuestionsList.filter(
-      (q) => userAnswers[q.id] !== q.correctAnswer,
-    ).length;
-    const currentListCorrectCount =
-      currentQuestionsList.length - currentListWrongCount;
+    // Hata modunda finishQuiz, wrongQuestions'ı yeni (küçülmüş) listeyle günceller.
+    // Bu yüzden currentQuestionsList artık sadece yeni yanlışları içerir → doğru sayısı
+    // hesabı bozulur. Hata modunda userAnswers üzerinden sayıyoruz.
+    const lessonQs = selectedLesson.questions;
+    const answeredIds = Object.keys(userAnswers).map(Number);
+
+    const currentListWrongCount = isWrongAnswersMode
+      ? answeredIds.filter((id) => {
+          const q = lessonQs.find((q) => q.id === id);
+          return q ? userAnswers[id] !== q.correctAnswer : false;
+        }).length
+      : currentQuestionsList.filter(
+          (q) => userAnswers[q.id] !== q.correctAnswer,
+        ).length;
+
+    const currentListCorrectCount = isWrongAnswersMode
+      ? answeredIds.length - currentListWrongCount
+      : currentQuestionsList.length - currentListWrongCount;
+
     const isPerfect =
-      currentListWrongCount === 0 && currentQuestionsList.length > 0;
+      currentListWrongCount === 0 &&
+      (isWrongAnswersMode ? answeredIds.length : currentQuestionsList.length) >
+        0;
 
     const wrongPct =
       currentQuestionsList.length > 0
         ? (currentListWrongCount / currentQuestionsList.length) * 100
         : 0;
 
+    // Easter egg: sabri dersi her zaman özel video
     // v1 = kusursuz, v2 = ≤%10, v3 = ≤%20, v4 = ≤%30, v5 = >%30
     const videoSrc =
-      currentListWrongCount === 0
-        ? "/videos/v1.mp4"
-        : wrongPct <= 10
-          ? "/videos/v2.mp4"
-          : wrongPct <= 20
-            ? "/videos/v3.mp4"
-            : wrongPct <= 30
-              ? "/videos/v4.mp4"
-              : "/videos/v5.mp4";
+      selectedLesson.id === "sabri"
+        ? "/videos/easteregg.mp4"
+        : currentListWrongCount === 0
+          ? "/videos/v1.mp4"
+          : wrongPct <= 10
+            ? "/videos/v2.mp4"
+            : wrongPct <= 20
+              ? "/videos/v3.mp4"
+              : wrongPct <= 30
+                ? "/videos/v4.mp4"
+                : "/videos/v5.mp4";
 
     return (
       <div className="h-[100dvh] w-full text-slate-200 flex items-end justify-center overflow-hidden relative">
@@ -264,7 +337,6 @@ export default function QuizApp() {
           key={videoSrc}
           className="absolute inset-0 w-full h-full object-cover z-0"
           autoPlay
-          muted
           loop
           playsInline
           preload="none"
