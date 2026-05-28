@@ -37,6 +37,11 @@ export const useQuizStore = create<QuizState>()(
       studyLessonId: null,
       studyQuestionIndex: 0,
 
+      playerId: null,
+      playerName: null,
+      playerAvatar: null,
+      competitionLessonId: null,
+
       selectLesson: (lessonId) =>
         set({
           selectedLessonId: lessonId,
@@ -149,6 +154,16 @@ export const useQuizStore = create<QuizState>()(
           }
           return {};
         }),
+
+      setPlayerProfile: (name, avatar) =>
+        set({ playerName: name, playerAvatar: avatar }),
+
+      setPlayerId: (id) => set({ playerId: id }),
+
+      enterCompetition: (lessonId) =>
+        set({ competitionLessonId: lessonId }),
+
+      exitCompetition: () => set({ competitionLessonId: null }),
     }),
     {
       name: "quiz-state-v1",
@@ -164,6 +179,9 @@ export const useQuizStore = create<QuizState>()(
         studyMode: state.studyMode,
         studyLessonId: state.studyLessonId,
         studyQuestionIndex: state.studyQuestionIndex,
+        playerId: state.playerId,
+        playerName: state.playerName,
+        playerAvatar: state.playerAvatar,
       }),
     },
   ),

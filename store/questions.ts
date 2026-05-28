@@ -1703,7 +1703,7 @@ const AcikKaynak = [
 const DijitalPazarlama = [
   {
     id: 1,
-    questionText: "1-) Aşağıda cümlelerden hangisi liderlik için doğrudur?",
+    questionText: "Aşağıdaki cümlelerden hangisi liderlik için doğrudur?",
     options: [
       "A) Günümüz işletmelerinde bütün liderler yöneticidir.",
       "B) Formal hakları yöneticiyi etkin liderlik etme konusunda yetkin kılar.",
@@ -1717,19 +1717,19 @@ const DijitalPazarlama = [
   {
     id: 2,
     questionText:
-      "2-) Aşağıdakilerden hangisinde liderlik fonksiyonunun değişkenleri tam olarak verilmiştir?",
+      "Aşağıdakilerden hangisinde liderlik fonksiyonunun değişkenleri tam olarak verilmiştir?",
     options: [
-      "A) yönetici, izleyiciler ve kurallar",
-      "B) yönetici, takipçiler ve değişkenler",
-      "C) veriler, senaryolar ve kurallar",
-      "D) lider, izleyiciler ve koşullar",
-      "E) faaliyet, süreç ve yöntemler",
+      "A) Yönetici, izleyiciler ve kurallar",
+      "B) Yönetici, takipçiler ve değişkenler",
+      "C) Veriler, senaryolar ve kurallar",
+      "D) Lider, izleyiciler ve koşullar",
+      "E) Faaliyet, süreç ve yöntemler",
     ],
-    correctAnswer: "D) lider, izleyiciler ve koşullar",
+    correctAnswer: "D) Lider, izleyiciler ve koşullar",
   },
   {
     id: 3,
-    questionText: "3-) Tanım olarak liderlik, ………………… sürecidir.",
+    questionText: "Tanım olarak liderlik ............... sürecidir.",
     options: [
       "A) Organizasyonel politikalar",
       "B) Yetki verme",
@@ -1742,7 +1742,7 @@ const DijitalPazarlama = [
   {
     id: 4,
     questionText:
-      "4-) I. Liderlik, liderin, takipçilerin ve koşulların bir fonksiyonudur.\nII. Liderlik, çalışanları organizasyonel amaçlara ulaşmak için etkileyebilme yeteneğidir.\nIII. Liderlik bir meslektir ancak yöneticilik insanları etkileyerek amaçlar doğrultusunda harekete geçirme gücüdür.\nIV. Liderlik için belirlenmiş bir organizasyon yapısı gerekirken yöneticilik için formal bir yapıya gerek yoktur.\nV. Yöneticinin organizasyonel yapıdan kaynaklanan gücü; durağanlığı, emir vermeyi ve problem çözümünü yaratır. Ancak liderin gücü vizyon, yaratıcılık ve organizasyonel değişim yaratmaktadır.\nVI. Yöneticinin sahip olduğu güç organizasyonel yapıdan kaynaklanır. Liderin sahip olduğu güç kişisel özelliklerinden kaynaklanır.\nYukarıdaki ifadelerden doğru olanlar hangileridir?",
+      "I. Liderlik, liderin, takipçilerin ve koşulların bir fonksiyonudur. II. Liderlik, çalışanları organizasyonel amaçlara ulaşmak için etkileme sürecidir. III. Liderlik bir meslektir ancak yöneticilik insanları etkileyerek amaçlar doğrultusunda harekete geçirme gücüdür. IV. Liderlik için belirlenmiş bir organizasyon yapısı gerekirken yöneticilik için formal bir yapıya gerek yoktur. V. Yöneticinin organizasyonel yapıdan kaynaklanan gücü; durağanlığı, emir vermeyi ve problem çözümünü yaratır. Ancak liderin gücü vizyon, yaratıcılık ve organizasyonel değişim yaratmaktadır. VI. Yöneticinin sahip olduğu güç organizasyonel yapıdan kaynaklanır. Liderin sahip olduğu güç kişisel özelliklerinden kaynaklanır. Yukarıdaki ifadelerden doğru olanlar hangileridir?",
     options: [
       "A) I-II-III-IV-V-VI",
       "B) I-II-V-VI",
@@ -1755,7 +1755,7 @@ const DijitalPazarlama = [
   {
     id: 5,
     questionText:
-      "5-) Aşağıdakilerden hangisi, liderlerden ziyade yöneticilerden beklenen özellikler arasında sayılabilir?",
+      "Aşağıdakilerden hangisi, liderlerden ziyade yöneticilerden beklenen özellikler arasında sayılabilir?",
     options: [
       "A) Kontrole dayalı ilişki",
       "B) Güvene dayalı ilişki",
@@ -1768,7 +1768,7 @@ const DijitalPazarlama = [
   {
     id: 6,
     questionText:
-      "6-) Aşağıdakilerden hangisi liderlik ile ilgili yanlış bir ifadedir?",
+      "Aşağıdakilerden hangisi liderlik ile ilgili yanlış bir ifadedir?",
     options: [
       "A) Liderlik amaçlar doğrultusunda başkalarını etkileme ve harekete geçirme sürecidir.",
       "B) Lider izleyicileri etkileyebilmek için pozisyonundan ve kişisel özelliklerinden gelen güç kaynaklarını kullanmaktadır.",
@@ -1782,7 +1782,7 @@ const DijitalPazarlama = [
   {
     id: 7,
     questionText:
-      "7-) Aşağıdaki güç kaynaklarından hangisi yanlış açıklanmıştır?",
+      "Aşağıdakilerden güç kaynaklarından hangisi yanlış açıklanmıştır?",
     options: [
       "A) Meşru güç, pozisyon gereği alabileceğimiz kararları belirlemektedir.",
       "B) Uzmanlık gücü liderin derin bilgi ve tecrübesine dayanır.",
@@ -1796,9 +1796,9 @@ const DijitalPazarlama = [
   {
     id: 8,
     questionText:
-      "8-) Liderin güç kaynaklarına ilişkin açıklamalardan hangisi yanlıştır?",
+      "Liderin güç kaynaklarına ilişkin açıklamalardan hangisi yanlıştır?",
     options: [
-      "A) Mantıksal ikna gücü liderin rasyonel argüman ve kanıtlarla izleyicileri ikna etmesine dayanmaktadır.",
+      "A) Mantıksal İkna gücü liderin rasyonel argüman ve kanıtlarla izleyicileri ikna etmesine dayanmaktadır.",
       "B) Ödül gücü performans ve davranışları istenen düzeyde olmayan çalışanları cezalandırmaya dayanmaktadır.",
       "C) Politik güç liderin bürokratik kontrol ve politik manevralarla etki yaratması ve karşıt görüşleri zayıflatmasıdır.",
       "D) Dönüştürücü güç, liderin organizasyonun yönünü, kültürünü, iklimini değiştirme yeteneğidir.",
@@ -1810,25 +1810,25 @@ const DijitalPazarlama = [
   {
     id: 9,
     questionText:
-      "9-) Liderlik yaklaşımlarının gelişimiyle ilgili aşağıdakilerden hangisi doğrudur?",
+      "Yönetici becerilerine ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
-      "A) Liderlik yaklaşımlarının gelişimi toplumsal olaylardan bağımsız işletme yöneticilerinin tercihleri doğrultusunda olmuştur.",
-      "B) Liderlik yaklaşımlarındaki gelişimin tek itici gücü liderin kişilik özellikleridir.",
-      "C) 1990'lı yıllardan sonra işletmelerin faaliyette bulundukları çevrede kökten değişimler olması yeni bir tür liderliği zorunlu kılmıştır. Bu yıllardan sonra özellikle liderin vizyon geliştirme, değişimi yönetme, organizasyonları dönüştürme süreçlerinde nasıl etkili olabilecekleri ele alınmaktadır.",
-      "D) Davranışsal liderlik yaklaşımlarında sadece liderin görev odaklı ve insan odaklı davranışları ele alınmıştır, bu davranışlardan sadece görev odaklının etkin olduğu vurgulanmıştır.",
-      "E) Yönetim alanında sistem yaklaşımının etkileri ile birlikte etkin lider davranışlarında rol oynayan çevresel faktörler göz ardı edilmiştir.",
+      "A) Teknik becerilerin önemi alt kademe yönetim pozisyonlarından üst kademe yönetim pozisyonlarına doğru giderken azalmaktadır.",
+      "B) İnsan ilişkileri becerisi her kademedeki yöneticiler için eş öneme sahip bir beceridir.",
+      "C) Kavramsal beceri ileriyi görme vizyon oluşturma ve bunu aktarabilme ile ilişkilidir.",
+      "D) Kavramsal becerinin en önemli olduğu yönetim kademesi alt yönetim kademesidir.",
+      "E) Teknik beceri yöneticinin uzmanlık alanına ilişkin teknik bilgisi ile ilgilidir.",
     ],
     correctAnswer:
-      "C) 1990'lı yıllardan sonra işletmelerin faaliyette bulundukları çevrede kökten değişimler olması yeni bir tür liderliği zorunlu kılmıştır. Bu yıllardan sonra özellikle liderin vizyon geliştirme, değişimi yönetme, organizasyonları dönüştürme süreçlerinde nasıl etkili olabilecekleri ele alınmaktadır.",
+      "D) Kavramsal becerinin en önemli olduğu yönetim kademesi alt yönetim kademesidir.",
   },
   {
     id: 10,
     questionText:
-      "10-) Güç kaynaklarına ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Güç kaynaklarına ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) Liderlerin temel fonksiyonu izleyicilerini etkileyerek istenen sonuçlara ve beklentilere ulaşmalarını sağlamaktır ve bu güç kullanımı gerektirmektedir.",
       "B) Hem yöneticiler hem de liderler için güce ulaşmak ve kullanmak önemlidir.",
-      "C) Liderler çoğu kez gücü elinde bulunduran üstün insanlar, süper kahramanlar olarak sıradan insanlardan farklı görülmektedirler. Çoğunlukla bireysel güç kaynaklarıyla insanları etkilemektedirler.",
+      "C) Liderler çoğu kez gücü elinde bulunduran üstün insanlar, süper kahramanlar olarak sıradan insanlardan farklı görülmektedirler.",
       "D) İzleyicilerin davranışlarını olumlu yönde etkileme sürecinde yararlanılan meşru ve kişisel dayanakları olan pek çok güç kaynağı bulunmaktadır.",
       "E) Güç kaynaklarının hepsi pozisyona dayalıdır.",
     ],
@@ -1837,39 +1837,39 @@ const DijitalPazarlama = [
   {
     id: 11,
     questionText:
-      "11-) Liderlik teorilerinin gelişimine ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Liderlik teorilerinin gelişimine ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) Liderlik kavramı insanlık tarihi kadar eskidir.",
       "B) Toplumsal değişim sürecinin bir yansıması olarak etkin liderlik tarzları da değişmekte, bu liderlik tarzlarını açıklayan teoriler de gelişim göstermektedir.",
-      "C) Liderlik üzerine yapılan ilk çalışmalar 1940'lı yıllarda işletme yönetiminde başarılı olan yöneticilerin kişisel özelliklerini tespit etmek ve evrensel bir lider profili çıkarmak üzere yapılan çalışmaları kapsamaktadır.",
+      "C) Liderlik üzerine yapılan ilk çalışmalar 1940'lı yıllarda işletme yönetiminde başarılı olan yöneticilerin kişisel özelliklerini tespit etmek ve evrensel bir lider profili çıkarmak üzere yapılmıştır.",
       "D) 1950'li yıllarda liderin tavır ve davranışlarının nasıl olması gerektiğine dair çalışmalara ağırlık verilmiştir.",
-      "E) 1990'lı yıllarda özellikle bilgi ve iletişim teknolojilerindeki gelişmelerle işletmelerin faaliyette bulundukları çevrede değişimler olması eski liderlik yaklaşımlarını kullanmayı gerekli kılmıştır.",
+      "E) 1990'lı yıllarda özellikle bilgi ve iletişim teknolojilerindeki gelişmelerle işletmelerin faaliyette bulundukları çevrede kökten değişimler olması eski liderlik yaklaşımlarını kullanmayı gerekli kılmıştır.",
     ],
     correctAnswer:
-      "E) 1990'lı yıllarda özellikle bilgi ve iletişim teknolojilerindeki gelişmelerle işletmelerin faaliyette bulundukları çevrede değişimler olması eski liderlik yaklaşımlarını kullanmayı gerekli kılmıştır.",
+      "E) 1990'lı yıllarda özellikle bilgi ve iletişim teknolojilerindeki gelişmelerle işletmelerin faaliyette bulundukları çevrede kökten değişimler olması eski liderlik yaklaşımlarını kullanmayı gerekli kılmıştır.",
   },
   {
     id: 12,
     questionText:
-      "12-) Ohio State Üniversitesi çalışmasına göre aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Liderlik yaklaşımlarının gelişimiyle ilgili aşağıdakilerden hangisi doğrudur?",
     options: [
-      "A) Liderin davranışları işe ve kişiye yönelik olmak üzere iki boyutta ele alınmaktadır.",
-      "B) Kişiyi dikkate alan liderler izleyicilerin fikirlerini ve duygularını önemsememektedir.",
-      "C) Kişiyi dikkate alan liderler dostça tavır, açık iletişim, takım çalışması aracılığıyla izleyicileri için bir güven ortamı hazırlamakta ve onları güçlendirmektedirler.",
-      "D) İşe dönük liderler amaçları gerçekleştirmek için işleri planlamakta, örgütlemekte ve çalışanı görev odaklı bir şekilde yönlendirmektedir.",
-      "E) İşe dönük liderler işin nasıl, ne zaman yapılması gerektiğine ilişkin kararları çalışanlara bırakmakta, çalışanın bu kararları etkili şekilde alabileceği dostluk ve güven ortamı inşa etmektedir.",
+      "A) Liderlik yaklaşımlarının gelişimi toplumsal olaylardan bağımsız işletme yöneticilerinin tercihleri doğrultusunda olmuştur.",
+      "B) Liderlik yaklaşımlarındaki gelişimin tek itici gücü liderin kişilik özellikleridir.",
+      "C) 1990'lı yıllardan sonra işletmelerin faaliyette bulundukları çevrede kökten değişimler olması yeni bir tür liderliği zorunlu kılmıştır.",
+      "D) Davranışsal liderlik yaklaşımlarında sadece liderin görev odaklı ve insan odaklı davranışları ele alınmıştır, bu davranışlardan sadece görev odaklının etkin olduğu vurgulanmıştır.",
+      "E) Yönetim alanında sistem yaklaşımının etkileri ile birlikte etkin lider davranışlarında rol oynayan çevresel faktörler göz ardı edilmiştir.",
     ],
     correctAnswer:
-      "E) İşe dönük liderler işin nasıl, ne zaman yapılması gerektiğine ilişkin kararları çalışanlara bırakmakta, çalışanın bu kararları etkili şekilde alabileceği dostluk ve güven ortamı inşa etmektedir.",
+      "C) 1990'lı yıllardan sonra işletmelerin faaliyette bulundukları çevrede kökten değişimler olması yeni bir tür liderliği zorunlu kılmıştır.",
   },
   {
     id: 13,
-    questionText: "13-) Aşağıdakilerden hangisi X teorisi varsayımıdır?",
+    questionText: "Aşağıdakilerden hangisi X teorisi varsayımıdır?",
     options: [
       "A) Çalışmak oyun, dinlenme kadar doğaldır.",
       "B) İnsanlar tipik olarak tembeldir, çalışmak istemezler.",
       "C) İnsan tipik olarak tembel değildir, gerekli ortam ve uygun iş verildiğinde çalışmak oyun oynamak kadar zevklidir.",
-      "D) Kişinin çalışmak istememesinde geçmiş kötü tecrübelerinin rolü vardır.",
+      "D) Kişinin çalışmak istemesinde geçmiş kötü tecrübelerinin rolü vardır.",
       "E) Uygun koşullar olduğunda çalışanlar sorumluluk almak istemektedir.",
     ],
     correctAnswer: "B) İnsanlar tipik olarak tembeldir, çalışmak istemezler.",
@@ -1877,7 +1877,7 @@ const DijitalPazarlama = [
   {
     id: 14,
     questionText:
-      "14-) Kurt Lewin'in liderlik sınıflandırmasına göre aşağıdakilerden hangisi söylenemez?",
+      "Kurt Lewin'in liderlik sınıflandırmasına göre aşağıdakilerden hangisi söylenemez?",
     options: [
       "A) Otokratik liderlikte tüm yetki liderde toplanmaktadır.",
       "B) Lewin'in araştırması esnasında otokratik rol üstlenen liderlerde grup üyelerinin iki tür tepki gösterdiği ortaya konmuştur: bunlardan biri saldırgan ve düşmanca tavır, diğeri uyumlu tavırdır.",
@@ -1891,13 +1891,13 @@ const DijitalPazarlama = [
   {
     id: 15,
     questionText:
-      "15-) Aşağıdakilerden hangisi özellikler teorisine yöneltilen eleştiriler arasında sayılamaz?",
+      "Aşağıdakilerden hangisi özellikler teorisine yöneltilen eleştiriler arasında sayılamaz?",
     options: [
       "A) Yalnızca liderlerin kişilik özelliklerini ele alarak liderliği etkileyen diğer faktörleri gözardı etmesi",
       "B) İnsanları nitelendirebilecek sınırsız özelliğin var olması nedeniyle lider özelliklerini sınıflandırma güçlüğü",
-      "C) Klasik yönetim düşüncesiyle uyumlu bir şekilde her ortam ve koşulda geçerli lider özelliklerini sorgulaması",
+      "C) Etkili lideri tanımlayabilecek tüm özellikleri belirlemenin güçlüğü",
       "D) Liderlik fonksiyonunda belirtilen ve etkin bir liderlik için gerekli 'izleyiciler' ve 'koşullar' gibi tüm değişkenleri dikkate alması",
-      "E) Birbirinden farklı çalışmaların farklı lider özellikleri ortaya koyması, etkili lideri tanımlayabilecek tüm özellikleri belirlemenin güçlüğü",
+      "E) Birbirinden farklı çalışmaların farklı lider özellikleri ortaya koyması",
     ],
     correctAnswer:
       "D) Liderlik fonksiyonunda belirtilen ve etkin bir liderlik için gerekli 'izleyiciler' ve 'koşullar' gibi tüm değişkenleri dikkate alması",
@@ -1905,7 +1905,7 @@ const DijitalPazarlama = [
   {
     id: 16,
     questionText:
-      "16-) Rensis Likert'in Sistem 1 – Sistem 4 Yaklaşımına göre aşağıdakilerden hangisi doğrudur?",
+      "Rensis Likert'in Sistem 1 - Sistem 4 Yaklaşımına göre aşağıdakilerden hangisi doğrudur?",
     options: [
       "A) İstismarcı otokratik yönetim tarzında lider çalışanlara biraz yakın olmaya çalışır, ara sıra fikirlerini sorar.",
       "B) Katılımcı yönetim tarzında lider genellikle kendi fikrini kullanır.",
@@ -1919,9 +1919,23 @@ const DijitalPazarlama = [
   {
     id: 17,
     questionText:
-      "17-) Yönetim Tarzı Matrisi'ne ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Ohio State Üniversitesi çalışmasına göre aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
-      "A) Cılız liderlik ne işin yerine getirilmesi için ne de çalışanların arzu ve ihtiyaçlarını tatmin etmek için çaba göstermez.",
+      "A) Liderin davranışları işe ve kişiye yönelik olmak üzere iki boyutta ele alınmaktadır.",
+      "B) Kişiyi dikkate alan liderler izleyicilerin fikirlerini ve duygularını önemsemektedir.",
+      "C) Kişiyi dikkate alan liderler dostça tavır, açık iletişim, takım çalışması aracılığıyla izleyicileri için bir güven ortamı hazırlamakta ve onları güçlendirmektedirler.",
+      "D) İşe dönük liderler amaçları gerçekleştirmek için işleri planlamakta, örgütlemekte ve çalışanı görev odaklı bir şekilde yönlendirmektedir.",
+      "E) İşe dönük liderler işin nasıl, hangi zamana kadar yapılması gerektiğine ilişkin kararları çalışanlara bırakmakta, dostluk ve güven ortamı inşa etmektedir.",
+    ],
+    correctAnswer:
+      "E) İşe dönük liderler işin nasıl, hangi zamana kadar yapılması gerektiğine ilişkin kararları çalışanlara bırakmakta, dostluk ve güven ortamı inşa etmektedir.",
+  },
+  {
+    id: 18,
+    questionText:
+      "Yönetim Tarzı Matrisi'ne ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Cılız liderlik ne işi yerine getirmek için ne de çalışanların arzu ve ihtiyaçlarını tatmin etmek için çaba göstermez.",
       "B) Cılız liderlikte hem üretim düzeyi hem çalışan tatmini düşüktür.",
       "C) Kulüp liderliğinde çalışanların tatminine ve arkadaşça bir ortam yaratmaya odak ve düşük iş ilgisi vardır.",
       "D) Görev liderliğinde üretim hedeflerine önem verilmekte, çalışanların istek ve ihtiyaçları göz ardı edilmektedir.",
@@ -1930,79 +1944,79 @@ const DijitalPazarlama = [
     correctAnswer: "E) En etkili liderlik tarzı orta yol liderliktir.",
   },
   {
-    id: 18,
+    id: 19,
     questionText:
-      "18-) Yönetim Tarzı Matrisi'ne ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Yönetim Tarzı Matrisi'ne ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) Takım liderliğinde üretkenlik ve çalışan tatmini en üst düzeydedir.",
       "B) Fırsatçı lider merhametli bir davranış içindeki 'müşfik diktatör' gibidir.",
       "C) Orta yol liderliğinde üretimde mevcut potansiyeli tamamen kullanmaktan ziyade, herkesi memnun edecek bir orta yolun bulunması amaçlanmaktadır.",
       "D) Paternalist ve maternalist lider çalışanlara bir anne baba gibi ilgi ile davranır.",
-      "E) Paternalist ve maternalist liderler örgütü bir aile gibi görür, önemli kararları kendileri verir, bunlara uyum ve itaat ister, uyumsuzluğu cezalandırır, sadakat ve itaati ödüllendirir.",
+      "E) Paternalist ve maternalist liderler örgütü bir aile gibi görür, önemli kararları kendileri verir, itaati ödüllendirir.",
     ],
     correctAnswer:
       "B) Fırsatçı lider merhametli bir davranış içindeki 'müşfik diktatör' gibidir.",
   },
   {
-    id: 19,
+    id: 20,
     questionText:
-      "19-) Fırsatçı lidere ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Fırsatçı lidere ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) Kişisel çıkarını sağlayabilmek için yönetim tarzı matrisinde sıralanan beş temel tarzın herhangi birini kullanan liderdir.",
-      "B) Üretimde mevcut potansiyeli tamamen kullanmaktan ziyade, herkesi memnun edecek bir orta yolun bulunması amaçlanmaktadır.",
+      "B) Üretimde mevcut potansiyeli tamamen kullanmaktan ziyade, herkesi memnun edecek bir orta yolun bulunması amaçlamaktadır.",
       "C) Liderin önceliği kişisel faydasını artırmaktır.",
       "D) Kişisel faydasını sağlamak için en etkin olacak davranış şeklini içeren tarza bürünmektedir.",
       "E) Bu liderleri 'kurnaz' olarak nitelendiren ya da kimileri 'uyumlu' olarak nitelendiren düşünürler bulunmaktadır.",
     ],
     correctAnswer:
-      "B) Üretimde mevcut potansiyeli tamamen kullanmaktan ziyade, herkesi memnun edecek bir orta yolun bulunması amaçlanmaktadır.",
+      "B) Üretimde mevcut potansiyeli tamamen kullanmaktan ziyade, herkesi memnun edecek bir orta yolun bulunması amaçlamaktadır.",
   },
   {
-    id: 20,
+    id: 21,
     questionText:
-      "20-) Fiedler'in Durumsal Liderlik Yaklaşımına göre aşağıdakilerden hangisi yanlıştır?",
+      "Fiedler'in Durumsal Liderlik Yaklaşımına göre aşağıdakilerden hangisi yanlıştır?",
     options: [
-      "A) Yaklaşım üç durumsal değişken ile liderin çalışma ortamını etkileme ve kontrol etme gücünü (durumsal kontrolü) belirlemeye ve buna uygun davranışı göstermeye dayalıdır.",
+      "A) Yaklaşım üç durumsal değişken ile liderin çalışma ortamını etkileme ve kontrol etme gücünü belirlemeye dayalıdır.",
       "B) Durumsal kontrol değişkenleri şunlardır: lider-çalışan ilişkisi, işin niteliği, pozisyon gücü.",
       "C) Pozisyon gücü yöneticinin sahip olduğu kişisel güç kaynaklarıdır.",
-      "D) Önceden iyi tanımlanmış, rutin işler yüksek nitelikli; yaratıcı, önceden tanımlanması güç, belirsizliğin yüksek olduğu işler ise düşük niteliklidir.",
+      "D) Önceden iyi tanımlanmış, rutin işler yüksek nitelikli; yaratıcı, önceden tanımlanması güç işler düşük niteliklidir.",
       "E) Lider-çalışan ilişkisi, yöneticiye duyulan güven ve kabul ile ilişkilidir.",
     ],
     correctAnswer:
       "C) Pozisyon gücü yöneticinin sahip olduğu kişisel güç kaynaklarıdır.",
   },
   {
-    id: 21,
+    id: 22,
     questionText:
-      "21-) Fiedler'in Durumsal Liderlik Yaklaşımına göre aşağıdakilerden hangisi yanlıştır?",
+      "Fiedler'in Durumsal Liderlik Yaklaşımına göre aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) Durumsal koşullar liderin durumsal kontrolü üzerinde etkili değildir.",
       "B) Durumsal kontrol, liderin çalışma ortamını etkileme ve kontrol etme gücü olarak tanımlanabilir.",
       "C) Durumsal kontrol yüksek ise lider işin sonuçlarını etkileyebilir, düşük ise liderin iş çıktısına etkisi zayıftır.",
-      "D) Lider için her bir durumsal değişkenin farklı niteliklerde bir arada bulunmasına göre düşük, orta ve yüksek seviye durumsal kontrol söz konusudur.",
+      "D) Liderin her bir durumsal değişkenin farklı niteliklerde bir arada bulunmasına göre düşük, orta ve yüksek seviye durumsal kontrolü söz konusudur.",
       "E) Düşük ve yüksek kontrol durumlarında işe yönelik, orta kontrol durumunda kişiye yönelik bir liderlik tarzı etkili olmaktadır.",
     ],
     correctAnswer:
       "A) Durumsal koşullar liderin durumsal kontrolü üzerinde etkili değildir.",
   },
   {
-    id: 22,
+    id: 23,
     questionText:
-      "22-) Durumsal liderlik yaklaşımına göre aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Durumsal liderlik yaklaşımına göre aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) Yönlendirici liderliğe göre işi yapamayacak durumda, isteksiz ve kendine güvensiz durumdaki çalışanlar için lider belirli görevleri açıkça vermelidir.",
       "B) Yönlendirici liderlik tarzı için işbirlikçi, kolaylaştırıcı, taahhüt edici isimleri de kullanılmaktadır.",
-      "C) İkna edici liderin sadece yapılacak işi söylemesi yeterli olmayacak; yapılması gerekeni açıklaması, bir fikir olarak çalışana psikolojik olarak satması etkili olacaktır.",
-      "D) Katılımcı liderin en etkin davranışı ilişki yönelimli, ikili iletişim kuran destekleyici davranışlardır. Neyin, nerede, nasıl yapılacağına ilişkin yönlendirme düşük olmalıdır.",
-      "E) Güçlendirici liderlikte çalışana neyi, nasıl, nerede, neden yapması gerektiğini söylemek gereksiz olacak; zaten istekli ve özgüvenli olan çalışanı cesaretlendirmek de gereksiz olacaktır. En uygun davranış işleri çalışana bırakmaktır.",
+      "C) İkna edici liderin sadece yapılacak işi söylemesi yeterli olmayacak; yapılması gerekeni bir fikir olarak çalışana psikolojik olarak satması etkili olacaktır.",
+      "D) Katılımcı liderin en etkin davranışı ilişki yönelimli, ikili iletişim kuran destekleyici davranışlardır. Yönlendirme düşük olmalıdır.",
+      "E) Güçlendirici liderlikte çalışana neyi, nasıl yapması gerektiğini söylemek gereksiz olacaktır. En uygun davranış işleri çalışana bırakmaktır.",
     ],
     correctAnswer:
       "B) Yönlendirici liderlik tarzı için işbirlikçi, kolaylaştırıcı, taahhüt edici isimleri de kullanılmaktadır.",
   },
   {
-    id: 23,
+    id: 24,
     questionText:
-      "23-) Aşağıdaki liderlik türünden hangisi Amaç Yol Yaklaşımının ortaya koyduğu sınıflandırmada bulunmaz?",
+      "Aşağıdaki liderlik türünden hangisi Amaç Yol Yaklaşımının ortaya koyduğu sınıflandırmada bulunmaz?",
     options: [
       "A) Otoriter",
       "B) Destekleyici",
@@ -2013,37 +2027,37 @@ const DijitalPazarlama = [
     correctAnswer: "E) İstismarcı",
   },
   {
-    id: 24,
-    questionText:
-      "24-) Amaç yol yaklaşımına ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Motivasyon teorilerinden bekleyişler yaklaşımı ile liderlik teorilerini birleştiren bir bakış açısı sunmaktadır.",
-      "B) Çalışanların işi yapmak için kendilerini yeterli gördüklerinde ve işi tamamlayarak ulaşacakları ödülü arzuladıklarında motive olacakları ve kendi istekleriyle çaba gösterecekleri varsayımına dayanmaktadır.",
-      "C) Liderin rolü çalışanları motive edecek ihtiyaçları karşılamaktır.",
-      "D) Liderin durumsal kontrolü nasıl davranması gerektiğini belirlemektedir.",
-      "E) Çalışan ihtiyaçları gerekli bilgiyi sağlamak, ödüller vermek, amaçları tanımlamak, engelleri kaldırmak, destek sağlamak vb. olabilir. Amaç yol yaklaşımına göre lider çalışanları amaçları gerçekleştirecekleri yolu açıklamakta, yol boyunca onlara eşlik etmektedir.",
-    ],
-    correctAnswer:
-      "D) Liderin durumsal kontrolü nasıl davranması gerektiğini belirlemektedir.",
-  },
-  {
     id: 25,
     questionText:
-      "25-) Lider üye etkileşimine ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Amaç yol yaklaşımına ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
-      "A) Lider Üye Etkileşimi teorisi lider ve izleyiciler arasında, karşılıklı olarak gelişen ilişkilere dayanmaktadır.",
-      "B) Teorinin önceki yaklaşımlardan en temel farkı, lider ve/veya izleyicilerin özellikleri veya davranışlarına değil, aralarındaki gelişen ilişkinin kalitesine odaklanmasıdır.",
-      "C) LMX, liderlerin tüm çalışanlara belirli bir tarz ile yaklaşmadığı, bunun yerine her bir çalışanla birebir ve özgün bir ilişki geliştirdikleri varsayımına dayanmaktadır.",
-      'D) Davranış bilimciler LMX teorisinin ele aldığı davranışa "dikey ikili" adını vermektedirler.',
-      "E) Dikey ikili çalışanın herhangi bir görevi reddetmesiyle başlamaktadır.",
+      "A) Motivasyon teorilerinden bekleyişler yaklaşımı ile liderlik teorilerini birleştiren bir bakış açısı sunmaktadır.",
+      "B) Çalışanların işi yapmak için kendilerini yeterli gördüklerinde ve işi tamamlayarak ulaşacakları ödülü arzuladıklarında motive olacakları varsayımına dayanmaktadır.",
+      "C) Liderin rolü çalışanları motive edecek ihtiyaçları karşılamaktır.",
+      "D) Liderin durumsal kontrolü nasıl davranması gerektiğini belirlemektedir.",
+      "E) Amaç yol yaklaşımına göre lider çalışanlara amaçları gerçekleştirecekleri yolu açıklamakta, yol boyunca onlara eşlik etmektedir.",
     ],
     correctAnswer:
-      "E) Dikey ikili çalışanın herhangi bir görevi reddetmesiyle başlamaktadır.",
+      "D) Liderin durumsal kontrolü nasıl davranması gerektiğini belirlemektedir.",
   },
   {
     id: 26,
     questionText:
-      "26-) Dikey ikilinin gelişme sürecinde aşağıdaki aşamalardan hangisi bulunamaz?",
+      "Lider üye etkileşimine (LMX) ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Lider Üye Etkileşimi teorisi lider ve izleyiciler arasında, karşılıklı olarak gelişen ilişkilere dayanmaktadır.",
+      "B) Teorinin önceki yaklaşımlardan en temel farkı, lider ve/veya izleyicilerin özellikleri veya davranışlarına değil, aralarındaki ilişkinin kalitesine odaklanmasıdır.",
+      "C) LMX, liderlerin tüm çalışanlara belirli bir tarz ile yaklaşmadığı, bunun yerine her bir çalışanla birebir ve özgün bir ilişki geliştirdikleri varsayımına dayanmaktadır.",
+      "D) Davranış bilimciler LMX teorisinin ele aldığı davranışa 'dikey ikili' adını vermektedirler.",
+      "E) Dikey ikili çalışanın herhangi bir görevi reddetmesiyle başlamaktadır.",
+    ],
+    correctAnswer:
+      "E) Dikey ikili çalışanın herhangi bir görevi reddetmesiyle başlamaktadır.",
+  },
+  {
+    id: 27,
+    questionText:
+      "Dikey ikilinin gelişme sürecinde aşağıdaki aşamalardan hangisi bulunamaz?",
     options: [
       "A) Liderle üyenin ilk etkileşimi",
       "B) Üyenin ailesiyle olan davranışları",
@@ -2054,51 +2068,188 @@ const DijitalPazarlama = [
     correctAnswer: "B) Üyenin ailesiyle olan davranışları",
   },
   {
-    id: 27,
-    questionText:
-      "27-) Lider üye etkileşiminin kalitesine (niteliğine) ilişkin aşağıdaki ifadelerden hangisi doğrudur?",
-    options: [
-      "A) LMX sürecinin ilk girdisi lider üye arasındaki etkileşimin niteliğidir.",
-      "B) Etkileşimin niteliği grup içi, grup dışı ve gruplar arası olmak üzere üç türlü olabilmektedir.",
-      "C) Grup içi etkileşim liderle izleyici arasında karşılıklı güven, saygı ve hoşlanmanın eksik olduğu etkileşimdir.",
-      "D) Grup dışı etkileşimde sadece görev odaklı bir ortaklık geliştirilebilmektedir; grup içi etkileşimde ise liderin desteği, formal ve informal ödülleri çalışan için artırması söz konusudur.",
-      "E) Düşük kaliteli etkileşimde lider ve izleyiciler karşılıklı etki, güven, saygı ve hoşlanma özelliklerini taşıyan bir ortaklık geliştirmektedirler.",
-    ],
-    correctAnswer:
-      "D) Grup dışı etkileşimde sadece görev odaklı bir ortaklık geliştirilebilmektedir; grup içi etkileşimde ise liderin desteği, formal ve informal ödülleri çalışan için artırması söz konusudur.",
-  },
-  {
     id: 28,
     questionText:
-      "28-) Lider üye etkileşiminin boyutlarına ilişkin tanımlamalardan hangisi yanlıştır?",
+      "Lider üye etkileşiminin kalitesine (niteliğine) ilişkin aşağıdaki ifadelerden hangisi doğrudur?",
+    options: [
+      "A) LMX sürecinin ilk girdisi lider üye arasındaki etkileşiminin niteliğidir.",
+      "B) Etkileşimin niteliği grup içi, grup dışı ve gruplar arası olmak üzere üç türlü olabilmektedir.",
+      "C) Grup içi etkileşim liderle izleyici arasında karşılıklı güven, saygı ve hoşlanmanın eksik olduğu etkileşimdir.",
+      "D) Grup dışı etkileşimde sadece görev odaklı bir ortaklık geliştirilebilmektedir.",
+      "E) Düşük kaliteli etkileşimde lider ve izleyiciler karşılıklı güven, saygı ve hoşlanma özelliklerini taşıyan bir ortaklık geliştirmektedirler.",
+    ],
+    correctAnswer:
+      "D) Grup dışı etkileşimde sadece görev odaklı bir ortaklık geliştirilebilmektedir.",
+  },
+  {
+    id: 29,
+    questionText:
+      "Lider üye etkileşimin boyutlarına ilişkin tanımlamalardan hangisi yanlıştır?",
     options: [
       "A) Etki: Karşılıklı hoşlanma",
       "B) İlgi: Birbirinin beklediği doğrultuda davranma ve ilgilenme",
       "C) Katkı: Görev odaklı ilişkiler geliştirmede başarılı olma",
-      "D) Sadakat: Birbirinin beklediği doğrultuda davranma, birbirini destekleme, vefakârlık",
+      "D) Sadakat: Birbirinin beklediği doğrultuda davranma, birbirini destekleme, vefakarlık",
       "E) Profesyonel Saygı: İşini nasıl yaptığına ilişkin itibarı",
     ],
     correctAnswer:
       "B) İlgi: Birbirinin beklediği doğrultuda davranma ve ilgilenme",
   },
   {
-    id: 29,
+    id: 30,
     questionText:
-      "29-) Profesyonel saygı boyutuna ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "Profesyonel saygı boyutuna ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) Lider ve çalışanın birbirlerinin örgüt içi ya da dışında mesleki itibarlarını algılamalarıdır.",
       "B) Profesyonel saygıya ilişkin algılama yöneticinin geçmişine dayalıdır.",
       "C) Bir kişiyle henüz bir arada çalışmadan, hatta onunla karşılaşmadan, profesyonel saygı konusunda bir algı geliştirilmesi mümkün değildir.",
-      "D) Yöneticinin birlikte çalıştığı ve karşılaştığı diğer bireylerle yaşadığı deneyimler, başkalarının organizasyon içinde ve dışında onun hakkındaki yorumları, sahip olduğu ödüller veya diğer profesyonel takdirler yoluyla profesyonel saygıya ilişkin algı oluşabilmektedir.",
+      "D) Yöneticinin birlikte çalıştığı kişilerle yaşadığı deneyimler, başkalarının onun hakkındaki yorumları yoluyla profesyonel saygıya ilişkin algı oluşabilmektedir.",
       "E) Bu boyut güven ve yüksek saygı ile yakından ilişkilidir.",
     ],
     correctAnswer:
       "C) Bir kişiyle henüz bir arada çalışmadan, hatta onunla karşılaşmadan, profesyonel saygı konusunda bir algı geliştirilmesi mümkün değildir.",
   },
   {
-    id: 30,
+    id: 31,
     questionText:
-      "30-) Aşağıdakilerden hangisi örgütsel değişimin aşamaları arasında yer almaz?",
+      "Günümüz işletmelerinde liderlik uygulamalarıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Liderin paylaşılan bir vizyon yaratması ve herkesi buna dahil etmesi gerekmektedir.",
+      "B) Herkesin kabul edildiği, ait hissettiği, anlamlı bulduğu pozitif iş ortamı yaratmak günümüz liderlerinin görevleri arasındadır.",
+      "C) Verimliliği artırmak için çalışana ofiste geçirdiği saat kadar ücret vermek gerekir.",
+      "D) Lider takipçi arasında ve çalışanların kendi arasında etkili insan ilişkileri geliştirmek önem taşımaktadır.",
+      "E) Bilgi ve kaynak paylaşımında dürüst, adil ve etik olmak gerekmektedir.",
+    ],
+    correctAnswer:
+      "C) Verimliliği artırmak için çalışana ofiste geçirdiği saat kadar ücret vermek gerekir.",
+  },
+  {
+    id: 32,
+    questionText:
+      "Geçmişten günümüze rekabet avantajları düşünüldüğünde aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) 1950'lerde işletmelere rekabet avantajı sağlayan en temel faktör 'operasyonel verimlilik' olarak görülmektedir.",
+      "B) 1960'larda 'stratejik planlama' önem kazanmaya başlamıştır.",
+      "C) 1970'lerde stratejik bakış açısında 'konumlandırma' önem taşımaya başlamıştır.",
+      "D) 1980'lerde 'kalite ve mükemmeli arayış' gündeme gelmiştir.",
+      "E) 2000'li yıllarda rekabet avantajı sağlayan en önemli kaynak finansal varlıklardır.",
+    ],
+    correctAnswer:
+      "E) 2000'li yıllarda rekabet avantajı sağlayan en önemli kaynak finansal varlıklardır.",
+  },
+  {
+    id: 33,
+    questionText:
+      "Yakın dönem işletme yaklaşımlarına dair aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) 1980'ler operasyonel verimliliğin ve kalite kontrolünün önemli olduğu yıllardır. Temel argüman, mümkün oldukça ucuz ve çok sayıda ürün üretebilmektir.",
+      "B) 1990'larda rekabet avantajı sağlayan en önemli kaynak 'öz yetenek' olarak görülmektedir.",
+      "C) 1990'lardan sonra mamullerin yaşam seyri iyice kısalmış, rekabet yerini sürekli yenilik ve yeni mamul geliştirmeye bırakmıştır.",
+      "D) 2000'li yıllarda işletmelerin performanslarının insanlar sayesinde yükseltildiği bir döneme girilmiştir.",
+      "E) 21. Yüzyılda işletmeler bilgiyi daha verimli kullanmaya ve entelektüel sermayeyi iyi yönetmeye yönelmektedirler.",
+    ],
+    correctAnswer:
+      "A) 1980'ler operasyonel verimliliğin ve kalite kontrolünün önemli olduğu yıllardır. Temel argüman, mümkün oldukça ucuz ve çok sayıda ürün üretebilmektir.",
+  },
+  {
+    id: 34,
+    questionText:
+      "Aşağıdakilerden hangisi günümüz liderinin rolleri arasında sayılamaz?",
+    options: [
+      "A) Lider-takipçi arasında ve çalışanlar arasında etkili insan ilişkileri geliştirmek",
+      "B) Zaman hareket etütleriyle bir işin daha hızlı nasıl yapılabileceğini analiz etmek",
+      "C) Herkesin kabul edildiği, ait hissettiği, anlamlı bulduğu pozitif iş ortamı yaratmak",
+      "D) Bilgi ve kaynak paylaşımında dürüst, adil ve etik olmak",
+      "E) Paylaşılan bir vizyon yaratmalı ve herkesi buna dahil etmelidir.",
+    ],
+    correctAnswer:
+      "B) Zaman hareket etütleriyle bir işin daha hızlı nasıl yapılabileceğini analiz etmek",
+  },
+  {
+    id: 35,
+    questionText:
+      "Aşağıdakilerden hangisi günümüzde insan yönetmeyi zorlaştıran unsurlar arasında sayılamaz?",
+    options: [
+      "A) Gücün kötüye kullanımı",
+      "B) Zorbalık, mobbing, taciz",
+      "C) İş yerlerinde çalışan çeşitliliği, farklılık yönetimi sorunları",
+      "D) Vizyona uygun stratejiler belirleme zorunluluğu",
+      "E) Etik olmayan davranışlar",
+    ],
+    correctAnswer: "D) Vizyona uygun stratejiler belirleme zorunluluğu",
+  },
+  {
+    id: 36,
+    questionText:
+      "Karizmatik liderlikle ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Karizma bir kişiyi normal insanlardan ayıracak, az bulunur bir kişilik kalitesidir.",
+      "B) Kişisel risk alabilme, yüksek bedel ödemeye razı olma ve beklenenin dışında davranışlar gösterebilme karizmatik liderlerin özellikleri arasındadır.",
+      "C) Karizmatik liderlik her zaman olumlu sonuçlar doğurur.",
+      "D) Karizmatik liderlik birey ve grupları çabuk etkileme ve yüksek performans ortaya koyma açısından faydalıdır.",
+      "E) Karizmatik liderlere çalışanların hayranlığı, liderin yanlışlarını görme, uyarma gibi davranışları azaltmaktadır.",
+    ],
+    correctAnswer: "C) Karizmatik liderlik her zaman olumlu sonuçlar doğurur.",
+  },
+  {
+    id: 37,
+    questionText:
+      "Geleneksel ve güncel liderlik teorileri düşünüldüğünde aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Etkileşimci liderlik, çalışanların rollerinin belirlenmesi ve performansa uygun ödül sağlanması için lider-çalışan etkileşimine odaklanır.",
+      "B) Dönüşümcü liderler çalışanlara organizasyonel amaçlara ulaşmaya katkı sağlaması için ilham veren liderlerdir.",
+      "C) Dönüşümcü liderler inovasyon ve değişim getirmede özel yeteneklere sahiptirler, statükoyu kabul etmezler.",
+      "D) Geleneksel liderlik teorilerinde liderin bilgi yayıcı (iletişimci) rolü göz ardı edilmiştir.",
+      "E) En iyi ve her ortamda geçerli tek bir liderlik tarzı vardır.",
+    ],
+    correctAnswer:
+      "E) En iyi ve her ortamda geçerli tek bir liderlik tarzı vardır.",
+  },
+  {
+    id: 38,
+    questionText:
+      "Aşağıdakilerden hangisi Karizmatik liderleri karakterize eden yeteneklerden biridir?",
+    options: [
+      "A) Çalışanları ezen",
+      "B) Organizasyon üyelerine vizyon sağlama",
+      "C) Çalışanları arasında saygı uyandıran",
+      "D) Takip edenleri tarafından hayranlık uyandıran",
+      "E) Çalışanlarında entelektüel faaliyetlerde hayal kırıklığı yaratan",
+    ],
+    correctAnswer: "D) Takip edenleri tarafından hayranlık uyandıran",
+  },
+  {
+    id: 39,
+    questionText:
+      "Vizyon ve vizyoner liderlikle ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) İşletme yönetiminde vizyon genel olarak 'hayal edilen gelecek', çalışanlar için hedefe ulaşma yolunu gösteren bir haritadır.",
+      "B) Vizyoner liderlik çalışanlara vizyona uygun performanslarını ödüllendirmek, vizyondan sapan davranışları cezalandırmak üzerine kuruludur.",
+      "C) Vizyon; kişilerin veya kurumların, kendilerinin gelecekte olmasını arzu ettikleri durumun ifadesidir.",
+      "D) Vizyoner liderlik en yalın haliyle, net bir vizyon oluşturmak, bunu açıkça ifade etmek ve insanların dahil olmasını sağlamaktır.",
+      "E) Vizyoner liderlik insanlara vizyon aşılayarak motive etmekle ilgilidir.",
+    ],
+    correctAnswer:
+      "B) Vizyoner liderlik çalışanlara vizyona uygun performanslarını ödüllendirmek, vizyondan sapan davranışları cezalandırmak üzerine kuruludur.",
+  },
+  {
+    id: 40,
+    questionText:
+      "Dönüşümcü liderlikle ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Liderin birincil odağı organizasyondur.",
+      "B) Dönüşümcü liderler vizyon oluşturma, yayma, çalışanlar arasında kabulünü sağlama gibi günümüz organizasyonlarının pek çok ihtiyacını karşılayamamakta, bunu etkileşimci liderlik karşılayabilmektedir.",
+      "C) İzleyicilerin kişisel gelişimleri organizasyon için neyin iyi olduğu çerçevesinde değerlendirilir.",
+      "D) Liderin organizasyonun amaçlarını kişisel amaçları doğrultusunda manipüle etme riski vardır.",
+      "E) Dönüşümcü liderliğin en önemli farkı, izleyicilerin organizasyon ile eş güdülere sahip olmalarını sağlamasıdır.",
+    ],
+    correctAnswer:
+      "B) Dönüşümcü liderler vizyon oluşturma, yayma, çalışanlar arasında kabulünü sağlama gibi günümüz organizasyonlarının pek çok ihtiyacını karşılayamamakta, bunu etkileşimci liderlik karşılayabilmektedir.",
+  },
+  {
+    id: 41,
+    questionText:
+      "41-) Aşağıdakilerden hangisi örgütsel değişimin aşamaları ararsında yer almaz?",
     options: [
       "A) Değişim ihtiyacını belirleme",
       "B) Değişim ekiplerini dağıtma",
@@ -2109,21 +2260,21 @@ const DijitalPazarlama = [
     correctAnswer: "B) Değişim ekiplerini dağıtma",
   },
   {
-    id: 31,
-    questionText: "31-) Aşağıdaki ifadelerden hangisi yanlıştır?",
+    id: 42,
+    questionText: "42-) Aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) Rutin bir teknik sorunu çözmek için gereken liderlik türü ile karmaşık örgütsel değişikliği sağlamak için gereken liderlik türü birbirinin aynısıdır.",
-      "B) Değişim liderleri; çevredeki, insanlardaki ve kültürdeki değişiklikleri veya önemli süreçlerdeki değişiklikleri ele alarak, karmaşıklıkla başa çıkmalı ve uyum sağlamalıdır.",
+      "B) Değişim liderleri, çevredeki, insanlardaki ve kültürdeki değişiklikleri veya önemli süreçlerdeki değişiklikleri ele alarak, karmaşıklıkla başa çıkmalı ve uyum sağlamalıdır.",
       "C) Değişim liderleri insanlar için sorunları çözmek değil, onları sorunlardan sorumlu tutmaya, işin sahibi kılmaya yönelmektedirler.",
-      "D) Etkili bir değişim süreci için yolunda gitmeyen işler ve zorluklardan izleyicileri korumak değil, liderle beraber yolunda gitmeyen şeylerin sıkıntısını anlamalarına izin vermek gerekmektedir.",
+      "D) Etkili bir değişim süreci için olunda gitmeyen işler ve zorluklardan izleyicileri korumak değil, liderle beraber yolunda gitmeyen şeylerin sıkıntısını anlamalarına izin vermek gerekmektedir.",
     ],
     correctAnswer:
       "A) Rutin bir teknik sorunu çözmek için gereken liderlik türü ile karmaşık örgütsel değişikliği sağlamak için gereken liderlik türü birbirinin aynısıdır.",
   },
   {
-    id: 32,
+    id: 43,
     questionText:
-      "32-) Değişim sürecinin vizyon ve değer yaratma aşamasında liderin rolü aşağıdakilerden hangisi olamaz?",
+      "43-) Değişim sürecinin vizyon ve değer yaratma aşamasında liderin rolü aşağıdakilerden hangisi olamaz?",
     options: [
       "A) Fikirleri başlatmak",
       "B) Beyin fırtınası yapmak",
@@ -2131,25 +2282,12 @@ const DijitalPazarlama = [
       "D) İkna etmek ve zorlamak",
       "E) Geleceği öngörmek",
     ],
-    correctAnswer: "B) Beyin fırtınası yapmak",
+    correctAnswer: "D) İkna etmek ve zorlamak",
   },
   {
-    id: 33,
+    id: 44,
     questionText:
-      "33-) Değişim sürecinin güçlendirme aşamasında liderin rolü aşağıdakilerden hangisi olamaz?",
-    options: [
-      "A) Etkilemek",
-      "B) Anlamak",
-      "C) Araştırmak",
-      "D) Dinlemek",
-      "E) İzlemek ve kontrol etmek",
-    ],
-    correctAnswer: "E) İzlemek ve kontrol etmek",
-  },
-  {
-    id: 34,
-    questionText:
-      "34-) Değişim sürecinin güçlendirme aşamasında liderin rolü aşağıdakilerden hangisi olamaz?",
+      "44-) Değişim sürecinin güçlendirme aşamasında liderin rolü aşağıdakilerden hangisi olamaz?",
     options: [
       "A) Açık ve net hedef belirleme",
       "B) İyi derecede yetki devri",
@@ -2160,213 +2298,48 @@ const DijitalPazarlama = [
     correctAnswer: "C) Gündemleri belirlemek ve emir vermek",
   },
   {
-    id: 35,
-    questionText:
-      "35-) Yönetsel etikle ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Yöneticilerin gündelik pek çok karar verme sürecinde etkisi altında kaldığı pek çok faktör bulunmakta; bu süreçte adalet, dürüstlük, ortak iyilik, açıklık gibi değerler konusunda tutarlılık içinde olmaları gerekmektedir.",
-      "B) Yöneticiler kararları alırken belirli ilkelere dayanmaları gerekmektedir.",
-      "C) Etik, yönetsel kararlarda ülke yasaları, toplumsal ve kültürel değerler, yöneticinin özgür seçim alanı arasında tutarlı kuralların (ilkelerin) oluşturduğu bir bütündür.",
-      "D) Her kararda olduğu gibi yönetsel kararlarda da, yöneticiden beklenen etik davranış sergilemesi, tutarlı kurallar bütünü içinde karar vermesidir.",
-      "E) Yönetici bir kararında adil, dürüst, açık davranırken diğerinde farklı davranabilir.",
-    ],
-    correctAnswer:
-      "E) Yönetici bir kararında adil, dürüst, açık davranırken diğerinde farklı davranabilir.",
-  },
-  {
-    id: 36,
-    questionText:
-      "36-) Etik ve ahlak kavramlarıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Etik, iyiyle kötüyü, doğruyla yanlışı ayırt etmemizi sağlayan ahlaki ilkelerin bütünü olarak görülebilir.",
-      "B) Ahlak, insanın yaşadığı toplum içinde kabul gören tutum ve davranışlar bütünüdür.",
-      "C) Etik, insanların nasıl davranması gerektiğine odaklanan daha evrensel bir kavram; ahlak ise belirli bir toplum veya alt kültür için doğru olan davranışlara odaklanan bir kavramdır.",
-      "D) Ahlak, her toplum için aynı evrensel kuralları olan bir kavramdır.",
-      "E) Ahlak, farklı kültürler ve toplumlar arasında değişiklik gösteren daha subjektif bir kavramdır.",
-    ],
-    correctAnswer:
-      "D) Ahlak, her toplum için aynı evrensel kuralları olan bir kavramdır.",
-  },
-  {
-    id: 37,
-    questionText:
-      "37-) Aşağıdakilerden hangisi yöneticinin bir birey olarak etik davranışını etkileyen faktörler arasında yer alamaz?",
-    options: [
-      "A) Bireyin ahlaki gelişim düzeyi",
-      "B) Bireyin yaşı, eğitimi, geçmiş deneyimleri, ailesi, sosyal ekonomik durumu",
-      "C) Bireyin kişisel çıkarları",
-      "D) Toplum kültürü ve değerler",
-      "E) Norm ve görgü kuralları",
-    ],
-    correctAnswer: "C) Bireyin kişisel çıkarları",
-  },
-  {
-    id: 38,
-    questionText: "38-) Aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Liderin etik davranış, norm ve standartları sayesinde çalışanlar açıkça neyin doğru veya yanlış olduğunu görebilmektedir.",
-      "B) Liderler çalışanlar için etik karar alma ve problem çözmedeki hareket tarzlarını belirleyen etik değerleri ortaya koymaktadırlar.",
-      "C) Etik değerler; liderin kişilerarası ilişkilerini, örgütsel amaç ve üst yönetimin baskılarını kabul etme şeklini ve performansını da etkilemektedir.",
-      "D) Liderin sahip olduğu değerlere ve etik davranışa yönelik odağın yönetim literatüründe artmasıyla, dönüşümcü ve karizmatik liderlik alanlarındaki akademik çalışmalar eleştirilmeye başlanmış, hizmetkâr liderlik ve etik liderlik teorileriyle etik davranışa vurgu yapılmıştır.",
-      "E) Otokratik liderlik; eylem ve ilişkilerde normatif uygunluğa dayanan; izleyicileri iki yönlü iletişim kurma ve ahlaki düşünce biçimine sahip olmada teşvik eden bir liderlik tarzıdır. Etik lider dürüst, güvenilir, adil davranışlar sergileyerek, izleyicilerin güvendiği bir rol model olmaktadır.",
-    ],
-    correctAnswer:
-      "E) Otokratik liderlik; eylem ve ilişkilerde normatif uygunluğa dayanan; izleyicileri iki yönlü iletişim kurma ve ahlaki düşünce biçimine sahip olmada teşvik eden bir liderlik tarzıdır. Etik lider dürüst, güvenilir, adil davranışlar sergileyerek, izleyicilerin güvendiği bir rol model olmaktadır.",
-  },
-  {
-    id: 39,
-    questionText:
-      "39-) Etik liderliğin boyutlarıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Etik ve adalet boyutu liderin dürüst, güvenilir, ilkeli, adaletli seçimler yapan ve çalışanlara karşı ilgili gösteren davranışlarına vurgu yapmaktadır.",
-      "B) Görevlerin açıklığa kavuşturulması boyutu liderin açık iletişim kurma, çalışanlardan beklenen görev ve sorumlulukları açıklığa kavuşturma davranışlarına vurgu yapmaktadır.",
-      "C) Güç paylaşımı boyutu liderin yetkiyi elinde toplayan ve pozisyon gücüne dayalı olarak çalışanları etkilemeye çalıştığı bir organizasyonu ifade etmektedir.",
-      "D) Rollerin açıklığa kavuşturulması boyutu liderin etik davranışı ödüllendirerek çalışanları teşvik etme gibi davranışlarını içermektedir.",
-      "E) Güç paylaşımı boyutu liderin çalışanlara fikirlerini sorması, kararlara katılımı desteklemesi, yetki ve gücü paylaşması konularını kapsamaktadır.",
-    ],
-    correctAnswer:
-      "C) Güç paylaşımı boyutu liderin yetkiyi elinde toplayan ve pozisyon gücüne dayalı olarak çalışanları etkilemeye çalıştığı bir organizasyonu ifade etmektedir.",
-  },
-  {
-    id: 40,
-    questionText: "40-) Aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Kültür; bir toplumun, sosyal olarak iletilmiş davranış biçimlerinin, inançlarının, kurumlarının ve tüm diğer insanlar tarafından yaratılmış ürünlerinin ve düşünülen özelliklerinin toplamı olarak tanımlanmaktadır.",
-      "B) Toplum kültürleri doğrudan örgüt kültürünün belirleyicisi olmasa da üzerinde ciddi etkisi olan önemli bir değişkendir. Bu nedenle toplum kültürleri arasında yapılan çeşitli sınıflandırmalarla, kullanılan yönetim yaklaşımları ve liderlik tarzları açıklanmaya çalışılmaktadır.",
-      "C) Kültür; çeşitli boyutlarla ele alınması ve ölçülmesi mümkün olmayan bir kavramdır, bu nedenle literatürde bu kültürlere ilişkin sınıflandırmalar ve kültürel boyutlara ilişkin bir boşluk vardır.",
-      "D) Hofstede toplumların değer, inanç ve paylaşılan deneyimlerine dayalı kendilerine özgü bir kültürlerinin olduğunu ileri sürmekte ve farklı ülkelerdeki IBM şirketlerinde çalışanların algılarını ölçerek kültürü beş boyut altında değerlendirmektedir.",
-      "E) Hofstede'nin yöntemi pek çok açıdan eleştirilse de kültürle ilgili çalışmalarda halen yaygın olarak kullanılmaktadır.",
-    ],
-    correctAnswer:
-      "C) Kültür; çeşitli boyutlarla ele alınması ve ölçülmesi mümkün olmayan bir kavramdır, bu nedenle literatürde bu kültürlere ilişkin sınıflandırmalar ve kültürel boyutlara ilişkin bir boşluk vardır.",
-  },
-  {
-    id: 41,
-    questionText:
-      "41-) Güç mesafesine ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Bir toplumun eşitsiz güç dağılımını, otorite ile mesafeyi kabul etme derecesidir.",
-      "B) Yüksek güç mesafesi olan bir toplumda otorite daha fazla kabul edilmekte; düşük güç mesafesi olan bir toplumda ise gücün sadece belirli gruplarda toplanması kötü bir şey, zorlama, yolsuzluğa ortam hazırlanması olarak görülür.",
-      "C) Organizasyonlarda güç, yöneticilerin uyguladığı merkezileşme ve kontrol derecesiyle ilişkilidir.",
-      "D) Yüksek güç mesafesi olan toplumlardaki şirketlerde, iktidar konumundaki kişilerle (yöneticilerle) çalışanlar arasında formal bir ilişki ve itaate dayalı bir saygı söz konusudur.",
-      "E) Güç mesafesi yüksek örgüt kültürlerinde çalışanlar yöneticileri rahatlıkla sorgulamakta ve karşı gelebilmektedirler.",
-    ],
-    correctAnswer:
-      "E) Güç mesafesi yüksek örgüt kültürlerinde çalışanlar yöneticileri rahatlıkla sorgulamakta ve karşı gelebilmektedirler.",
-  },
-  {
-    id: 42,
-    questionText:
-      "42-) Aşağıdakilerden hangisi Hofstede'nin kültür boyutları arasında yoktur?",
-    options: [
-      "A) düşük-yüksek güç mesafesi",
-      "B) klan kültürü",
-      "C) belirsizlikten kaçınma-kaçınmama",
-      "D) erillik-dişillik",
-      "E) bireycilik-kolektivizm",
-    ],
-    correctAnswer: "B) klan kültürü",
-  },
-  {
-    id: 43,
-    questionText:
-      "43-) GLOBE çalışmasının kendine güven boyutuna ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Bireylerin başkalarıyla olan ilişkilerinde kendine güvenli, rekabetçi, iddialı, çatışmacı, agresif olma eğilimleridir.",
-      "B) Düşük kendine güven olan toplumlarda baskın ve zorlayıcı davranışlara değer verilmektedir.",
-      "C) Bireyler yüksek kendine güven olan toplumlarda görüş ve düşüncelerini açıkça ifade etmeye çekinmektedirler.",
-      "D) Yüksek kendine güven olan toplumlarda işbirliğine değer verilmekte ve dolayısıyla iletişimde daha dolaylı, kafa tutmayan bir tarz tercih edilmektedir.",
-      "E) Yöneticiler için yüksek kendine güvenin olduğu bir organizasyonun anlamı; rekabetçi, herkesin görüşlerini söylemeye istekli olduğu, çatışmanın kaçınılmaz olduğu, ilişkilerden çok sonuçların değerli görüldüğü bir ortamda çalışanları yönlendirmesi gerektiğidir.",
-    ],
-    correctAnswer:
-      "C) Bireyler yüksek kendine güven olan toplumlarda görüş ve düşüncelerini açıkça ifade etmeye çekinmektedirler.",
-  },
-  {
-    id: 44,
-    questionText:
-      "44-) Performans odaklılığın yüksek olduğu bir işletmeye ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Yüksek performans odaklı toplumlardaki işletmelerin yöneticileri, çalışanlarını maddi ödüller ve para ile motive etmekte, bunun için de açık hedefler koymaktadırlar.",
-      "B) Yüksek performans odaklı işletmeler açıkça bir performans değerleme kriteri belirlemektedir.",
-      "C) Çalışanlar, performanslarını iyileştirmek için yöneticilerden eğitim ve gelişme fırsatları sunmasını isteyebilmektedir.",
-      "D) Çalışanların istenen performansı ortaya koymalarına yardımcı olmak için yöneticilerin geribildirim vermesi beklenmektedir.",
-      "E) Yöneticiler para kazanmaya dayalı hedefleri olan çalışanları motive etmekte güçlük çekebilmektedirler.",
-    ],
-    correctAnswer:
-      "E) Yöneticiler para kazanmaya dayalı hedefleri olan çalışanları motive etmekte güçlük çekebilmektedirler.",
-  },
-  {
     id: 45,
     questionText:
-      "45-) İnsan odaklılığın düşük olduğu bir toplum ve organizasyona ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "45-) Değişim sürecinin güçlendirme aşamasında liderin rolü aşağıdakilerden hangisi olamaz?",
     options: [
-      "A) Toplumda bireysel çıkar, güç ve mülkiyet sahipliği değer görmektedir.",
-      "B) Toplum üyeleri başkalarının refahı için bireysel düzeyde sorumluluk ve ayrımcılığa yönelik hassasiyet duymamakta, bunları devlet ve kurumlardan beklemektedir.",
-      "C) Organizasyonda yöneticiler; formal iletişim, bürokrasiye dayalı kontrolün olduğu ve otonom çalışmanın hoş karşılanmadığı bir ortam oluşturmaktadırlar.",
-      "D) Organizasyonlarda olumlu iş tutumları gözlemlenmektedir.",
-      "E) Organizasyonlarda işten kaytarma ve tatminsizlik gibi olumsuz iş tutumları gözlemlenmektedir.",
+      "A) Etkilemek",
+      "B) Anlamak",
+      "C) Araştırmak",
+      "D) Dinlemek",
+      "E) İzlemek ve kontrol etmek",
     ],
-    correctAnswer:
-      "D) Organizasyonlarda olumlu iş tutumları gözlemlenmektedir.",
+    correctAnswer: "E) İzlemek ve kontrol etmek",
   },
   {
     id: 46,
-    questionText:
-      "46-) İnsan odaklılıkla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    questionText: "46-) Aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
-      "A) İnsan odaklı liderliğin önemi özellikle otokratik ya da hiyerarşi temelli liderlik tarzlarıyla kıyaslandığında anlaşılabilmektedir.",
-      "B) Aşırı otokratik, emir verici ve kontrol odaklı davranışlar gösteren liderlerin çalışanların saygı ve güvenini kazanamaması olasıdır; insan odaklı liderlik bu davranışların tam tersinde bulunmaktadır.",
-      "C) İnsan odaklı lider yaklaşımları, geleneksel otokratik liderlik yaklaşımlarının bugünün çalışanlarını motive etmekte yetersiz olduğu konuları da dikkate almaktadır.",
-      "D) Kriz ortamındaki zor koşullarda, hızla kararlar verilmesi gerektiğinde insan odaklı liderler de otokratik liderler gibi tüm yetkiyi ele alabilmekte ve kesin kararlar verebilmektedirler.",
-      "E) İnsan odaklı liderler zor koşullarda da mutlaka yetki devretme, kararın sorumluluğunu almama eğiliminde olabilmektedirler.",
+      "A) Değişim sürecinde işletmelere rekabet avantajı sağlayacak kilit roldeki faktör yenilik yaratma ve yaygınlaştırmaktır.",
+      "B) Sürdürülebilir bir rekabet üstünlüğü için gerekli yeniliği yaratmada insan faktörü yüzyılın en önemli üretim faktörü olarak dikkat çekmekte, insanın yaratıcı ve yenilikçi kapasitesini ortaya çıkaracak yöntem ve liderlik süreçleri önem taşımaktadır.",
+      "C) Toplam kalite yönetimi yaklaşımı insan unsurunu, faaliyetleri ve nihai ürünü belirleyen dış müşteriler ve üretimi gerçekleştiren, onu sürekli geliştiren iç müşteriler (çalışanlar) olarak odak noktasına oturtarak yeniliğin önemini vurgulamıştır.",
+      "D) İşletme yönetiminde yenilik yaratmadan sürekli aynı ürünleri üreterek başarı sağlamak da mümkündür.",
+      "E) Öğrenen organizasyonlar insan faktörü işletme içinde bilgi toplama ve işleme kapasitesine sahip, yaratıcılığı ortaya çıkartabilecek olan yegane unsur olarak görerek; yeniliğin önemini vurgulamıştır.",
     ],
     correctAnswer:
-      "E) İnsan odaklı liderler zor koşullarda da mutlaka yetki devretme, kararın sorumluluğunu almama eğiliminde olabilmektedirler.",
+      "D) İşletme yönetiminde yenilik yaratmadan sürekli aynı ürünleri üreterek başarı sağlamak da mümkündür.",
   },
   {
     id: 47,
-    questionText:
-      "47-) Laub'un örgüt sağlığının aşamaları yaklaşımına göre aşağıdaki ifadelerden hangisi doğru olamaz?",
+    questionText: "47-) Aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
-      "A) Zehirli örgüt sağlığında çalışanlar kendilerini tehlikede görmekte, iş yapmak için zorlanmakta ve korkutulmaktadırlar.",
-      "B) Zayıf örgüt sağlığında düşük derecede güven, yüksek derecede belirsizlik ve korku vardır.",
-      "C) Kısıtlı örgüt sağlığında çalışanların tümünün birbirlerinin ihtiyaçlarına hizmet etmek için motive edildikleri ve birbirlerinden öğrenmeye açık oldukları, tam bir güven ortamı vardır.",
-      "D) Ortalama örgüt sağlığında ortalama bir güven düzeyinin, nadiren belirsizlik ve korkunun olduğu; yaratıcılığın, işletmeyi mevcut durumundan çok öteye götürmeye çalışılmadığı müddetçe özendirildiği; çalışanların risk alabildiği ama hata yapmaktan bazen korktukları bir ortam vardır.",
-      "E) Zehirli ve zayıf örgüt sağlığında otokratik liderlik tarzı görülmektedir; kısıtlı ve ortalama örgüt sağlığında paternalist; iyi ve ideal örgüt sağlığında hizmetkâr liderlik mümkün olabilmektedir.",
+      "A) Başarılı işletmelerin ekonomideki ağırlıkları incelendiğinde tarihsel olarak geçmişte tarım toplumları, sonraları endüstri toplumları bugün ise bilgi toplumları önem kazanmıştır.",
+      "B) İşletme yönetiminde mutlaka dış çevreye odaklanmak, değişmek ve yenilik yapmak gerekli değildir.",
+      "C) Geleneksel üretim faktörlerinde azalan verim kanunu geçerliliğini korurken bilgi daha yoğun olarak kullanıldığında üretim artışına etkisi azalan değil artan verim yaratmaktadır.",
+      "D) Bilginin az bulunurluğu varsayımının ortadan kalkmasıyla eskiden karşı karşıya olunan bilgi eksikliği (bilgi darboğazı) aşılmış, ancak şimdi de yeterli bilgi olduğunda bununla ne yapılacağına karar verilememesi yani düşünce eksikliği (düşünce darboğazı) karşımıza çıkmaktadır.",
+      "E) Bugün bilgiyi elde etmek ve kullanmak her zamankinden daha önemli, ancak bilgiyi kullanma şekli bilginin kendisinden daha da önemlidir.",
     ],
     correctAnswer:
-      "C) Kısıtlı örgüt sağlığında çalışanların tümünün birbirlerinin ihtiyaçlarına hizmet etmek için motive edildikleri ve birbirlerinden öğrenmeye açık oldukları, tam bir güven ortamı vardır.",
+      "B) İşletme yönetiminde mutlaka dış çevreye odaklanmak, değişmek ve yenilik yapmak gerekli değildir.",
   },
   {
     id: 48,
     questionText:
-      "48-) Aşağıdakilerden hangisi hizmetkâr liderliğin boyutları arasında sayılamaz?",
-    options: [
-      "A) Güçlendirme",
-      "B) Otantiklik",
-      "C) Karizma",
-      "D) Geride Durma",
-      "E) Cesaret",
-    ],
-    correctAnswer: "C) Karizma",
-  },
-  {
-    id: 49,
-    questionText:
-      "49-) Aşağıdakilerden hangisi otantik liderliğin bileşenleri arasında sayılamaz?",
-    options: [
-      "A) Öz farkındalık",
-      "B) Hizmet",
-      "C) İçselleştirilmiş ahlaki bakış açısı",
-      "D) Dengeli yönlendirme",
-      "E) İlişkilerde şeffaflık",
-    ],
-    correctAnswer: "B) Hizmet",
-  },
-  {
-    id: 50,
-    questionText:
-      "50-) Aşağıdakilerden hangisi yeniliğe liderlik etmede etkili olan liderlik tarzları arasında sayılamaz?",
+      "48-) Aşağıdakilerden hangisi yeniliğe liderlik etmede etkili olan liderlik tarzları arasında sayılamaz?",
     options: [
       "A) Dönüşümcü liderlik",
       "B) Çift yönlü liderlik",
@@ -2377,49 +2350,9 @@ const DijitalPazarlama = [
     correctAnswer: "D) Otokratik liderlik",
   },
   {
-    id: 51,
-    questionText: "51-) Aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Değişim sürecinde işletmelere rekabet avantajı sağlayacak kilit roldeki faktör yenilik yaratma ve yaygınlaştırmaktır.",
-      "B) Sürdürülebilir bir rekabet üstünlüğü için gerekli yeniliği yaratmada insan faktörü yüzyılın en önemli üretim faktörü olarak dikkat çekmekte, insanın yaratıcı ve yenilikçi kapasitesini ortaya çıkaracak yöntem ve liderlik süreçleri önem taşımaktadır.",
-      "C) Toplam kalite yönetimi yaklaşımı insan unsurunu; faaliyetleri ve nihai ürünü belirleyen dış müşteriler ve üretimi gerçekleştiren, onu sürekli geliştiren iç müşteriler (çalışanlar) olarak odak noktasına oturtarak yeniliğin önemini vurgulamıştır.",
-      "D) İşletme yönetiminde yenilik yaratmadan sürekli aynı ürünleri üreterek başarı sağlamak da mümkündür.",
-      "E) Öğrenen organizasyonlar, insan faktörünü işletme içinde bilgi toplama ve işleme kapasitesine sahip, yaratıcılığı ortaya çıkartabilecek olan yegâne unsur olarak görerek yeniliğin önemini vurgulamıştır.",
-    ],
-    correctAnswer:
-      "D) İşletme yönetiminde yenilik yaratmadan sürekli aynı ürünleri üreterek başarı sağlamak da mümkündür.",
-  },
-  {
-    id: 52,
-    questionText: "52-) Aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Başarılı işletmelerin ekonomideki ağırlıkları incelendiğinde tarihsel olarak geçmişte tarım toplumları, sonraları endüstri toplumları, bugün ise bilgi toplumları önem kazanmıştır.",
-      "B) İşletme yönetiminde mutlaka dış çevreye odaklanmak, değişmek ve yenilik yapmak gerekli değildir.",
-      "C) Geleneksel üretim faktörlerinde azalan verim kanunu geçerliliğini korurken, bilgi daha yoğun olarak kullanıldığında üretim artışına etkisi azalan değil artan verim yaratmaktadır.",
-      "D) Bilginin az bulunurluğu varsayımının ortadan kalkmasıyla eskiden karşı karşıya olunan bilgi eksikliği (bilgi darboğazı) aşılmış, ancak şimdi de yeterli bilgi olduğunda bununla ne yapılacağına karar verilememesi yani düşünce eksikliği (düşünce darboğazı) karşımıza çıkmaktadır.",
-      "E) Bugün bilgiyi elde etmek ve kullanmak her zamankinden daha önemli, ancak bilgiyi kullanma şekli bilginin kendisinden daha da önemlidir.",
-    ],
-    correctAnswer:
-      "B) İşletme yönetiminde mutlaka dış çevreye odaklanmak, değişmek ve yenilik yapmak gerekli değildir.",
-  },
-  {
-    id: 53,
+    id: 49,
     questionText:
-      "53-) Strateji, stratejik liderlik ve stratejik yönetime ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
-    options: [
-      "A) Strateji; rakiplerin faaliyetlerini inceleyerek, amaçlara ulaşmak için belirlenmiş, nihai sonuç odaklı, uzun dönemli, dinamik kararlar topluluğudur.",
-      "B) Stratejik karar alma sürecinde yöneticiler yönetsel inisiyatifi etkileyen unsurlar ve kavramsal becerilerinin etkisi altında faaliyette bulunmaktadır. Bu nedenle stratejik liderlik, tüm bu stratejik kararları stratejik bir bilinç ile alabilme yeteneğine sahip üst yönetim liderliği olarak ele alınabilir.",
-      "C) Yöneticilerin verdiği her karar stratejik karar değildir. Özellikle alt ve orta kademe yönetim günlük, rutin kararları yüksek belirlilik ortamında alabilmektedir.",
-      "D) Üst yönetim çoğunlukla rutin, belirli, kısa vadeli kararlar almaktadır.",
-      "E) Stratejik yönetim süreci, sürdürülebilir rekabet üstünlüğü sağlamak amacıyla kaynakların etkili ve verimli olarak kullanılmasına odaklanmakta; bir başka deyişle en tepeden işletmenin gideceği yöne, rakipleriyle rekabet ediş şekline, uzun dönem amaç ve rekabet üstünlüğünü koruma biçimine karar vermekle ilgilidir.",
-    ],
-    correctAnswer:
-      "D) Üst yönetim çoğunlukla rutin, belirli, kısa vadeli kararlar almaktadır.",
-  },
-  {
-    id: 54,
-    questionText:
-      "54-) '…………………' akıllı, güvenilir bir danışman veya yol gösterici olan Yunan mitolojisinden bir karakterin adıdır.",
+      "49-) '.......' akıllı, güvenilir bir danışman veya yol gösterici olan Yunan mitolojisinden bir karakterin adıdır.",
     options: [
       "A) Koçluk",
       "B) Mentorluk",
@@ -2430,9 +2363,9 @@ const DijitalPazarlama = [
     correctAnswer: "B) Mentorluk",
   },
   {
-    id: 55,
+    id: 50,
     questionText:
-      "55-) '……………' son iki-üç yüzyıldır kullanılan; bir kişinin bilgi ve becerilerini bir öğretim veya öğretme biçimi aracılığıyla daha üst seviyeye taşımaya yardımcı olan kişiyi belirten bir terimdir. Yirminci yüzyılda özellikle spor ve performans gerektiren işlerle ilgili olarak yaygın şekilde kullanılmaktadır.",
+      "50-) '.......' son iki-üç yüzyıldır kullanılan, bir kişinin bilgi ve becerilerini bir öğretim veya öğretme biçimi aracılığıyla daha üst seviyeye taşımaya yardımcı olan kişiyi belirten bir terimdir. Yirminci yüzyılda özellikle, spor ve performans gerektiren işlerle ilgili olarak yaygın şekilde kullanılmaktadır.",
     options: [
       "A) Koçluk",
       "B) Mentorluk",
@@ -2443,9 +2376,9 @@ const DijitalPazarlama = [
     correctAnswer: "A) Koçluk",
   },
   {
-    id: 56,
+    id: 51,
     questionText:
-      "56-) Aşağıdakilerden hangisi koçluk veya mentorluk süreçlerinin basamaklarından olamaz?",
+      "51-) Aşağıdakilerden hangisi koçluk veya mentorluk süreçlerinin basamaklarından olamaz?",
     options: [
       "A) İhtiyaçların, arzuların ve benliğin farkına varmak için analiz",
       "B) Öz sorumluluk geliştirmek için planlama",
@@ -2456,18 +2389,236 @@ const DijitalPazarlama = [
     correctAnswer: "E) Danışanı gerektiğinde azarlama",
   },
   {
-    id: 57,
+    id: 52,
     questionText:
-      "57-) Takım liderliğine ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+      "52-) Takım liderliğine ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
-      "A) Organizasyonlarda kurulan takımların içinde genellikle birbirini tamamlayıcı ve farklı bilgi ve profesyonel tecrübeye sahip üyeler bir arada çalışmaktadır. Bu çeşitlilikteki kapasitelerin bir arada çalışması sebebiyle takımlardan daha yüksek bir performans beklenmektedir.",
+      "A) Organizasyonlarda kurulan takımların içinde genellikle birbirini tamamlayıcı ve farklı bilgi ve profesyonel tecrübeye sahip üyeler bir arada çalışmaktadırlar. Bu çeşitlilikteki kapasitelerin bir arada çalışması sebebiyle takımlardan daha yüksek bir performans beklenmektedir.",
       "B) Takımlara liderlik, tüm takım üyelerinin ortak bir hedefe ulaşma yönünde etkileşime girdiği karmaşık bir etkileme süreci olarak ele alınmalıdır.",
-      "C) Takımlara liderlik ederken takım üyelerinin tamamlayıcı özellik ve niceliklerine ortam tanıyan, daha esnek ve dinamik bir süreç gerekli olmaktadır.",
-      "D) Organizasyonlarda takımlar genellikle belirli bir iş ya da projenin tamamlanması için oluşturulmakta; bu nedenle takımı oluşturan bireylerin kendi kendilerine liderliği, yürütülen projeye uygun genellikle geçici görevlerini gerçekleştirirken takıma uyum sağlamaları beklenmektedir. Burada vurgu daha çok liderlikten ziyade etkili bir izleyicilik (takipçilik) ortaya koymaktadır.",
+      "C) Takımlara liderlik ederken takım üyelerinin tamamlayıcı özellik ve niteliklerine ortam tanıyan, daha esnek ve dinamik bir süreç gerekli olmaktadır.",
+      "D) Organizasyonlarda takımlar genellikle belirli bir iş ya da projenin tamamlanması için oluşturulmakta, bu nedenle takımı oluşturan bireylerin kendi kendilerine liderliği, yürütülen projeye uygun genellikle geçici görevlerini gerçekleştirirken takıma uyum sağlamaları beklenmektedir. Burada vurgu daha çok liderlikten ziyade etkili bir izleyicilik (takipçilik) ortaya koymaktadır.",
       "E) Takım üyelerinin belirsizliğe toleransının yüksek olması, farklı insanlardan gelen liderliği kabulü pek mümkün olmayan bir durumdur.",
     ],
     correctAnswer:
       "E) Takım üyelerinin belirsizliğe toleransının yüksek olması, farklı insanlardan gelen liderliği kabulü pek mümkün olmayan bir durumdur.",
+  },
+  {
+    id: 53,
+    questionText:
+      "53-) Strateji, stratejik liderlik ve stratejik yönetime ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Strateji, rakiplerin faaliyetlerini inceleyerek, amaçlara ulaşmak için belirlenmiş, nihai sonuç odaklı, uzun dönemli, dinamik kararlar topluluğudur.",
+      "B) Stratejik karar alma sürecinde yöneticiler yönetsel inisiyatifi etkileyen unsurlar ve kavramsal becerilerinin etkisi altında faaliyette bulunmaktadır. Bu nedenle stratejik liderlik, tüm bu stratejik kararları stratejik bir bilinç ile alabilme yeteneğine sahip üst yönetim liderliği olarak ele alınabilir.",
+      "C) Yöneticilerin verdiği her karar stratejik karar değildir. Özellikle alt ve orta kademe yönetim günlük, rutin kararları yüksek belirlilik ortamında alabilmektedirler.",
+      "D) Üst yönetim çoğunlukla rutin, belirli, kısa vadeli kararlar almaktadır.",
+      "E) Stratejik yönetim süreci, sürdürülebilir rekabet üstünlüğü sağlamak amacıyla kaynakların etkili ve verimli olarak kullanılmasına odaklanmakta, bir başka deyişle en tepeden işletmenin gideceği yöne, rakipleriyle rekabet ediş şekline, uzun dönem amaç ve rekabet üstünlüğünü koruma biçimine karar vermekle ilgilidir.",
+    ],
+    correctAnswer:
+      "D) Üst yönetim çoğunlukla rutin, belirli, kısa vadeli kararlar almaktadır.",
+  },
+  {
+    id: 54,
+    questionText:
+      "54-) İnsan odaklılığın düşük olduğu bir toplum ve organizasyona ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Toplumda bireysel çıkar, güç ve mülkiyet sahipliği değer görmektedir.",
+      "B) Toplum üyeleri başkalarının refahı için bireysel düzeyde sorumluluk ve ayrımcılığa yönelik hassasiyet duymamakta, bunları devlet ve kurumlardan beklemektedir.",
+      "C) Organizasyonda yöneticiler, formal iletişim, bürokrasiye dayalı kontrolün olduğu ve otonom çalışmanın hoş karşılanmadığı bir ortam oluşturmaktadırlar.",
+      "D) Organizasyonlarda olumlu iş tutumları gözlemlenmektedir.",
+      "E) Organizasyonlarda işten kaytarma ve tatminsizlik gibi olumsuz iş tutumları,",
+    ],
+    correctAnswer:
+      "D) Organizasyonlarda olumlu iş tutumları gözlemlenmektedir.",
+  },
+  {
+    id: 55,
+    questionText:
+      "55-) İnsan odaklılıkla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) İnsan odaklı liderliğin önemi özellikle otokratik ya da hiyerarşi temelli liderlik tarzlarıyla kıyaslandığında anlaşılabilmektedir.",
+      "B) Aşırı otokratik, emir verici ve kontrol odaklı davranışlar gösteren liderler çalışanların saygı ve güvenini kazanamaması olasıdır; insan odaklı liderlik bu davranışların tam tersinde bulunmaktadır.",
+      "C) İnsan odaklı lider yaklaşımları, geleneksel otokratik liderlik yaklaşımlarının bugünün çalışanlarını motive etmekte yetersiz olduğu konuları da dikkate almaktadır.",
+      "D) Kriz ortamındaki zor koşullarda, hızla kararlar verilmesi gerektiğinde insan odaklı liderler de otokratik liderler gibi tüm yetkiyi ele alabilmekte ve kesin kararlar verebilmektedirler.",
+      "E) İnsan odaklı liderler zor koşullarda da mutlaka yetki devretme, kararın sorumluluğunu almama eğiliminde olabilmektedirler.",
+    ],
+    correctAnswer:
+      "E) İnsan odaklı liderler zor koşullarda da mutlaka yetki devretme, kararın sorumluluğunu almama eğiliminde olabilmektedirler.",
+  },
+  {
+    id: 56,
+    questionText:
+      "56-) Laub'un örgüt sağlığının aşamaları yaklaşımına göre aşağıdaki ifadelerden hangisi doğru olamaz?",
+    options: [
+      "A) Zehirli örgüt sağlığında çalışanların kendilerini tehlikede görmekte, iş yapmak için zorlanmakta ve korkutulmaktadırlar.",
+      "B) Zayıf örgüt sağlığında düşük derecede güven, yüksek derecede belirsizlik ve korku vardır.",
+      "C) Kısıtlı örgüt sağlığında çalışanların tümünün birbirlerinin ihtiyaçlarına hizmet etmek için motive edildikleri ve birbirlerinden öğrenmeye açık oldukları, tam bir güven ortamıdır.",
+      "D) Ortalama örgüt sağlığında ortalama bir güven düzeyinin, nadiren belirsizlik ve korkunun olduğu; yaratıcılığın, işletmeyi mevcut durumundan çok öteye götürmeye çalışılmadığı müddetçe özendirildiği; çalışanların risk alabildiği ama hata yapmaktan bazen korktukları bir ortamdır.",
+      "E) Zehirli ve zayıf örgüt sağlığında otokratik liderlik tarzı görülmektedir; kısıtlı ve ortalama örgüt sağlığında paternalist; iyi ve ideal örgüt sağlığında hizmetkar liderlik mümkün olabilmektedir",
+    ],
+    correctAnswer:
+      "C) Kısıtlı örgüt sağlığında çalışanların tümünün birbirlerinin ihtiyaçlarına hizmet etmek için motive edildikleri ve birbirlerinden öğrenmeye açık oldukları, tam bir güven ortamıdır.",
+  },
+  {
+    id: 57,
+    questionText:
+      "57-) Aşağıdakilerden hangisi hizmetkar liderliğin boyutları arasında sayılamaz?",
+    options: [
+      "A) Güçlendirme",
+      "B) Otantiklik",
+      "C) Karizma",
+      "D) Geride Durma",
+      "E) Cesaret",
+    ],
+    correctAnswer: "C) Karizma",
+  },
+  {
+    id: 58,
+    questionText:
+      "58-) Aşağıdakilerden hangisi otantik liderliğin bileşenleri arasında sayılamaz?",
+    options: [
+      "A) Öz farkındalık",
+      "B) Hizmet",
+      "C) İçselleştirilmiş ahlaki bakış açısı",
+      "D) Dengeli yönlendirme",
+      "E) İlişkilerde şeffaflık",
+    ],
+    correctAnswer: "B) Hizmet",
+  },
+  {
+    id: 59,
+    questionText:
+      "59-) Yönetsel etikle ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Yöneticiler gündelik pek çok karar verme sürecinde etkisi altında kaldığı pek çok faktör bulunmakta; bu süreçte adalet, dürüstlük, ortak iyilik, açıklık gibi değerler konusunda tutarlılık içinde olmaları gerekmektedir.",
+      "B) Yöneticiler kararları alırken belirli ilkelere dayanmaları gerekmektedir.",
+      "C) Etik, yönetsel kararlarda ülke yasaları, toplumsal ve kültürel değerler, yöneticinin özgür seçim alanı arasında tutarlı kuralların (ilkelerin) oluşturduğu bir bütündür.",
+      "D) Her karar da olduğu gibi yönetsel kararlarda da, yöneticiden beklenen etik davranış sergilemesi, tutarlı kurallar bütünü içinde karar vermesidir.",
+      "E) Yönetici bir kararında adil, dürüst, açık davranırken diğerinde davr",
+    ],
+    correctAnswer:
+      "E) Yönetici bir kararında adil, dürüst, açık davranırken diğerinde davr",
+  },
+  {
+    id: 60,
+    questionText:
+      "60-) Etik ve ahlak kavramlarıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Etik, iyiyle kötüyü doğruyla yanlışı ayırt etmemizi sağlayan ahlaki ilkelerin bütünü olarak görülebilir.",
+      "B) Ahlak insanın yaşadığı toplum içinde kabul gören tutum ve davranışlar bütünüdür.",
+      "C) Etik insanların nasıl davranması gerektiğine odaklanan daha evrensel bir kavram; ahlak ise belirli bir toplum veya alt kültür için doğru olan davranışlara odaklanan bir kavramdır.",
+      "D) Ahlak her toplum için aynı evrensel kuralları olan bir kavramdır.",
+      "E) Ahlak farklı kültürler ve toplumlar arasında değişiklik gösteren daha subjektif bir kavramdır.",
+    ],
+    correctAnswer:
+      "D) Ahlak her toplum için aynı evrensel kuralları olan bir kavramdır.",
+  },
+  {
+    id: 61,
+    questionText:
+      "61-) Aşağıdakilerden hangisi yöneticinin bir birey olarak etik davranışını etkileyen faktörler arasında yer alamaz?",
+    options: [
+      "A) Bireyin ahlaki gelişim düzeyi",
+      "B) Bireyin yaşı, eğitimi, geçmiş deneyimler, ailesi, sosyal ekonomik durumu",
+      "C) Bireyin kişisel çıkarları",
+      "D) Toplum kültürü ve değerler",
+      "E) Norm ve görgü kuralları",
+    ],
+    correctAnswer: "C) Bireyin kişisel çıkarları",
+  },
+  {
+    id: 62,
+    questionText:
+      "62-) Etik liderliğin boyutlarıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Etik ve adalet boyutu liderin dürüst, güvenilir, ilkeli, adaletli seçimler yapan ve çalışanlara karşı ilgili gösteren davranışlarına vurgu yapmaktadır.",
+      "B) Görevlerin açıklığa kavuşturulması boyutu liderin açık iletişim kurma, çalışanlardan beklenen görev ve sorumlulukları açıklığa kavuşturma davranışlarına vurgu yapmaktadır.",
+      "C) Güç paylaşımı boyutu liderin yetkiyi elinde toplayan ve pozisyon gücüne dayalı olarak çalışanları etkilemeye çalıştığı bir organizasyonu ifade etmektedir.",
+      "D) Rollerin açıklığa kavuşturulması boyutu etik davranışı ödüllendirerek çalışanları teşvik etme gibi davranışlarını içermektedir.",
+      "E) Güç paylaşımı boyutu liderin çalışanlara fikirlerini sorması, kararlara katılımı desteklemesi, yetki ve gücü paylaşması konularını kapsamaktadır.",
+    ],
+    correctAnswer:
+      "C) Güç paylaşımı boyutu liderin yetkiyi elinde toplayan ve pozisyon gücüne dayalı olarak çalışanları etkilemeye çalıştığı bir organizasyonu ifade etmektedir.",
+  },
+  {
+    id: 63,
+    questionText: "63-) Aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Liderin etik davranış, norm ve standartları sayesinde çalışanlar açıkça neyin doğru veya yanlış olduğunu görebilmektedir.",
+      "B) Liderler çalışanlar için etik karar alma ve problem çözmedeki hareket tarzlarını belirleyen etik değerleri ortaya koymaktadırlar.",
+      "C) Etik değerler, liderin kişilerarası ilişkilerini, örgütsel amaç ve üst yönetimin baskılarını kabul etme şeklini ve performansını da etkilemektedir.",
+      "D) Liderin sahip olduğu değerlere ve etik davranışa yönelik odağın yönetim literatüründe artmasıyla, dönüşümcü ve karizmatik liderlik alanlarındaki akademik çalışmalar eleştirilmeye başlanmış, hizmetkar liderlik ve etik liderlik teorileriyle etik davranışa vurgu yapılmıştır.",
+      "E) Otokratik liderlik; eylem ve ilişkilerde normatif uygunluğa dayanan; izleyicileri iki yönlü iletişim kurma ve ahlaki düşünce biçimine sahip olmada teşvik eden bir liderlik tarzıdır. Etik lider dürüst, güvenilir, adil davranışlar sergileyerek, izleyicilerin güvendiği bir rol model olmaktadır.",
+    ],
+    correctAnswer:
+      "E) Otokratik liderlik; eylem ve ilişkilerde normatif uygunluğa dayanan; izleyicileri iki yönlü iletişim kurma ve ahlaki düşünce biçimine sahip olmada teşvik eden bir liderlik tarzıdır. Etik lider dürüst, güvenilir, adil davranışlar sergileyerek, izleyicilerin güvendiği bir rol model olmaktadır.",
+  },
+  {
+    id: 64,
+    questionText: "64-) Aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Kültür bir toplumun, sosyal olarak iletilmiş davranış biçimlerinin, inançlarının, kurumlarının ve tüm diğer insanlar tarafından yaratılmış ürünlerinin ve düşünülen özelliklerinin toplamı olarak tanımlanmaktadır.",
+      "B) Toplum kültürleri doğrudan örgüt kültürünün belirleyicisi olmasa da üzerinde ciddi etkisi olan önemli bir değişkendir. Bu nedenle toplum kültürleri arasında yapılan çeşitli sınıflandırmalarla, kullanılan yönetim yaklaşımları ve liderlik tarzları açıklanmaya çalışılmaktadır.",
+      "C) Kültür çeşitli boyutlarla ele alınması ve ölçülmesi mümkün olmayan bir kavramdır, bu nedenle literatürde bu kültürlere ilişkin sınıflandırmalar ve kültürel boyutlara ilişkin bir boşluk vardır.",
+      "D) Hofstede toplumların değer, inanç ve paylaşılan deneyimlerine dayalı kendilerine özgü bir kültürlerinin olduğunu ileri sürmekte ve farklı ülkelerdeki IBM şirketlerinde çalışanların algılarını ölçerek, kültürü beş boyut altında değerlendirmektedir.",
+      "E) Hosftede'nin yöntemi pek çok açıdan eleştirilse de kültürle ilgili çalışmalarda halen yaygın olarak kullanılmaktadır.",
+    ],
+    correctAnswer:
+      "C) Kültür çeşitli boyutlarla ele alınması ve ölçülmesi mümkün olmayan bir kavramdır, bu nedenle literatürde bu kültürlere ilişkin sınıflandırmalar ve kültürel boyutlara ilişkin bir boşluk vardır.",
+  },
+  {
+    id: 65,
+    questionText:
+      "65-) Aşağıdakilerden hangisi Hosftede'nin kültür boyutları arasında yoktur?",
+    options: [
+      "A) Düşük-yüksek güç mesafesi",
+      "B) Klan kültürü",
+      "C) Belirsizlikten kaçınma-kaçınmama",
+      "D) Erillik-dişillik",
+      "E) Bireycilik-kolektivizm",
+    ],
+    correctAnswer: "B) Klan kültürü",
+  },
+  {
+    id: 66,
+    questionText:
+      "66-) Güç mesafesine ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Bir toplumun eşitsiz güç dağılımını, otorite ile mesafeyi kabul etme derecesidir.",
+      "B) Yüksek güç mesafesi olan bir toplumda otoriteyi daha fazla kabul edilmekte, düşük güç mesafesi olan bir toplumda ise, gücün sadece belirli gruplarda toplanması, kötü bir şey, zorlama, yolsuzluğa ortam hazırlanması olarak görülür.",
+      "C) Organizasyonlarda güç, yöneticilerin uyguladığı merkezileşme ve kontrol derecesine uzaklıktadır.",
+      "D) Yüksek güç mesafesi olan toplumlardaki şirketlerde, iktidar konumundaki kişilerle (yöneticilerle) çalışanlar arasında formal bir ilişki ve itaate dayalı bir saygı söz konusudur.",
+      "E) Güç mesafesi yüksek örgüt kültürlerinde çalışanlar yöneticileri rahatlıkla sorgulamakta ve karşı gelebilmektedirler.",
+    ],
+    correctAnswer:
+      "E) Güç mesafesi yüksek örgüt kültürlerinde çalışanlar yöneticileri rahatlıkla sorgulamakta ve karşı gelebilmektedirler.",
+  },
+  {
+    id: 67,
+    questionText:
+      "67-) GLOBE çalışmasının kendine güven boyutuna ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Bireylerin başkalarıyla olan ilişkilerinde kendine güvenli, rekabetçi, iddialı, çatışmacı, agresif olma eğilimleridir.",
+      "B) Düşük kendine güven olan toplumlarda baskın ve zorlayıcı davranışlara değer verilmektedir.",
+      "C) Bireyler yüksek kendine güven olan toplumlarda görüş ve düşüncelerini açıkça ifade etmeye çekinmektedirler.",
+      "D) Yüksek kendine güven olan toplumlarda işbirliğine değer verilmekte ve dolayısıyla iletişimde daha dolaylı, kafa tutmayan bir tarz tercih edilmektedir.",
+      "E) Yöneticiler için yüksek kendine güvenmenin olduğu bir organizasyonun anlamı, rekabetçi, herkesin görüşlerini söylemeye istekli olduğu, çatışmanın kaçınılmaz olduğu, ilişkilerden çok sonuçların değerli görüldüğü bir ortamda çalışanları yönlendirmesi gerektiğidir",
+    ],
+    correctAnswer:
+      "C) Bireyler yüksek kendine güven olan toplumlarda görüş ve düşüncelerini açıkça ifade etmeye çekinmektedirler.",
+  },
+  {
+    id: 68,
+    questionText:
+      "68-) Performans odaklılığın yüksek olduğu bir işletmeye ilişkin aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "A) Yüksek performans odaklı toplumlardaki işletmelerin yöneticileri, çalışanlarını maddi ödüller ve para ile motive etmekte, bunun için de açık hedefler koymaktadırlar.",
+      "B) Yüksek performans odaklı işletmeler açıkça bir performans değerleme kriteri belirlemektedirler.",
+      "C) Çalışanlar, performanslarını iyileştirmek için yöneticilerden eğitim ve gelişme fırsatları sunmasını isteyebilmektedir.",
+      "D) Çalışanların istenen performansı ortaya koymalarına yardımcı olmak için yöneticilerin geribildirim vermesi beklemektedir.",
+      "E) Yöneticiler para kazanmaya dayalı hedefleri olan çalışanları motive etmekte güçlük çekebilmektedirler.",
+    ],
+    correctAnswer:
+      "E) Yöneticiler para kazanmaya dayalı hedefleri olan çalışanları motive etmekte güçlük çekebilmektedirler.",
   },
 ];
 

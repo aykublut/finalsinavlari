@@ -11,6 +11,7 @@ import {
 } from "react";
 import type { Lesson } from "@/types/quiz";
 import { suspiciousQuestions } from "@/store/suspiciousQuestions";
+import CompetitionRoom from "./competition/CompetitionRoom";
 
 const subscribeHydration = (cb: () => void) =>
   useQuizStore.persist.onFinishHydration(cb);
@@ -53,6 +54,11 @@ const ACCENT_STYLES: Record<
   },
 };
 
+const AVATARS = [
+  "🦊", "🐼", "🦁", "🐸", "🦉", "🐙", "🦄", "🐲",
+  "🐯", "🐺", "🦅", "🐬", "🦖", "🐝", "🦋", "🐧",
+];
+
 export default function QuizApp() {
   const lessons = useQuizStore((s) => s.lessons);
   const selectedLessonId = useQuizStore((s) => s.selectedLessonId);
@@ -80,6 +86,15 @@ export default function QuizApp() {
   const exitStudyMode = useQuizStore((s) => s.exitStudyMode);
   const nextStudyQuestion = useQuizStore((s) => s.nextStudyQuestion);
   const prevStudyQuestion = useQuizStore((s) => s.prevStudyQuestion);
+
+  const playerId = useQuizStore((s) => s.playerId);
+  const playerName = useQuizStore((s) => s.playerName);
+  const playerAvatar = useQuizStore((s) => s.playerAvatar);
+  const competitionLessonId = useQuizStore((s) => s.competitionLessonId);
+  const setPlayerProfile = useQuizStore((s) => s.setPlayerProfile);
+  const setPlayerId = useQuizStore((s) => s.setPlayerId);
+  const enterCompetition = useQuizStore((s) => s.enterCompetition);
+  const exitCompetition = useQuizStore((s) => s.exitCompetition);
 
   const mounted = useSyncExternalStore(
     subscribeHydration,
@@ -122,6 +137,10 @@ export default function QuizApp() {
       : 0;
 
   const [suspiciousModalOpen, setSuspiciousModalOpen] = useState(false);
+
+  // Yarışma profil taslağı (isim + avatar seçimi)
+  const [nameDraft, setNameDraft] = useState("");
+  const [avatarDraft, setAvatarDraft] = useState<string | null>(null);
 
   // Aktif tahmin modu local state
   const [revealed, setRevealed] = useState(false);
@@ -483,6 +502,117 @@ export default function QuizApp() {
     );
   }
 
+  // === YARIŞMA EKRANI ===
+  if (competitionLessonId) {
+    const hasProfile = !!playerName && !!playerAvatar;
+
+    // Profil hazırsa gerçek zamanlı yarışma odasını aç
+    if (hasProfile) {
+      return (
+        <CompetitionRoom
+          lessonId={competitionLessonId}
+          playerId={playerId}
+          playerName={playerName!}
+          playerAvatar={playerAvatar!}
+          onPlayerId={setPlayerId}
+          onExit={exitCompetition}
+        />
+      );
+    }
+
+    const compLesson = lessons.find((l) => l.id === competitionLessonId);
+    const compAccent = compLesson
+      ? ACCENT_STYLES[compLesson.accent]
+      : ACCENT_STYLES.fuchsia;
+
+    // Profil yoksa: isim + avatar seçimi
+    return (
+      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-fuchsia-500/30 overflow-y-auto">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-fuchsia-600/15 blur-[100px] pointer-events-none rounded-full" />
+
+        <div className="flex-1 w-full max-w-md mx-auto px-4 py-8 z-10 flex flex-col">
+          {/* Üst bar */}
+          <div className="flex items-center gap-2 mb-8">
+            <button
+              onClick={exitCompetition}
+              className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:text-white active:scale-95 transition-all"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+              </svg>
+              Geri
+            </button>
+            <span className={`px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border truncate ${compAccent.chip}`}>
+              {compLesson?.title ?? "Yarışma"}
+            </span>
+            <span className="shrink-0 px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400 animate-pulse" />
+              Yarışma
+            </span>
+          </div>
+
+          {/* === PROFİL SEÇİMİ === */}
+          <div className="flex-1 flex flex-col">
+            <header className="text-center mb-8">
+              <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 tracking-tighter">
+                Yarışmacı profilin
+              </h1>
+              <p className="mt-2 text-sm text-slate-400">
+                Rakiplerin seni bu isim ve avatarla görecek.
+              </p>
+            </header>
+
+            <label className="text-xs font-bold tracking-widest uppercase text-slate-500 mb-2">
+              İsim
+            </label>
+            <input
+              value={nameDraft}
+              onChange={(e) => setNameDraft(e.target.value.slice(0, 18))}
+              placeholder="Adın..."
+              maxLength={18}
+              className="w-full px-4 py-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-white placeholder:text-slate-600 outline-none focus:border-fuchsia-400/50 focus:bg-white/[0.06] transition-all mb-6"
+            />
+
+            <label className="text-xs font-bold tracking-widest uppercase text-slate-500 mb-3">
+              Avatar
+            </label>
+            <div className="grid grid-cols-4 gap-2.5 mb-8">
+              {AVATARS.map((av) => {
+                const selected = avatarDraft === av;
+                return (
+                  <button
+                    key={av}
+                    onClick={() => setAvatarDraft(av)}
+                    className={`aspect-square rounded-2xl flex items-center justify-center text-3xl border-2 transition-all active:scale-90
+                      ${selected
+                        ? "border-fuchsia-400/70 bg-fuchsia-500/15 scale-105 shadow-[0_0_20px_rgba(217,70,239,0.25)]"
+                        : "border-white/[0.06] bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]"
+                      }`}
+                  >
+                    {av}
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={() =>
+                nameDraft.trim() &&
+                avatarDraft &&
+                setPlayerProfile(nameDraft.trim(), avatarDraft)
+              }
+              disabled={!nameDraft.trim() || !avatarDraft}
+              className="mt-auto w-full py-4 rounded-2xl font-bold text-base tracking-wide transition-all active:scale-[0.98] bg-fuchsia-600 hover:bg-fuchsia-500 text-white shadow-lg shadow-fuchsia-500/25 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              Devam Et
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // === DERS SEÇİM EKRANI ===
   if (!selectedLesson) {
     return (
@@ -568,27 +698,46 @@ export default function QuizApp() {
                     </div>
                   </button>
 
-                  {/* Çalışma modu butonları */}
+                  {/* Çalışma modu + yarışma butonları */}
                   {!isLocked && (
-                    <div className="relative px-6 pb-5 pt-3 flex gap-2 border-t border-white/[0.04]">
+                    <div className="relative px-4 sm:px-5 pb-4 pt-4 flex flex-col gap-2.5 border-t border-white/[0.06]">
+                      {/* Çalışma modları */}
+                      <div className="grid grid-cols-2 gap-2.5">
+                        <button
+                          onClick={() => startStudyMode(lesson.id, "list")}
+                          className="flex items-center justify-center gap-2 px-3 py-3 rounded-2xl bg-white/[0.05] border border-white/15 text-slate-200 hover:text-white hover:bg-white/[0.09] hover:border-white/25 text-sm font-semibold transition-all active:scale-95 shadow-sm"
+                        >
+                          <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                          </svg>
+                          Liste
+                        </button>
+                        <button
+                          onClick={() => startStudyMode(lesson.id, "reveal")}
+                          className={`flex items-center justify-center gap-2 px-3 py-3 rounded-2xl text-sm font-semibold transition-all active:scale-95 border ${accent.chip} hover:brightness-125 shadow-sm`}
+                        >
+                          <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                          Aktif Tahmin
+                        </button>
+                      </div>
+
+                      {/* YARIŞMA */}
                       <button
-                        onClick={() => startStudyMode(lesson.id, "list")}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-slate-400 hover:text-white hover:border-white/20 text-xs font-semibold transition-all active:scale-95"
+                        onClick={() => enterCompetition(lesson.id)}
+                        className="group/comp relative w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl font-black text-sm tracking-wide text-white overflow-hidden transition-all active:scale-[0.98] bg-gradient-to-r from-fuchsia-600 via-pink-600 to-rose-600 shadow-lg shadow-fuchsia-500/30 hover:shadow-fuchsia-500/50"
                       >
-                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover/comp:translate-x-full transition-transform duration-700 ease-out" />
+                        <svg className="w-5 h-5 shrink-0 relative" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                         </svg>
-                        Liste
-                      </button>
-                      <button
-                        onClick={() => startStudyMode(lesson.id, "reveal")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all active:scale-95 border ${accent.chip} hover:opacity-80`}
-                      >
-                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                        Aktif Tahmin
+                        <span className="relative">YARIŞMA!</span>
+                        <span className="relative ml-1 px-1.5 py-0.5 rounded-md bg-white/20 text-[9px] font-bold tracking-widest uppercase flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                          Canlı
+                        </span>
                       </button>
                     </div>
                   )}

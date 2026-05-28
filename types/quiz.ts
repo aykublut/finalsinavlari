@@ -27,6 +27,11 @@ export interface QuizState {
   studyLessonId: string | null;
   studyQuestionIndex: number;
 
+  playerId: string | null;
+  playerName: string | null;
+  playerAvatar: string | null;
+  competitionLessonId: string | null;
+
   selectLesson: (lessonId: string) => void;
   goToLessonSelection: () => void;
   answerQuestion: (questionId: number, answer: string) => void;
@@ -40,4 +45,8 @@ export interface QuizState {
   exitStudyMode: () => void;
   nextStudyQuestion: () => void;
   prevStudyQuestion: () => void;
+  setPlayerProfile: (name: string, avatar: string) => void;
+  setPlayerId: (id: string) => void;
+  enterCompetition: (lessonId: string) => void;
+  exitCompetition: () => void;
 }
