@@ -41,19 +41,23 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false, // Rakamları yanlışlıkla telefon numarası olarak algılamasını engeller
   },
-  // Link önizlemesi (WhatsApp büyük/poster görsel için og:image 1200x630 →
-  // app/opengraph-image.tsx otomatik eklenir)
+  // Link önizlemesi — WhatsApp MOBİL ~300KB üstü görseli düşürür, bu yüzden
+  // poster statik ve sıkıştırılmış JPEG olarak servis edilir (public/og.jpg, ~62KB).
   openGraph: {
     title: "KİM FİNALDEN GEÇMEK İSTER?",
     description: "Sınıfça canlı yarış, skorunu hanene yaz.",
     type: "website",
     locale: "tr_TR",
     siteName: "KİM FİNALDEN GEÇMEK İSTER?",
+    images: [
+      { url: "/og.jpg", width: 1200, height: 630, type: "image/jpeg" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "KİM FİNALDEN GEÇMEK İSTER?",
     description: "Sınıfça canlı yarış, skorunu hanene yaz.",
+    images: ["/og.jpg"],
   },
 };
 
