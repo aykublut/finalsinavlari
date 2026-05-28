@@ -16,7 +16,7 @@ export const COMPETITION_CONFIG = {
   // Lobi / eşleşme
   lobbyMaxBeforeFastStart: 10, // 10 kişi olunca geri sayım başlar
   lobbyCountdownMs: 30_000, // 10 kişi → 30 sn sonra başla
-  lobbyMinForTimeout: 5, // en az 5 kişi varsa...
+  lobbyMinForTimeout: 2, // en az 5 kişi varsa...
   lobbyTimeoutMs: 60_000, // ...60 sn dolunca 10 beklemeden başla
 
   // Bitiş
