@@ -5,7 +5,7 @@ import { lessons } from "@/store/questions";
 import { COMPETITION_CONFIG } from "@/lib/competition/config";
 import { useMatch } from "@/lib/competition/useMatch";
 import {
-  ensurePlayer,
+  claimProfile,
   joinCompetition,
   leaveMatch,
   tickMatch,
@@ -61,17 +61,21 @@ export default function CompetitionRoom({
     let cancelled = false;
     (async () => {
       try {
-        const id = await ensurePlayer({
+        const claim = await claimProfile({
           id: playerId,
           name: playerName,
           avatar: playerAvatar,
         });
         if (cancelled) return;
-        setPid(id);
-        onPlayerId(id);
+        if (!claim.ok) {
+          setJoinError(true);
+          return;
+        }
+        setPid(claim.id);
+        onPlayerId(claim.id);
         const res = await joinCompetition({
           lessonId,
-          playerId: id,
+          playerId: claim.id,
           name: playerName,
           avatar: playerAvatar,
         });

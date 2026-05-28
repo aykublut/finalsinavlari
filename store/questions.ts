@@ -3366,6 +3366,256 @@ const StratejikYonetim = [
     ],
     correctAnswer: "C) Stratejik Sıçrama Faktörleri ve Kontrolü",
   },
+  {
+    id: 57,
+    questionText:
+      "1-) Aşağıdaki işletme sorumluluklarından hangisi işletmelerin varoluşu gereği yerine getirmesi gereken birincil sorumluluktur?",
+    options: [
+      "A) Yasal sorumluluk",
+      "B) Gönüllü sorumluluk",
+      "C) Sosyal sorumluluk",
+      "D) Ahlaki sorumluluk",
+      "E) Ekonomik sorumluluk",
+    ],
+    correctAnswer: "E) Ekonomik sorumluluk",
+  },
+  {
+    id: 58,
+    questionText:
+      "2-) Faaliyetleri, dünya çapında, koordine edilmiş bir şekilde uyumlaştırma ya da entegre etme eğilimi aşağıdakilerden hangisi ile ifade edilir?",
+    options: [
+      "A) Bölgeselleşme",
+      "B) Küreselleşme",
+      "C) Yerelleşme",
+      "D) Uluslararasılaşma",
+      "E) Ticarileşme",
+    ],
+    correctAnswer: "B) Küreselleşme",
+  },
+  {
+    id: 59,
+    questionText:
+      "3-) Tekstil işiyle uğraşan bir firmanın üretim yapmak için kullandığı kumaş veya ipliği başka firmalardan almak yerine kendinin üretmeye başlaması aşağıdakilerden hangisine örnek teşkil eder?",
+    options: [
+      "A) İleriye doğru dikey bütünleşme",
+      "B) Yatay bütünleşme",
+      "C) İlişkisiz çeşitlendirme",
+      "D) İlişkili çeşitlendirme",
+      "E) Geriye doğru dikey bütünleşme",
+    ],
+    correctAnswer: "E) Geriye doğru dikey bütünleşme",
+  },
+  {
+    id: 60,
+    questionText:
+      "4-) Hangi tür stratejiyi uygulayan bir firma değer zincirinde faaliyet gösterdiği aşamalardan daha sonraki aşamalara yönelir?",
+    options: [
+      "A) Geriye doğru dikey bütünleşme",
+      "B) Bağlantılı ilişkisizi çeşitlendirme",
+      "C) İleri doğru dikey bütünleşme",
+      "D) Zorunlu ilişkisiz çeşitlendirme",
+      "E) Pazara nüfuz",
+    ],
+    correctAnswer: "C) İleri doğru dikey bütünleşme",
+  },
+  {
+    id: 61,
+    questionText:
+      "5-) Üretim ve yönetim süreçlerinin iyileştirilmesinde kullanılabilecek, yeni üretim metotları, yeni yönetim yaklaşımları ve yeni teknolojilerin uygulanmasını içeren yenilik türü aşağıdakilerden hangisidir?",
+    options: [
+      "A) Ürün yeniliği",
+      "B) Stratejik yenilik",
+      "C) Davranışsal yenilik",
+      "D) Pazarlama yeniliği",
+      "E) Süreç yeniliği",
+    ],
+    correctAnswer: "E) Süreç yeniliği",
+  },
+  {
+    id: 62,
+    questionText:
+      "6-) I. Müşteriler\nII. Yasal unsurlar\nIII. Tedarikçiler\nYukarıdakilerden hangisi ya da hangileri yakın çevre unsurları kapsamına girmektedir?",
+    options: [
+      "A) Yalnız I",
+      "B) I ve III",
+      "C) II ve III",
+      "D) I, II ve III",
+      "E) I ve II",
+    ],
+    correctAnswer: "B) I ve III",
+  },
+  {
+    id: 63,
+    questionText:
+      "7-) İşletmenin ana mal veya hizmetlerinin tasarımına ve geliştirilmesine yönelik olarak gerçekleştirilen araştırma ve geliştirme faaliyetleri aşağıdakilerden hangisi ile ifade edilmektedir?",
+    options: [
+      "A) Temel araştırma",
+      "B) Fonksiyonel araştırma",
+      "C) Süreç iyileştirme araştırması",
+      "D) Ticari amaçlı araştırma",
+      "E) Uygulamalı araştırma",
+    ],
+    correctAnswer: "D) Ticari amaçlı araştırma",
+  },
+  {
+    id: 64,
+    questionText:
+      "8-) Müşterilerin yeni ürünlere yönelmeye başlaması, ürünü üreten firma sayısında ve firmaların satışında, kârlılığında sürekli bir azalma görülmesi endüstrinin hangi yaşam döneminde yaşanır?",
+    options: ["A) Giriş", "B) Olgunluk", "C) Düşüş", "D) Büyüme", "E) Sıçrama"],
+    correctAnswer: "C) Düşüş",
+  },
+  {
+    id: 65,
+    questionText:
+      "9-) Johnson and Johnson firmasının 1982 yılında ürettiği ağrı kesicilerinden birine bulaşan siyanür yüzünden ölümlerle sonuçlanan bir krizle karşı karşıya kalmıştır. Firma bu durum karşısında işletme prensiplerinde yer alan felsefeden hareket etmiş ve testlerin, geri kalan kapsüllerin güvenli olduğuna dair olumlu sonuçlar vermesine rağmen ürünü gönüllü olarak piyasadan toplatmıştır.\nYukarıda yer alan olay stratejik yön belirleme unsurlarından hangisiyle ilgilidir?",
+    options: ["A) Değerler", "B) Vizyon", "C) Misyon", "D) Amaç", "E) Hedef"],
+    correctAnswer: "A) Değerler",
+  },
+  {
+    id: 66,
+    questionText:
+      "10-) Üretilen ürünleri bir araya getirme, depolama ve müşterilere dağıtma ile ilgili faaliyetler değer zincirinin temel faaliyetlerinin hangi aşamasında yapılır?",
+    options: [
+      "A) Üretim",
+      "B) Pazarlama ve satış",
+      "C) İç lojistik",
+      "D) Dış lojistik",
+      "E) Satış sonrası hizmetler",
+    ],
+    correctAnswer: "D) Dış lojistik",
+  },
+  {
+    id: 67,
+    questionText:
+      "11-) Pazar bölümlendirme ile ilgili olarak aşağıdakilerden hangisi yanlıştır?",
+    options: [
+      "A) Bir pazar bölümüne ürün üretmek, uzmanlaşma sebebiyle yüksek maliyetle sonuçlanır.",
+      "B) Her bir pazar bölümünde başarıyı etkileyen faktörler değişebilir.",
+      "C) Aynı endüstrideki firmalar, farklı stratejiler uygulayarak başarılı olabilir.",
+      "D) Müşteri ihtiyaçlarını yakından tanıma imkânı sağlar.",
+      "E) Belirli bir ürünün müşterilerinin ortak özellikleri açıklanabilir.",
+    ],
+    correctAnswer:
+      "A) Bir pazar bölümüne ürün üretmek, uzmanlaşma sebebiyle yüksek maliyetle sonuçlanır.",
+  },
+  {
+    id: 68,
+    questionText:
+      "12-) Özel bir amaç dizisini gerçekleştirmek için tasarlanan, geniş kapsamlı faaliyetler dizisini içeren tek kullanımlı plana ne ad verilir?",
+    options: [
+      "A) Taktik",
+      "B) Misyon",
+      "C) Vizyon",
+      "D) Program",
+      "E) Politika",
+    ],
+    correctAnswer: "D) Program",
+  },
+  {
+    id: 69,
+    questionText:
+      "13-) I. Vizyonu diğerlerine anlatabilme yeteneği\nII. Liderin vizyon paylaşımını yazılı ve sözlü iletişimle sınırlı tutması\nIII. Vizyonu, farklı liderlik durumlarına ya da ortamlarına uygun şekilde genişletebilmek\nYukarıdakilerden hangisi ya da hangileri vizyoner liderliğin özellikleri arasında yer alır?",
+    options: [
+      "A) Yalnız I",
+      "B) I ve II",
+      "C) I ve III",
+      "D) I, II ve III",
+      "E) II ve III",
+    ],
+    correctAnswer: "C) I ve III",
+  },
+  {
+    id: 70,
+    questionText:
+      "14-) Aşağıdakilerden hangisi bir firmanın yetenekleri arasında sayılmaktadır?",
+    options: [
+      "A) Firmanın şöhreti",
+      "B) Telif hakları",
+      "C) Mülkiyet hakları",
+      "D) Ticari sırlar",
+      "E) Değişimi yönetme",
+    ],
+    correctAnswer: "E) Değişimi yönetme",
+  },
+  {
+    id: 71,
+    questionText:
+      "15-) İşletmelerin, yenilikte ilk olan işletmelerin ürünlerinin hatalarını düzeltmesi ya da yeni fonksiyonlar eklemesi yenilikçi işletme stratejilerinden hangisi ile açıklanır?",
+    options: [
+      "A) Saldırgan Strateji",
+      "B) Savunma Stratejisi",
+      "C) Geleneksel Stratejiler",
+      "D) Fırsatları İzleme Stratejisi",
+      "E) Bağımlı Stratejiler",
+    ],
+    correctAnswer: "B) Savunma Stratejisi",
+  },
+  {
+    id: 72,
+    questionText:
+      "16-) Değerlerle ilgili olarak aşağıdakilerden hangisi söylenemez?",
+    options: [
+      "A) Değerler çalışanların davranışlarının benzeşmesine yol açabilir.",
+      "B) Değerler örgütlerde davranışları değerlendirmede yol gösterici rol oynar.",
+      "C) Her örgüt; özelliği, kaynak ve yeteneği ne olursa olsun aynı değerlere sahiptir.",
+      "D) Günümüzde tüm örgütler için ortak payda oluşturabilecek değerlerden bazıları dürüstlük, şeffaflık, sorumluluktur.",
+      "E) Değerler zaman içerisinde nispeten kalıcıdır.",
+    ],
+    correctAnswer:
+      "C) Her örgüt; özelliği, kaynak ve yeteneği ne olursa olsun aynı değerlere sahiptir.",
+  },
+  {
+    id: 73,
+    questionText:
+      "17-) Aşağıdakilerden hangisi stratejik kontrol faaliyetleri gerçekleştirmenin zorluklarından biri değildir?",
+    options: [
+      "A) Geleceği doğru tahmin etmek zorlaşmıştır.",
+      "B) Kesin planlama yapılabilecek zaman aralığı daralmaktadır.",
+      "C) Çevresel karmaşıklık düzeyi artmıştır.",
+      "D) Dikkate alınması gereken değişken sayısı azalmıştır.",
+      "E) Örgütleri etkileyen yerel ve uluslararası olayların sayısı artmıştır.",
+    ],
+    correctAnswer: "D) Dikkate alınması gereken değişken sayısı azalmıştır.",
+  },
+  {
+    id: 74,
+    questionText:
+      '18-) "Eğer belirli bir miktarın üzerinde satış gerçekleştirirsen sana araba alırım." şeklindeki ifade aşağıdaki liderlik yaklaşımlarından hangisi ile özdeşleşmektedir?',
+    options: [
+      "A) Etkileşimci liderlik",
+      "B) Stratejik liderlik",
+      "C) Mikro liderlik",
+      "D) Dönüştürücü liderlik",
+      "E) Vizyoner liderlik",
+    ],
+    correctAnswer: "A) Etkileşimci liderlik",
+  },
+  {
+    id: 75,
+    questionText:
+      "19-) Tüm şirket çalışanları, birimleri, süreçleri ve teknolojisinin müşteri istek ve ihtiyaçlarındaki değişime karşı hassas olmasını ve bu noktadaki yeni talepleri uygulamaya geçirebilmesini öngören üretim sistemi aşağıdakilerden hangisidir?",
+    options: [
+      "A) Matriks strateji",
+      "B) Kitlesel özel üretim stratejisi",
+      "C) Kitlesel üretim stratejisi",
+      "D) Sürekli iyileştirme stratejisi",
+      "E) Ürün stratejisi",
+    ],
+    correctAnswer: "B) Kitlesel özel üretim stratejisi",
+  },
+  {
+    id: 76,
+    questionText:
+      "20-) Tedarikçinin pazarlık gücü aşağıdaki durumların hangisinde artar?",
+    options: [
+      "A) Endüstriye az sayıda tedarikçinin hâkim olması",
+      "B) Tedarikçinin ürünlerinin müşteri için önemli bir girdi olmaması",
+      "C) Endüstrideki firmaların tedarikçinin ürünleri için önemli bir müşteri olarak görülmesi",
+      "D) Tedarikçilerin ikame malların tehdidi altında olması",
+      "E) Tedarikçilerin yüksek ölçüde farklılaştırılmış ürünler üretmemesi",
+    ],
+    correctAnswer: "A) Endüstriye az sayıda tedarikçinin hâkim olması",
+  },
 ];
 
 export const lessons: Lesson[] = [

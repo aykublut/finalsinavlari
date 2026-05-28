@@ -8,6 +8,8 @@ config({ path: ".env.local" });
 const sql = postgres(process.env.DATABASE_URL, { prepare: false });
 
 const statements = [
+  // İsim benzersizliği (büyük/küçük harf duyarsız)
+  `create unique index if not exists players_name_ci_unique on players (lower(name))`,
   // RLS aç
   `alter table players enable row level security`,
   `alter table matches enable row level security`,

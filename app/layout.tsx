@@ -21,18 +21,41 @@ export const viewport: Viewport = {
   themeColor: "#050505", // iOS/Android üst durum çubuğu rengi (uygulamanın arkaplan rengiyle aynı yap)
 };
 
+// Link önizlemelerinde (WhatsApp vb.) og:image'in mutlak URL'ye dönüşmesi için
+// site adresi. Vercel'de otomatik; kendi domaininde NEXT_PUBLIC_SITE_URL ile ayarla.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
+
 // 2. METADATA AYARLARI: Ana ekrana ekleme (PWA) ve iOS ayarları
 export const metadata: Metadata = {
-  title: "SORU ÇÖZ",
-  description: "Harika bir soru çözüm uygulaması",
+  metadataBase: new URL(siteUrl),
+  title: "KİM FİNALDEN GEÇMEK İSTER?",
+  description: "Sınıfça canlı yarış, skorunu hanene yaz.",
   // manifest: "/manifest.json", // Tam bir PWA yapmak için ileride bunu açmalısın
   appleWebApp: {
     capable: true, // Safari'de "Ana Ekrana Ekle" dendiğinde tam ekran açılmasını sağlar
     statusBarStyle: "black-translucent", // Üst saatin olduğu kısmı uygulamanın içine yedirir
-    title: "Soru Çöz",
+    title: "KİM FİNALDEN GEÇMEK İSTER?",
   },
   formatDetection: {
     telephone: false, // Rakamları yanlışlıkla telefon numarası olarak algılamasını engeller
+  },
+  // Link önizlemesi (WhatsApp büyük/poster görsel için og:image 1200x630 →
+  // app/opengraph-image.tsx otomatik eklenir)
+  openGraph: {
+    title: "KİM FİNALDEN GEÇMEK İSTER?",
+    description: "Sınıfça canlı yarış, skorunu hanene yaz.",
+    type: "website",
+    locale: "tr_TR",
+    siteName: "KİM FİNALDEN GEÇMEK İSTER?",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KİM FİNALDEN GEÇMEK İSTER?",
+    description: "Sınıfça canlı yarış, skorunu hanene yaz.",
   },
 };
 

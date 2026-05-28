@@ -18,12 +18,26 @@ function pickQuestionIds(lessonId: string): number[] {
 }
 
 // Oyuncuyu oluşturur veya günceller, kalıcı id döner.
-export async function ensurePlayer(input: {
+// İsim büyük/küçük harf duyarsız benzersizdir; başkası almışsa reddeder.
+// Hata fırlatmak yerine sonuç objesi döner (prod'da mesajlar gizlenebilir).
+export async function claimProfile(input: {
   id?: string | null;
   name: string;
   avatar: string;
-}): Promise<string> {
+}): Promise<{ ok: true; id: string } | { ok: false; reason: "name_taken" }> {
   const name = input.name.trim().slice(0, 18) || "Yarışmacı";
+
+  // İsim başka bir oyuncuda mı?
+  const holders = await db
+    .select({ id: players.id })
+    .from(players)
+    .where(sql`lower(${players.name}) = lower(${name})`)
+    .limit(1);
+  if (holders.length && holders[0].id !== input.id) {
+    return { ok: false, reason: "name_taken" };
+  }
+
+  // Mevcut oyuncuyu güncelle
   if (input.id) {
     const existing = await db
       .select({ id: players.id })
@@ -31,18 +45,28 @@ export async function ensurePlayer(input: {
       .where(eq(players.id, input.id))
       .limit(1);
     if (existing.length) {
-      await db
-        .update(players)
-        .set({ name, avatar: input.avatar })
-        .where(eq(players.id, input.id));
-      return input.id;
+      try {
+        await db
+          .update(players)
+          .set({ name, avatar: input.avatar })
+          .where(eq(players.id, input.id));
+      } catch {
+        return { ok: false, reason: "name_taken" }; // yarış: unique ihlali
+      }
+      return { ok: true, id: input.id };
     }
   }
-  const [row] = await db
-    .insert(players)
-    .values({ name, avatar: input.avatar })
-    .returning({ id: players.id });
-  return row.id;
+
+  // Yeni oyuncu
+  try {
+    const [row] = await db
+      .insert(players)
+      .values({ name, avatar: input.avatar })
+      .returning({ id: players.id });
+    return { ok: true, id: row.id };
+  } catch {
+    return { ok: false, reason: "name_taken" }; // yarış: unique ihlali
+  }
 }
 
 // Lobiye katıl: o ders için bekleyen bir maç bul veya oluştur, oyuncuyu ekle.

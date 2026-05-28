@@ -12,6 +12,7 @@ import {
 import type { Lesson } from "@/types/quiz";
 import { suspiciousQuestions } from "@/store/suspiciousQuestions";
 import CompetitionRoom from "./competition/CompetitionRoom";
+import { claimProfile } from "./competition/actions";
 
 const subscribeHydration = (cb: () => void) =>
   useQuizStore.persist.onFinishHydration(cb);
@@ -141,6 +142,8 @@ export default function QuizApp() {
   // Yarışma profil taslağı (isim + avatar seçimi)
   const [nameDraft, setNameDraft] = useState("");
   const [avatarDraft, setAvatarDraft] = useState<string | null>(null);
+  const [claimingProfile, setClaimingProfile] = useState(false);
+  const [nameError, setNameError] = useState<string | null>(null);
 
   // Aktif tahmin modu local state
   const [revealed, setRevealed] = useState(false);
@@ -568,11 +571,25 @@ export default function QuizApp() {
             </label>
             <input
               value={nameDraft}
-              onChange={(e) => setNameDraft(e.target.value.slice(0, 18))}
+              onChange={(e) => {
+                setNameDraft(e.target.value.slice(0, 18));
+                if (nameError) setNameError(null);
+              }}
               placeholder="Adın..."
               maxLength={18}
-              className="w-full px-4 py-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-white placeholder:text-slate-600 outline-none focus:border-fuchsia-400/50 focus:bg-white/[0.06] transition-all mb-6"
+              className={`w-full px-4 py-3.5 rounded-2xl bg-white/[0.04] border text-white placeholder:text-slate-600 outline-none focus:bg-white/[0.06] transition-all ${
+                nameError
+                  ? "border-rose-500/60 focus:border-rose-400/70"
+                  : "border-white/10 focus:border-fuchsia-400/50"
+              }`}
             />
+            <p
+              className={`mt-2 mb-4 text-xs font-semibold min-h-[1rem] ${
+                nameError ? "text-rose-400" : "text-transparent"
+              }`}
+            >
+              {nameError ?? "."}
+            </p>
 
             <label className="text-xs font-bold tracking-widest uppercase text-slate-500 mb-3">
               Avatar
@@ -597,15 +614,33 @@ export default function QuizApp() {
             </div>
 
             <button
-              onClick={() =>
-                nameDraft.trim() &&
-                avatarDraft &&
-                setPlayerProfile(nameDraft.trim(), avatarDraft)
-              }
-              disabled={!nameDraft.trim() || !avatarDraft}
+              onClick={async () => {
+                const name = nameDraft.trim();
+                if (!name || !avatarDraft || claimingProfile) return;
+                setClaimingProfile(true);
+                setNameError(null);
+                try {
+                  const res = await claimProfile({
+                    id: playerId,
+                    name,
+                    avatar: avatarDraft,
+                  });
+                  if (res.ok) {
+                    setPlayerId(res.id);
+                    setPlayerProfile(name, avatarDraft);
+                  } else {
+                    setNameError("Bu isim alınmış, başka bir isim seç.");
+                  }
+                } catch {
+                  setNameError("Bağlantı hatası, tekrar dene.");
+                } finally {
+                  setClaimingProfile(false);
+                }
+              }}
+              disabled={!nameDraft.trim() || !avatarDraft || claimingProfile}
               className="mt-auto w-full py-4 rounded-2xl font-bold text-base tracking-wide transition-all active:scale-[0.98] bg-fuchsia-600 hover:bg-fuchsia-500 text-white shadow-lg shadow-fuchsia-500/25 disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              Devam Et
+              {claimingProfile ? "Kontrol ediliyor…" : "Devam Et"}
             </button>
           </div>
         </div>
