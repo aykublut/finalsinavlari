@@ -21,13 +21,11 @@ export const viewport: Viewport = {
   themeColor: "#050505", // iOS/Android üst durum çubuğu rengi (uygulamanın arkaplan rengiyle aynı yap)
 };
 
-// Link önizlemelerinde (WhatsApp vb.) og:image'in mutlak URL'ye dönüşmesi için
-// site adresi. Vercel'de otomatik; kendi domaininde NEXT_PUBLIC_SITE_URL ile ayarla.
+// Link önizlemelerinde (WhatsApp vb.) og:image'in MUTLAK ve herkese açık bir
+// URL'ye dönüşmesi şart — yoksa WhatsApp görseli çekemez. Production domain
+// varsayılan; gerekirse NEXT_PUBLIC_SITE_URL ile ezilebilir.
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000");
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://finalsinavlari.vercel.app";
 
 // 2. METADATA AYARLARI: Ana ekrana ekleme (PWA) ve iOS ayarları
 export const metadata: Metadata = {
