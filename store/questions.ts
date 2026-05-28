@@ -2471,110 +2471,749 @@ const DijitalPazarlama = [
   },
 ];
 
-const ders3Ornek = [
+const StratejikYonetim = [
   {
-    id: 3001,
+    id: 1,
     questionText:
-      "1-) Bu ders için henüz soru eklenmedi. Soruları store/questions.ts içindeki 'ders3Ornek' dizisine ekleyebilirsin.",
+      "1-) Müşteri taleplerinin çok hızlı değiştiği, öngörülemez trendlerin hakim olduğu, ancak hammadde tedarik sürecinin nispeten istikrarlı çalıştığı bir pazarda faaliyet gösteren yenilikçi bir teknoloji veya moda markasının, rekabet avantajı sağlamak için aşağıdaki tedarik zinciri stratejilerinden hangisini uygulaması en mantıklıdır?[cite: 1]",
     options: [
-      "A) Tamam, ekleyeceğim",
-      "B) Anlaşıldı",
-      "C) Devam et",
-      "D) Şimdilik geç",
+      "A) Etkin (Verimli) Tedarik Zinciri",
+      "B) Risk Önleyici Tedarik Zinciri",
+      "C) Muhafazakar Tedarik Zinciri",
+      "D) Duyarlı (Tepkisel) Tedarik Zinciri",
+      "E) Yalın Tedarik Zinciri",
     ],
-    correctAnswer: "A) Tamam, ekleyeceğim",
+    correctAnswer: "D) Duyarlı (Tepkisel) Tedarik Zinciri",
   },
   {
-    id: 3002,
+    id: 2,
     questionText:
-      "2-) Örnek soru: Ders adını ve açıklamasını questions.ts dosyasındaki 'lessons' dizisinden değiştirebilirsin.",
-    options: ["A) title", "B) description", "C) accent", "D) Hepsi"],
-    correctAnswer: "D) Hepsi",
-  },
-  {
-    id: 3003,
-    questionText:
-      "3-) Soru sayısı sınırı yoktur, istediğin kadar ekleyebilirsin.",
-    options: ["A) Doğru", "B) Yanlış"],
-    correctAnswer: "A) Doğru",
-  },
-  {
-    id: 3004,
-    questionText:
-      "1-) Bu ders için henüz soru eklenmedi. Soruları store/questions.ts içindeki 'ders3Ornek' dizisine ekleyebilirsin.",
+      "2-) Bir işletmenin pazarlama, insan kaynakları ve finansman departmanlarının; üst yönetim tarafından belirlenen genel büyüme ve sektörde maliyet lideri olma hedeflerine ulaşmak amacıyla hazırladıkları günlük ve orta vadeli eylem planları, stratejik hiyerarşide hangi düzeyde sınıflandırılır?[cite: 1]",
     options: [
-      "A) Tamam, ekleyeceğim",
-      "B) Anlaşıldı",
-      "C) Devam et",
-      "D) Şimdilik geç",
+      "A) Kurumsal Stratejiler",
+      "B) Rekabet (İş Birimi) Stratejileri",
+      "C) İşlevsel (Bölümsel) Stratejiler",
+      "D) Çeşitlendirme Stratejileri",
+      "E) Çekilme Stratejileri",
     ],
-    correctAnswer: "A) Tamam, ekleyeceğim",
+    correctAnswer: "C) İşlevsel (Bölümsel) Stratejiler",
   },
   {
-    id: 3005,
+    id: 3,
     questionText:
-      "2-) Örnek soru: Ders adını ve açıklamasını questions.ts dosyasındaki 'lessons' dizisinden değiştirebilirsin.",
-    options: ["A) title", "B) description", "C) accent", "D) Hepsi"],
-    correctAnswer: "D) Hepsi",
-  },
-  {
-    id: 3006,
-    questionText:
-      "3-) Soru sayısı sınırı yoktur, istediğin kadar ekleyebilirsin.",
-    options: ["A) Doğru", "B) Yanlış"],
-    correctAnswer: "A) Doğru",
-  },
-  {
-    id: 3007,
-    questionText:
-      "1-) Bu ders için henüz soru eklenmedi. Soruları store/questions.ts içindeki 'ders3Ornek' dizisine ekleyebilirsin.",
+      "3-) Genellikle aynı büyüklükte iki veya daha fazla işletmenin sermaye alışverişi sonunda tüm kaynaklarını bir araya getirerek ortaya yeni bir işletme çıkarmasına ne ad verilir?[cite: 1]",
     options: [
-      "A) Tamam, ekleyeceğim",
-      "B) Anlaşıldı",
-      "C) Devam et",
-      "D) Şimdilik geç",
+      "A) Satın alma stratejisi",
+      "B) Birleşme stratejisi",
+      "C) İşbirliği stratejisi",
+      "D) Yönetim sözleşmesi",
+      "E) Lisans anlaşması",
     ],
-    correctAnswer: "A) Tamam, ekleyeceğim",
+    correctAnswer: "B) Birleşme stratejisi",
   },
   {
-    id: 3008,
+    id: 4,
     questionText:
-      "2-) Örnek soru: Ders adını ve açıklamasını questions.ts dosyasındaki 'lessons' dizisinden değiştirebilirsin.",
-    options: ["A) title", "B) description", "C) accent", "D) Hepsi"],
-    correctAnswer: "D) Hepsi",
-  },
-  {
-    id: 3009,
-    questionText:
-      "3-) Soru sayısı sınırı yoktur, istediğin kadar ekleyebilirsin.",
-    options: ["A) Doğru", "B) Yanlış"],
-    correctAnswer: "A) Doğru",
-  },
-  {
-    id: 3010,
-    questionText:
-      "1-) Bu ders için henüz soru eklenmedi. Soruları store/questions.ts içindeki 'ders3Ornek' dizisine ekleyebilirsin.",
+      "4-) İşletmeler arasında ortaya çıkan dayanışma ve kaynak birleştirme faaliyetlerinin gerçekleştirildiği strateji aşağıdakilerden hangisidir?[cite: 1]",
     options: [
-      "A) Tamam, ekleyeceğim",
-      "B) Anlaşıldı",
-      "C) Devam et",
-      "D) Şimdilik geç",
+      "A) Rekabet stratejisi",
+      "B) Farklılaşma stratejisi",
+      "C) Yenilik stratejisi",
+      "D) Stratejik işbirlikleri",
+      "E) Bütünleşme stratejisi",
     ],
-    correctAnswer: "A) Tamam, ekleyeceğim",
+    correctAnswer: "D) Stratejik işbirlikleri",
   },
   {
-    id: 3011,
+    id: 5,
     questionText:
-      "2-) Örnek soru: Ders adını ve açıklamasını questions.ts dosyasındaki 'lessons' dizisinden değiştirebilirsin.",
-    options: ["A) title", "B) description", "C) accent", "D) Hepsi"],
-    correctAnswer: "D) Hepsi",
+      "5-) İşletmelerin markalı ve özellikli mallarının üretimini başka işletmelere yaptırmalarına imkan veren işbirliği anlaşması aşağıdakilerden hangisidir?[cite: 1]",
+    options: [
+      "A) Know-how anlaşmaları",
+      "B) Outsourcing",
+      "C) Sözleşmeli üretim",
+      "D) Bayilik",
+      "E) Konsorsiyum",
+    ],
+    correctAnswer: "C) Sözleşmeli üretim",
   },
   {
-    id: 3012,
+    id: 6,
     questionText:
-      "3-) Soru sayısı sınırı yoktur, istediğin kadar ekleyebilirsin.",
-    options: ["A) Doğru", "B) Yanlış"],
-    correctAnswer: "A) Doğru",
+      "6-) İşletmenin kaynaklarının nasıl dağıtılacağı, hangi işlere girilip hangi işlerin terk edileceği, faaliyet alanlarının genişletilip genişletilmeyeceği, başka bir işletme ile birleşilip birleşilmeyeceği gibi konuların ele alındığı stratejik yönetim süreci aşaması aşağıdakilerden hangisidir?[cite: 1]",
+    options: [
+      "A) Strateji uygulama",
+      "B) Strateji değerleme",
+      "C) Dış çevre analizi",
+      "D) Strateji oluşturma",
+      "E) Stratejilerin seçimi",
+    ],
+    correctAnswer: "D) Strateji oluşturma",
+  },
+  {
+    id: 7,
+    questionText:
+      '7-) Pazar büyüme durumu\'nu bir değişken, "rekabet durumunu" da bir diğer değişken olarak kabul ederek iki boyutlu bir matris geliştiren görüş aşağıdaki düşünürlerden hangisi tarafından ileri sürülmüştür?[cite: 1]',
+    options: [
+      "A) Thompson - Strickland",
+      "B) C. Hofer",
+      "C) Patel - Younger",
+      "D) Schoffler",
+      "E) Walsh - Mach",
+    ],
+    correctAnswer: "B) C. Hofer",
+  },
+  {
+    id: 8,
+    questionText:
+      "8-) Tüm işletme birimlerinin ihtiyaçlarını ve potansiyellerini dikkate alarak ana şirketin kaynaklarını en iyi şekilde kullanmayı amaçlayan stratejilere ne ad verilir?[cite: 1]",
+    options: [
+      "A) Uluslararası stratejiler",
+      "B) İşletme stratejileri",
+      "C) Şirket Stratejileri (Kurumsal stratejiler)",
+      "D) Operasyonel stratejiler",
+      "E) Farklılaştırma stratejileri",
+    ],
+    correctAnswer: "C) Şirket Stratejileri (Kurumsal stratejiler)",
+  },
+  {
+    id: 9,
+    questionText:
+      "9-) Üst yönetimin hazırladığı şirket ve işletme stratejilerine uygun olarak orta ve alt yönetim düzeylerince hazırlanıp uygulanan ve daha çok teknik bilgi ve uzmanlık isteyen stratejilere ne ad verilir?[cite: 1]",
+    options: [
+      "A) Operasyonel stratejiler",
+      "B) Odaklanma Stratejileri",
+      "C) Farklılaştırma Stratejileri",
+      "D) Maliyet Liderliği Stratejileri",
+      "E) Liderlik Stratejileri",
+    ],
+    correctAnswer: "A) Operasyonel stratejiler",
+  },
+  {
+    id: 10,
+    questionText:
+      "10-) Aşağıdakilerden hangisi işletmelerde her yönetim düzeyinde uygulanabilen temel stratejiler arasında yer almaz?[cite: 1]",
+    options: [
+      "A) Büyüme stratejileri",
+      "B) Küçülme stratejileri",
+      "C) Durağan stratejiler",
+      "D) Karma stratejiler",
+      "E) Kurumsal stratejiler",
+    ],
+    correctAnswer: "E) Kurumsal stratejiler",
+  },
+  {
+    id: 11,
+    questionText:
+      "11-) Aşağıdakilerden hangisi işletmenin tüm faaliyetlerini durdurması ve varlıklarını sona erdirmesi ile ilgili stratejilerdir?[cite: 1]",
+    options: [
+      "A) Kısmi tasfiye stratejisi",
+      "B) Tasarruf stratejisi",
+      "C) İlişkisiz tek merkezli çeşitlendirme stratejisi",
+      "D) Tam tasfiye stratejisi",
+      "E) Rekabet stratejisi",
+    ],
+    correctAnswer: "D) Tam tasfiye stratejisi",
+  },
+  {
+    id: 12,
+    questionText:
+      "12-) İşletmeyi rakiplerinden farklılaştıran kabiliyet ve kapasiteye ne ad verilir?[cite: 1]",
+    options: [
+      "A) Rekabet avantajı",
+      "B) Operasyonel plan",
+      "C) İşletme stratejileri",
+      "D) Temel yetenekler",
+      "E) Taktik plan",
+    ],
+    correctAnswer: "D) Temel yetenekler",
+  },
+  {
+    id: 13,
+    questionText:
+      "13-) Olası rakiplerin pazara girişini maliyetli duruma getirmek ve bu sayede sektördeki mevcut işletmeleri rekabetten korumak amacıyla geliştirilen faktörlere ne ad verilir?[cite: 1]",
+    options: [
+      "A) Ölçek ekonomileri",
+      "B) Pazara giriş engelleri",
+      "C) Tehdit oluşturma",
+      "D) Rekabetçi istihbarat",
+      "E) Değer zinciri yaratma",
+    ],
+    correctAnswer: "B) Pazara giriş engelleri",
+  },
+  {
+    id: 14,
+    questionText:
+      '14-) "İşletme faaliyet veya iş alanında mevcut durumunu koruma amacı" aşağıdaki temel stratejilerden hangisinin tanımıdır?[cite: 1]',
+    options: [
+      "A) Durağan",
+      "B) Büyüme",
+      "C) Küçülme",
+      "D) Karma",
+      "E) Farklılaştırma",
+    ],
+    correctAnswer: "A) Durağan",
+  },
+  {
+    id: 15,
+    questionText:
+      "15-) İşletmelerin maksatlı olarak mevcut iş ve faaliyetlerinden bazılarını sürekli olarak terk etmesi, vazgeçmesi veya durdurması stratejisine ne ad verilir?[cite: 1]",
+    options: [
+      "A) Tam tasfiye stratejisi",
+      "B) Tasarruf stratejisi",
+      "C) Kısmi tasfiye stratejisi",
+      "D) Maliyet liderliği stratejisi",
+      "E) Bağımlı küçülme stratejisi",
+    ],
+    correctAnswer: "C) Kısmi tasfiye stratejisi",
+  },
+  {
+    id: 16,
+    questionText:
+      "16-) Aşağıdakilerden hangisi strateji oluşturma kapsamında yer almaz?[cite: 1]",
+    options: [
+      "A) Vizyon ve misyonun oluşturulması",
+      "B) Stratejilerin değerlenmesi",
+      "C) İşletme dışından kaynaklanan fırsat ve tehditlerin belirlenmesi",
+      "D) İşletme içinden kaynaklanan güçlü ve zayıf yönlerin belirlenmesi SWOT",
+      "E) Uzun dönemli amaçların saptanması",
+    ],
+    correctAnswer: "B) Stratejilerin değerlenmesi",
+  },
+  {
+    id: 17,
+    questionText:
+      "17-) Boston Danışma Grubu İşbirimleri Portföy Yönetim Matrisinde hem pazarın büyüme hızı, hem de göreceli pazar payı düşük olan işletmelere ne ad verilir?[cite: 1]",
+    options: [
+      "A) Yıldızlar",
+      "B) Belirsizler",
+      "C) Nakit depoları",
+      "D) Otonomlar",
+      "E) İtler (Köpekler)",
+    ],
+    correctAnswer: "E) İtler (Köpekler)",
+  },
+  {
+    id: 18,
+    questionText:
+      "18-) Boston Danışma Grubu İşbirimleri Portföy Yönetim Matrisinde göreceli pazar payının belirlenmesinde kullanılan formül aşağıdakilerden hangisidir?[cite: 1]",
+    options: [
+      "A) İşbiriminin satışları/Sektörde toplam satışlar",
+      "B) İşbiriminin cari yıl satışları/Sektör ortalama satışları",
+      "C) İşbiriminin satışları/Esas rakibin satışları",
+      "D) Sektör satışları/İşbiriminin satışları",
+      "E) Sektör satışları/Sektör ortalama satışları",
+    ],
+    correctAnswer: "C) İşbiriminin satışları/Esas rakibin satışları",
+  },
+  {
+    id: 19,
+    questionText:
+      '19-) "Beş Güç Modeli" ile ilgili aşağıdaki ifadelerden hangisi doğrudur?[cite: 1]',
+    options: [
+      "A) Örgütün iş çevresinin analizinde kullanılır",
+      "B) Modelde yer alan faktörlerin güçlenmesi işletmenin karlılığını artırır.",
+      "C) Modelde yer alan faktörlerin şiddeti azaldıkça işletme için tehdit oluşturma olasılığı artar.",
+      'D) Modeli oluşturan beş faktörden biri "çalışanların rekabet gücü"dür.',
+      'E) Modeli oluşturan beş faktörden biri "teknolojik yeniliklerin varlığı"dır.',
+    ],
+    correctAnswer: "A) Örgütün iş çevresinin analizinde kullanılır",
+  },
+  {
+    id: 20,
+    questionText:
+      "20-) İşletmenin amaçlarına nasıl ulaşacağını belirleyen, rakiplerin faaliyetlerinin izlenmesini içeren, nihai sonuca odaklı, uzun dönemli bakış açısına dayalı, dinamik kararlar topluluğuna ne ad verilir?[cite: 1]",
+    options: [
+      "A) Taktik",
+      "B) Yönetim",
+      "C) Strateji",
+      "D) Kısa dönemli planlama",
+      "E) Stratejik düşünme",
+    ],
+    correctAnswer: "C) Strateji",
+  },
+  {
+    id: 21,
+    questionText:
+      "21-) İşletmenin sahip olduğu yeteneklerin başka alternatif yetenekler kullanılarak gerçekleştirilememesi ile ilgili olan temel yetenek kriteri aşağıdakilerden hangisidir?[cite: 1]",
+    options: [
+      "A) Nadir olması",
+      "B) Taklit edilemez olması",
+      "C) Değerli olması",
+      "D) Güncel olması",
+      "E) İkame edilemez olması",
+    ],
+    correctAnswer: "E) İkame edilemez olması",
+  },
+  {
+    id: 22,
+    questionText:
+      "22-) Aşağıdakilerden hangisi yeni işletmelerin pazara girişini zorlaştıran nedenlerden biri değildir?[cite: 1]",
+    options: [
+      "A) Pazardaki mevcut firmaların ölçek ekonomisine sahip olması",
+      "B) Pazardaki işletmelerin sadık müşteri grubuna sahip olması",
+      "C) Pazara yeni girecek işletmenin pazardaki mevcut ürünü daha düşük fiyatla satabilmesi",
+      "D) Pazardaki işletmelerin etkili dağıtım sistemine sahip olması",
+      "E) Pazara girişte yüksek miktarda sermayeye ihtiyaç duyulması",
+    ],
+    correctAnswer:
+      "C) Pazara yeni girecek işletmenin pazardaki mevcut ürünü daha düşük fiyatla satabilmesi",
+  },
+  {
+    id: 23,
+    questionText:
+      "23-) Aşağıdakilerden hangisi örgütsel misyon içerisinde yer alabilecek unsurlardan biri değildir?[cite: 1]",
+    options: [
+      "A) Örgütün rekabet stratejileri",
+      "B) Örgütün faaliyet alanı",
+      "C) Örgütün değer ve inançları",
+      "D) Örgütün ilişkide bulunduğu kitleler",
+      "E) Örgütün ürettiği ürünler",
+    ],
+    correctAnswer: "A) Örgütün rekabet stratejileri",
+  },
+  {
+    id: 24,
+    questionText:
+      '24-) Aşağıdakilerden hangisi işletmenin genel çevresinde yer alan "politik faktörler" içinde yer almaz?[cite: 1]',
+    options: [
+      "A) Adil rekabet kararları",
+      "B) Enflasyon oranları",
+      "C) AR-GE destekleri",
+      "D) Patent yasaları",
+      "E) Vergi düzenlemeleri",
+    ],
+    correctAnswer: "B) Enflasyon oranları",
+  },
+  {
+    id: 25,
+    questionText:
+      "25-) Aşağıdaki durumlardan hangisinde tedarikçilerin alıcılara karşı pazarlık gücü yüksektir?[cite: 1]",
+    options: [
+      "A) Bir çok tedarikçinin varlığı söz konusuysa",
+      "B) Yeterli düzeyde ikame tedarik kaynağı mevcutsa",
+      "C) Tedarik edilen ürünlerin değiştirme maliyetleri düşükse",
+      "D) Alıcının yaptığı satın almalar, tedarikçinin satışlarının büyük bölümünü oluşturuyorsa",
+      "E) Tedarikçinin ürünlerinin alıcının pazardaki başarısı için önemliyse",
+    ],
+    correctAnswer:
+      "E) Tedarikçinin ürünlerinin alıcının pazardaki başarısı için önemliyse",
+  },
+  {
+    id: 26,
+    questionText:
+      "26-) Aşağıdakilerden hangisi amaçların oluşturulmasında dikkate alınması gereken ilkelerden biri değildir?[cite: 1]",
+    options: [
+      "A) Ölçülebilir olması",
+      "B) Gerçekçi olması",
+      "C) Durağan olması",
+      "D) Motive edici olması",
+      "E) Uyumlu olması",
+    ],
+    correctAnswer: "C) Durağan olması",
+  },
+  {
+    id: 27,
+    questionText:
+      "27-) İşletmelerin amaçlarını gerçekleştirmeye çalışırken etkiledikleri ve etkilendikleri birey ve gruplara ne ad verilir?[cite: 1]",
+    options: [
+      "A) Rakipler",
+      "B) Çalışanlar",
+      "C) Paydaşlar",
+      "D) Müşteriler",
+      "E) Medya",
+    ],
+    correctAnswer: "C) Paydaşlar",
+  },
+  {
+    id: 28,
+    questionText:
+      '28-) "Biz ne olmak istiyoruz" sorusunun cevabı aşağıdakilerden hangisini ifade eder?[cite: 1]',
+    options: [
+      "A) Vizyon",
+      "B) Amaçlar",
+      "C) Fırsatlar",
+      "D) Hedefler",
+      "E) Misyon",
+    ],
+    correctAnswer: "A) Vizyon",
+  },
+  {
+    id: 29,
+    questionText:
+      '29-) "İşletme olarak bizim işimiz nedir?" sorusunun cevabını veren kavram aşağıdakilerden hangisidir?[cite: 1]',
+    options: [
+      "A) Vizyon",
+      "B) Amaçlar",
+      "C) Misyon",
+      "D) Fırsatlar",
+      "E) Görev tanımları",
+    ],
+    correctAnswer: "C) Misyon",
+  },
+  {
+    id: 30,
+    questionText:
+      "30-) Aşağıdakilerden hangisi Porter yaklaşımının temel katkılarından biri değildir?[cite: 1]",
+    options: [
+      "A) Beş rekabetçi güç analizi",
+      "B) Jenerik rekabet stratejileri",
+      "C) Değer zinciri yaklaşımı",
+      "D) Öğrenen örgüt disiplinleri",
+      "E) Rekabetçi konumlandırma vurgusu",
+    ],
+    correctAnswer: "D) Öğrenen örgüt disiplinleri",
+  },
+  {
+    id: 31,
+    questionText:
+      "31-) Aşağıdakilerden hangisi Değer Zincirini oluşturan temel faaliyetler arasında yer almaz?[cite: 1]",
+    options: [
+      "A) İç lojistik",
+      "B) İşlemler",
+      "C) Dış lojistik",
+      "D) Tedarik",
+      "E) Servis",
+    ],
+    correctAnswer: "D) Tedarik",
+  },
+  {
+    id: 32,
+    questionText:
+      "32-) Mintzberg'in sınıflandırmasına göre başlangıçta planlanmayan ancak süreçte ortaya çıkan strateji türü hangisidir?[cite: 1]",
+    options: [
+      "A) Amaçlanan strateji",
+      "B) Kurumsal strateji",
+      "C) Gerçekleşen strateji",
+      "D) Oluşan strateji",
+      "E) Fonksiyonel strateji",
+    ],
+    correctAnswer: "D) Oluşan strateji",
+  },
+  {
+    id: 33,
+    questionText:
+      '33-) "Strateji doğru işi seçer, plan seçilen işi uygular" ifadesine göre aşağıdakilerden hangisi plan örneğidir?[cite: 1]',
+    options: [
+      "A) Premium müşteri segmentine odaklanma kararı",
+      "B) Farklılaşma stratejisiyle rekabet etme",
+      "C) Q3'te 20 kurumsal müşteri ziyareti ve bütçe ataması",
+      "D) Sektörde maliyet liderliği seçimi",
+      "E) Hangi pazarda yarışılacağının belirlenmesi",
+    ],
+    correctAnswer: "C) Q3'te 20 kurumsal müşteri ziyareti ve bütçe ataması",
+  },
+  {
+    id: 34,
+    questionText:
+      "34-) Aşağıdakilerden hangisi uyumlu bir amaç-hedef-strateji setidir?[cite: 1]",
+    options: [
+      "A) Amaç: Kârlılık artışı / Hedef: Instagram takipçisi +50% / Strateji: çekiliş",
+      "B) Amaç: İş seyahati segmentinde güçlenme / Hedef: Hafta içi doluluk %62 -> %75 / Strateji: kurumsal müşteri odaklı farklılaşma",
+      "C) Amaç: Marka imajı / Hedef: Elektrik giderini azaltma / Strateji: depo alanı kiralama",
+      "D) Amaç: Verimlilik / Hedef: Yeni logo / Strateji: sosyal medya paylaşımı",
+      "E) Amaç: Sürdürülebilirlik / Hedef: Fiyat indirimi / Strateji: yoğun promosyon",
+    ],
+    correctAnswer:
+      "B) Amaç: İş seyahati segmentinde güçlenme / Hedef: Hafta içi doluluk %62 -> %75 / Strateji: kurumsal müşteri odaklı farklılaşma",
+  },
+  {
+    id: 35,
+    questionText:
+      '35-) Aşağıdakilerden hangisi "strateji-politika" ayrımını en doğru ifade eder?[cite: 1]',
+    options: [
+      "A) Strateji iç kuralları, politika dış çevreyi belirler",
+      "B) Strateji ve politika eş anlamlıdır",
+      "C) Strateji dış çevrede nasıl rekabet edileceğini, politika karar ilkelerini belirler",
+      "D) Politika stratejiden daha dinamiktir",
+      "E) Politika sadece finans birimini ilgilendirir",
+    ],
+    correctAnswer:
+      "C) Strateji dış çevrede nasıl rekabet edileceğini, politika karar ilkelerini belirler",
+  },
+  {
+    id: 36,
+    questionText:
+      "36-) Peters ve Waterman yaklaşımında stratejik başarının kilit unsuru hangisidir?[cite: 1]",
+    options: [
+      "A) Sadece sektör analizi",
+      "B) Sadece portföy matrisi",
+      "C) Uygulama kalitesi, kültür, liderlik ve müşteri yakınlığı",
+      "D) Sadece yazılı plan dokümanı",
+      "E) Sadece düşük maliyet",
+    ],
+    correctAnswer:
+      "C) Uygulama kalitesi, kültür, liderlik ve müşteri yakınlığı",
+  },
+  {
+    id: 37,
+    questionText:
+      "37-) Aşağıdakilerden hangisi strateji ile taktik arasındaki farkı doğru verir?[cite: 1]",
+    options: [
+      "A) Strateji kısa vadeli, taktik uzun vadelidir",
+      "B) Strateji iç süreç, taktik dış çevredir",
+      "C) Strateji yön ve tercih; taktik kısa vadeli uygulama hamlesidir",
+      "D) Taktik üst yönetim, strateji alt yönetim işidir",
+      "E) İkisi tamamen aynıdır",
+    ],
+    correctAnswer:
+      "C) Strateji yön ve tercih; taktik kısa vadeli uygulama hamlesidir",
+  },
+  {
+    id: 38,
+    questionText: "38-) Aşağıdakilerden hangisi strateji ifadesidir?[cite: 1]",
+    options: [
+      "A) Bu hafta sosyal medya reklamı başlatmak",
+      "B) Ay sonuna kadar 3 personel almak",
+      "C) Kitle turizmi yerine yüksek harcama segmentine odaklanmak",
+      "D) Günlük doluluk raporu hazırlamak",
+      "E) Bütçeyi üç aylık revize etmek",
+    ],
+    correctAnswer:
+      "C) Kitle turizmi yerine yüksek harcama segmentine odaklanmak",
+  },
+  {
+    id: 39,
+    questionText:
+      '39-) "Kim, neyi, ne zaman, hangi kaynakla yapacak?" sorusu en çok hangi kavrama aittir?[cite: 1]',
+    options: [
+      "A) Vizyon",
+      "B) Misyon",
+      "C) Strateji",
+      "D) Plan",
+      "E) Politika",
+    ],
+    correctAnswer: "D) Plan",
+  },
+  {
+    id: 40,
+    questionText: "40-) Aşağıdakilerden hangisi amaç ifadesidir?[cite: 1]",
+    options: [
+      "A) 6 ayda satışları %12 artırmak",
+      "B) 2027'de premium segmentte güçlü marka olmak",
+      "C) Bu ay 30 kurumsal ziyaret yapmak",
+      "D) Haftalık kampanya bütçesini 50.000 TL'ye çıkarmak",
+      "E) Check-in süresini 4 dakikaya indirmek",
+    ],
+    correctAnswer: "B) 2027'de premium segmentte güçlü marka olmak",
+  },
+  {
+    id: 41,
+    questionText:
+      '41-) Aşağıdaki senaryolardan hangisi Andy Grove\'un "Stratejik Kırılma Noktası"nı en iyi tarif eder?[cite: 1]',
+    options: [
+      "A) Şirketin yıllık satış hedeflerine ulaşamaması.",
+      "B) Rakip bir firmanın yeni bir reklam kampanyası başlatması.",
+      "C) Sektör kurallarının, müşteri beklentilerinin ve rekabetin artık geri dönülemez şekilde değiştiği an.",
+      "D) Ham madde fiyatlarında yaşanan %5'lik bir artış.",
+      "E) Şirket CEO'sunun emekli olması.",
+    ],
+    correctAnswer:
+      "C) Sektör kurallarının, müşteri beklentilerinin ve rekabetin artık geri dönülemez şekilde değiştiği an.",
+  },
+  {
+    id: 42,
+    questionText:
+      "42-) Strateji-operasyon ayrımı için en doğru ifade hangisidir?[cite: 1]",
+    options: [
+      "A) İkisi de aynı anlama gelir",
+      "B) Operasyon yönü belirler, strateji günlük işleri yürütür",
+      "C) Strateji yön/tercih üretir; operasyon süreçleri etkin işletir",
+      "D) Operasyon sadece üst yönetimin işidir",
+      "E) Strateji sadece alt kademe işidir",
+    ],
+    correctAnswer:
+      "C) Strateji yön/tercih üretir; operasyon süreçleri etkin işletir",
+  },
+  {
+    id: 43,
+    questionText:
+      "43-) Aşağıdakilerden hangisi Porter'ın Beş Rekabetçi Güç modelinde yer almaz?[cite: 1]",
+    options: [
+      "A) Mevcut rakipler arasındaki rekabet",
+      "B) Tedarikçilerin pazarlık gücü",
+      "C) Devletin doğrudan fiyat belirleme gücü",
+      "D) İkame ürünlerin tehdidi",
+      "E) Yeni girenlerin tehdidi",
+    ],
+    correctAnswer: "C) Devletin doğrudan fiyat belirleme gücü",
+  },
+  {
+    id: 44,
+    questionText:
+      "44-) Hamel ve Prahalad'ın stratejik yönetime en önemli katkısı aşağıdakilerden hangisidir?[cite: 1]",
+    options: [
+      "A) Beş Güç modelini geliştirmek",
+      "B) Stratejik kırılma noktası kavramını ortaya koymak",
+      "C) Temel yetenek (core competence) yaklaşımını geliştirme",
+      "D) Fiyat liderliği stratejisini oluşturmak",
+      "E) Pazar payı analizini geliştirmek",
+    ],
+    correctAnswer: "C) Temel yetenek (core competence) yaklaşımını geliştirme",
+  },
+  {
+    id: 45,
+    questionText: "45-) Aşağıdaki eşleştirmelerden hangisi yanlıştır?[cite: 1]",
+    options: [
+      "A) Porter - Sektör ve rekabet analizi",
+      "B) Barney - Kaynak temelli yaklaşım",
+      "C) Hamel & Prahalad - Temel yetenekler",
+      "D) Slywotzky - Değer göçü ve iş modeli",
+      "E) Andy Grove - Beş Güç modeli",
+    ],
+    correctAnswer: "E) Andy Grove - Beş Güç modeli",
+  },
+  {
+    id: 46,
+    questionText:
+      "46-) Aşağıdakilerden hangisi Endüstriyel Örgüt (I/O) yaklaşımının temel varsayımını en doğru şekilde yansıtır?[cite: 1]",
+    options: [
+      "A) İşletme performansını yalnızca içsel kaynaklar belirler",
+      "B) Rekabet avantajı işletmenin kültürel yapısından doğar",
+      "C) Sektör yapısı ve rekabet koşulları firma performansını önemli ölçüde belirler",
+      "D) İşletme performansı tamamen yöneticilerin sezgilerine bağlıdır",
+      "E) Başarı yalnızca teknolojik yeniliklere bağlıdır",
+    ],
+    correctAnswer:
+      "C) Sektör yapısı ve rekabet koşulları firma performansını önemli ölçüde belirler",
+  },
+  {
+    id: 47,
+    questionText:
+      "47-) Yapı-Davranış-Performans (SCP) paradigmasına göre, bir sektörde faaliyet gösteren firma sayısının çok az olması ve giriş engellerinin yüksekliği öncelikle hangi aşamayı belirler ve bu durum performansı nasıl etkiler?[cite: 1]",
+    options: [
+      "A) Davranış aşamasını belirler; aşırı kârlılığa yol açar.",
+      "B) Yapı aşamasını belirler; fiyat rekabetinin azalmasına ve yüksek kârlılığa zemin hazırlar.",
+      "C) Performans aşamasını belirler; operasyonel verimliliği zorunlu kılar.",
+      "D) Davranış aşamasını belirler; ürün farklılaştırmasını imkansız hale getirir.",
+      "E) Yapı aşamasını belirler; ancak performans üzerinde doğrudan bir etkisi yoktur.",
+    ],
+    correctAnswer:
+      "B) Yapı aşamasını belirler; fiyat rekabetinin azalmasına ve yüksek kârlılığa zemin hazırlar.",
+  },
+  {
+    id: 48,
+    questionText:
+      "48-) I/O Teorisi ile RBV arasındaki temel farkı en iyi hangi seçenek açıklar?[cite: 1]",
+    options: [
+      'A) I/O "ne yapıldığına", RBV "nasıl yapıldığına" odaklanır.',
+      "B) I/O sektörel çekiciliği (dış çevre), RBV ise içsel yetenekleri (kaynaklar) temel alır.",
+      "C) I/O kısa vadeli, RBV uzun vadeli planlar için kullanılır.",
+      "D) I/O sadece üretim, RBV ise hizmet sektörü için geçerlidir.",
+      "E) Aralarında temel bir fark yoktur; her ikisi de dış çevreyi önceler.",
+    ],
+    correctAnswer:
+      "B) I/O sektörel çekiciliği (dış çevre), RBV ise içsel yetenekleri (kaynaklar) temel alır.",
+  },
+  {
+    id: 49,
+    questionText:
+      "49-) Bir firmanın sahip olduğu patentli bir teknoloji, sektördeki diğer tüm firmalar tarafından kolayca lisanslanabiliyorsa, RBV perspektifinden bu kaynak için ne söylenebilir?[cite: 1]",
+    options: [
+      "A) Sürdürülebilir rekabet avantajı sağlar.",
+      "B) Değerli (Valuable) olsa bile nadir (Rare) olmadığı için sadece rekabet eşitliği sağlar.",
+      "C) Taklit edilemez (Inimitable) bir kaynaktır.",
+      "D) Şirketin kâr bölgesini sonsuza dek korur.",
+      "E) 10X kuvvetine karşı tek savunma hattıdır.",
+    ],
+    correctAnswer:
+      "B) Değerli (Valuable) olsa bile nadir (Rare) olmadığı için sadece rekabet eşitliği sağlar.",
+  },
+  {
+    id: 50,
+    questionText:
+      '50-) Slywotzky\'nin "İş Tasarımı" modelinde yer alan "Müşteri Seçimi" bileşeni hakkında hangisi en doğru ifadedir?[cite: 1]',
+    options: [
+      "A) Şirketin ulaşabileceği her müşteriye ürün satma çabasıdır.",
+      "B) Pazardaki en ucuz ürünü talep eden kitleye odaklanmaktır.",
+      "C) Hangi müşterilere hizmet verilmeyeceğinin belirlendiği stratejik bir eleme sürecidir.",
+      "D) Sadece en yüksek geliri olan müşterileri seçmektir.",
+      "E) Rakip firmaların müşterilerini çalma stratejisidir.",
+    ],
+    correctAnswer:
+      "C) Hangi müşterilere hizmet verilmeyeceğinin belirlendiği stratejik bir eleme sürecidir.",
+  },
+  {
+    id: 51,
+    questionText:
+      "51-) Aşağıdakilerden hangisi işletmelerin stratejik işbirliği yapma amaçları arasında yer almaz?[cite: 2]",
+    options: [
+      "A) Potansiyel rakiplerle işbirliği yaparak tehdit oluşturmalarını önlemek",
+      "B) Tek başlarına geliştiremedikleri tamamlayıcı ürünleri/hizmetleri dışarıdan temin etmek",
+      "C) İşbirliğinden doğan sinerji ile değer yaratmak",
+      "D) Mevcut pazarlarda büyümek",
+      "E) Rakip işletmenin mülkiyetini ele geçirmek",
+    ],
+    correctAnswer: "E) Rakip işletmenin mülkiyetini ele geçirmek",
+  },
+  {
+    id: 52,
+    questionText:
+      "52-) Stratejik değerlendirme ve kontrol sürecinde 'Standartların Belirlenmesi' aşamasıyla ilgili aşağıdaki ifadelerden hangisi doğrudur?[cite: 2]",
+    options: [
+      "A) Standartlar, çalışanların tepkisini çekmemek için her zaman ulaşılabilecek en düşük seviyede belirlenmelidir.",
+      "B) Standartlar bir kez belirlendikten sonra, dış çevre koşulları ne kadar değişirse değişsin şirket tarihi boyunca asla revize edilmemelidir.",
+      "C) Etkin bir stratejik kontrol için belirlenen standartların hem ölçülebilir (nicel/nitel) hem de işletmenin stratejik hedefleriyle doğrudan bağ kurması gerekir.",
+      "D) Stratejik uyumun sağlanması için tüm departmanlara sektöre bakılmaksızın tamamen aynı operasyonel standartlar dayatılmalıdır.",
+      "E) Çağdaş yaklaşımda standartlar, sadece geçmiş dönem muhasebe verilerinin aritmetik ortalaması alınarak statik şekilde kurulur.",
+    ],
+    correctAnswer:
+      "C) Etkin bir stratejik kontrol için belirlenen standartların hem ölçülebilir (nicel/nitel) hem de işletmenin stratejik hedefleriyle doğrudan bağ kurması gerekir.",
+  },
+  {
+    id: 53,
+    questionText:
+      "53-) PIMS (Profit Impact of Market Strategy) Analizi ile ilgili olarak aşağıda verilen ifadelerden hangisi doğrudur?[cite: 2]",
+    options: [
+      "A) Yeni kurulan start-up'ların ve yüksek teknoloji şirketlerinin stratejik kontrolünde en yüksek etkinliğe sahip yöntemdir.",
+      "B) İşletmenin kendi performansını dünya genelindeki binlerce gerçek şirketin ampirik verileri ve endüstri standartları ile kıyaslamasını sağlayan bir benchmarking aracıdır.",
+      "C) Strateji ile performans arasında doğrusal olmayan, tamamen sezgisel bağlar kurar.",
+      "D) İşletmelerin finansal verilerini anlık (real-time) olarak takip eden bir ERP yazılımıdır.",
+      "E) Sadece müşteri memnuniyeti ve sürdürülebilirlik gibi finansal olmayan değişkenleri ölçer.",
+    ],
+    correctAnswer:
+      "B) İşletmenin kendi performansını dünya genelindeki binlerce gerçek şirketin ampirik verileri ve endüstri standartları ile kıyaslamasını sağlayan bir benchmarking aracıdır.",
+  },
+  {
+    id: 54,
+    questionText:
+      "54-) Stratejik kontrolde kullanılan 'Açıklık (Gap) Analizi' yöneticilere tam olarak hangi analitik çıktıyı sağlar?[cite: 2]",
+    options: [
+      "A) İşletmenin mevcut performans düzeyi ile gelecekte ulaşmayı hedeflediği stratejik konum arasındaki 'makası' (boşluğu) ve gereken kaynak ihtiyacını gösterir.",
+      "B) Sadece pazarlama departmanının reklam harcamalarındaki bütçe firesini kuruşu kuruşuna hesaplar.",
+      "C) Sektördeki en büyük rakibin gizli finansal kaynaklarını ve hammadde tedarik zinciri maliyetlerini listeler.",
+      "D) Departman çalışanlarının birbirleriyle olan iletişim kopukluklarının haritasını verir.",
+      "E) Ürünün fabrikadan çıktıktan sonra müşteriye ulaşana kadar geçen lojistik süresini saniye bazında ölçer.",
+    ],
+    correctAnswer:
+      "A) İşletmenin mevcut performans düzeyi ile gelecekte ulaşmayı hedeflediği stratejik konum arasındaki 'makası' (boşluğu) ve gereken kaynak ihtiyacını gösterir.",
+  },
+  {
+    id: 55,
+    questionText:
+      "55-) Balanced Scorecard (Kurumsal Karne) yaklaşımında, 'Eğitimli personelin süreçleri İyileştirmesi, hatasız süreçlerin müşteri memnuniyetini artırması ve bunun da finansal başarıyı getirmesi' döngüsü modelin hangi stratejik özelliğini kanıtlar?[cite: 2]",
+    options: [
+      "A) Maliyet merkezlerinin bütçe sapmalarını esnek olarak hesapladığını",
+      "B) Pazar payı ile karlılık arasındaki ampirik sektörel ilişkileri ölçtüğünü",
+      "C) Sadece geçmişe odaklı finansal rasyoları temel aldığını",
+      "D) Dört boyut arasında hiyerarşik bir neden-sonuç ilişkisi barındırdığını",
+      "E) Yalnızca üst düzey yöneticilerin performansını puanlamaya yaradığını",
+    ],
+    correctAnswer:
+      "D) Dört boyut arasında hiyerarşik bir neden-sonuç ilişkisi barındırdığını",
+  },
+  {
+    id: 56,
+    questionText:
+      "56-) Bir e-ticaret platformunun üst yönetimi, stratejik değerlendirme sürecinde 'Yapay Zeka Destekli Kişiselleştirilmiş Öneri Motoru' geliştirmeyi hedeflemektedir. Bu hedef, stratejik kontrol hiyerarşisinde hangi kavramın altında incelenmelidir?[cite: 2]",
+    options: [
+      "A) Maliyet Merkezi bütçe varyans analizi",
+      "B) Geleneksel kontrolün tek döngülü öğrenme mekanizması",
+      "C) Stratejik Sıçrama Faktörleri ve Kontrolü",
+      "D) PIMS Analizi ampirik pazar payı sabitlemesi",
+      "E) Rumelt'in Tutarlılık (Consistency) kriterinin pasif denetimi",
+    ],
+    correctAnswer: "C) Stratejik Sıçrama Faktörleri ve Kontrolü",
   },
 ];
 
@@ -2587,17 +3226,17 @@ export const lessons: Lesson[] = [
     questions: AcikKaynak,
   },
   {
-    id: "Dijital Pazarlama",
-    title: "Dijital Pazarlama",
-    description: `${DijitalPazarlama.length} — soruları sen ekleyeceksin.`,
+    id: "Dijital Liderlik",
+    title: "Dijital Liderlik",
+    description: `${DijitalPazarlama.length} soruluk tam tarama testi.`,
     accent: "fuchsia",
     questions: DijitalPazarlama,
   },
   {
     id: "Stratejik Yönetim",
     title: "Stratejik Yönetim",
-    description: `${ders3Ornek.length} — soruları sen ekleyeceksin.`,
+    description: `${StratejikYonetim.length} — soruları sen ekleyeceksin.`,
     accent: "emerald",
-    questions: ders3Ornek,
+    questions: StratejikYonetim,
   },
 ];

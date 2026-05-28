@@ -73,6 +73,14 @@ export default function QuizApp() {
   const retryWrongAnswers = useQuizStore((s) => s.retryWrongAnswers);
   const shuffleQuestions = useQuizStore((s) => s.shuffleQuestions);
 
+  const studyMode = useQuizStore((s) => s.studyMode);
+  const studyLessonId = useQuizStore((s) => s.studyLessonId);
+  const studyQuestionIndex = useQuizStore((s) => s.studyQuestionIndex);
+  const startStudyMode = useQuizStore((s) => s.startStudyMode);
+  const exitStudyMode = useQuizStore((s) => s.exitStudyMode);
+  const nextStudyQuestion = useQuizStore((s) => s.nextStudyQuestion);
+  const prevStudyQuestion = useQuizStore((s) => s.prevStudyQuestion);
+
   const mounted = useSyncExternalStore(
     subscribeHydration,
     getHydrated,
@@ -83,6 +91,13 @@ export default function QuizApp() {
     () => lessons.find((l) => l.id === selectedLessonId) ?? null,
     [lessons, selectedLessonId],
   );
+
+  const studyLesson = useMemo(
+    () => lessons.find((l) => l.id === studyLessonId) ?? null,
+    [lessons, studyLessonId],
+  );
+
+  const studyQuestion = studyLesson?.questions[studyQuestionIndex] ?? null;
 
   const currentQuestionsList = useMemo(
     () =>
@@ -107,6 +122,29 @@ export default function QuizApp() {
       : 0;
 
   const [suspiciousModalOpen, setSuspiciousModalOpen] = useState(false);
+
+  // Aktif tahmin modu local state
+  const [revealed, setRevealed] = useState(false);
+  const [othersVisible, setOthersVisible] = useState(false);
+  const othersTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Soru değişince reveal state sıfırla
+  useEffect(() => {
+    setRevealed(false);
+    setOthersVisible(false);
+    if (othersTimerRef.current) clearTimeout(othersTimerRef.current);
+  }, [studyQuestionIndex]);
+
+  useEffect(() => {
+    return () => {
+      if (othersTimerRef.current) clearTimeout(othersTimerRef.current);
+    };
+  }, []);
+
+  const handleReveal = useCallback(() => {
+    setRevealed(true);
+    othersTimerRef.current = setTimeout(() => setOthersVisible(true), 1500);
+  }, []);
 
   // Son 3 soruda tahmin edilen video önceden prefetch edilir
   const prefetchedVideoRef = useRef<string | null>(null);
@@ -157,6 +195,25 @@ export default function QuizApp() {
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
+      // Çalışma modu klavye
+      if (studyMode !== "none") {
+        if (e.key === "ArrowRight") {
+          if (studyMode === "reveal" && !revealed) handleReveal();
+          else nextStudyQuestion();
+        } else if (e.key === "ArrowLeft") {
+          prevStudyQuestion();
+        } else if (
+          (e.key === " " || e.key === "Enter") &&
+          studyMode === "reveal" &&
+          !revealed
+        ) {
+          e.preventDefault();
+          handleReveal();
+        }
+        return;
+      }
+
+      // Quiz modu klavye
       if (!selectedLesson || isQuizFinished || !currentQuestion) return;
       if (e.key === "ArrowRight" && hasAnswered) {
         if (isLastQuestion) finishQuiz();
@@ -171,6 +228,11 @@ export default function QuizApp() {
       }
     },
     [
+      studyMode,
+      revealed,
+      handleReveal,
+      nextStudyQuestion,
+      prevStudyQuestion,
       selectedLesson,
       isQuizFinished,
       currentQuestion,
@@ -195,6 +257,227 @@ export default function QuizApp() {
         <div className="relative w-16 h-16 flex items-center justify-center">
           <div className="absolute inset-0 rounded-full border-t-2 border-indigo-500 animate-spin"></div>
           <div className="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></div>
+        </div>
+      </div>
+    );
+  }
+
+  // === ÇALIŞMA MODU - LİSTE ===
+  if (studyMode === "list" && studyLesson) {
+    const studyAccent = ACCENT_STYLES[studyLesson.accent];
+    return (
+      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-indigo-500/30">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
+        {/* Sticky header */}
+        <div className="sticky top-0 z-20 w-full bg-[#050505]/90 backdrop-blur-xl border-b border-white/[0.04]">
+          <div className="w-full max-w-3xl mx-auto px-4 py-3 flex items-center gap-2">
+            <button
+              onClick={exitStudyMode}
+              className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
+            >
+              <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              Dersler
+            </button>
+            <span className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${studyAccent.chip}`}>
+              {studyLesson.title}
+            </span>
+            <span className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+              Liste
+            </span>
+            <span className="ml-auto shrink-0 text-xs text-slate-500 font-semibold">
+              {studyLesson.questions.length} soru
+            </span>
+          </div>
+        </div>
+
+        {/* Soru listesi */}
+        <div className="flex-1 w-full max-w-3xl mx-auto px-4 py-6 flex flex-col gap-4 z-10">
+          {studyLesson.questions.map((q, idx) => (
+            <div
+              key={q.id}
+              className="backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden bg-white/[0.02]"
+            >
+              <div className="px-5 pt-5 pb-3 flex items-start gap-3">
+                <span className={`shrink-0 w-8 h-8 rounded-xl border flex items-center justify-center font-black text-xs ${studyAccent.chip}`}>
+                  {idx + 1}
+                </span>
+                <p className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
+                  {q.questionText}
+                </p>
+              </div>
+              <div className="px-5 pb-5 flex flex-col gap-2">
+                {q.options.map((opt) => {
+                  const isCorrect = opt === q.correctAnswer;
+                  return (
+                    <div
+                      key={opt}
+                      className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm font-medium
+                        ${isCorrect
+                          ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-300"
+                          : "border-white/[0.04] bg-white/[0.01] text-slate-500 opacity-40"
+                        }`}
+                    >
+                      {isCorrect && (
+                        <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                      <span className={isCorrect ? "" : "pl-7"}>{opt}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+
+          <footer className="pt-4 pb-8 text-center text-[11px] text-slate-600">
+            {studyLesson.questions.length} soru listelendi
+          </footer>
+        </div>
+      </div>
+    );
+  }
+
+  // === ÇALIŞMA MODU - AKTİF TAHMİN ===
+  if (studyMode === "reveal" && studyLesson && studyQuestion) {
+    const studyAccent = ACCENT_STYLES[studyLesson.accent];
+    const totalStudyQuestions = studyLesson.questions.length;
+    const studyProgress = ((studyQuestionIndex + 1) / totalStudyQuestions) * 100;
+    const isLastStudyQuestion = studyQuestionIndex === totalStudyQuestions - 1;
+
+    return (
+      <div className="h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-hidden relative selection:bg-indigo-500/30">
+        {/* Progress bar */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-white/5 z-50">
+          <div
+            className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] transition-all duration-500 ease-out"
+            style={{ width: `${studyProgress}%` }}
+          />
+        </div>
+
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-emerald-600/10 blur-[100px] pointer-events-none rounded-full" />
+
+        {/* Üst bar */}
+        <div className="w-full max-w-3xl mx-auto px-4 pt-4 sm:pt-6 pb-2 flex items-center justify-between shrink-0 z-10 gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <button
+              onClick={exitStudyMode}
+              className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
+            >
+              <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              Dersler
+            </button>
+            <span className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${studyAccent.chip}`}>
+              {studyLesson.title}
+            </span>
+            <span className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+              Çalışma
+            </span>
+          </div>
+          <div className="shrink-0 text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
+            <span className="text-white">{studyQuestionIndex + 1}</span> / {totalStudyQuestions}
+          </div>
+        </div>
+
+        {/* Ana içerik */}
+        <div className="flex-1 min-h-0 w-full max-w-3xl mx-auto flex flex-col px-4 pb-4 sm:px-6 z-10">
+          <div
+            onClick={!revealed ? handleReveal : undefined}
+            className={`flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2.5rem)] flex flex-col shadow-2xl relative transition-all duration-200
+              ${!revealed ? "cursor-pointer hover:bg-white/[0.04] hover:border-white/10 active:scale-[0.99]" : ""}`}
+          >
+            {/* Soru metni */}
+            <div className="shrink-0 mb-[clamp(1rem,3dvh,2.5rem)]">
+              <h2 className="text-[clamp(1.1rem,2.8dvh,1.75rem)] font-semibold text-slate-100 leading-[1.3] tracking-tight">
+                {studyQuestion.questionText}
+              </h2>
+            </div>
+
+            {/* Şıklar alanı */}
+            <div className="flex-1 min-h-0 flex flex-col justify-center gap-[clamp(0.5rem,1.5dvh,1rem)]">
+              {!revealed ? (
+                <div className="flex items-center justify-center py-6">
+                  <p className="text-sm text-slate-600 select-none">Cevabı görmek için dokun</p>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-[clamp(0.5rem,1.5dvh,1rem)]">
+                  {studyQuestion.options.map((opt, idx) => {
+                    const isCorrect = opt === studyQuestion.correctAnswer;
+
+                    if (isCorrect) {
+                      return (
+                        <div
+                          key={idx}
+                          className="animate-in zoom-in duration-300 flex items-center justify-between p-[clamp(0.75rem,2dvh,1.25rem)] rounded-[1rem] sm:rounded-[1.25rem] border-2 border-emerald-500/50 bg-emerald-500/10 text-emerald-300 scale-[1.02] shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+                        >
+                          <span className="text-[clamp(0.85rem,2.2dvh,1.1rem)] font-medium leading-[1.3] pr-4">
+                            {opt}
+                          </span>
+                          <span className="animate-in zoom-in duration-300">
+                            <svg className="w-[clamp(1.2rem,2.5dvh,1.5rem)] h-[clamp(1.2rem,2.5dvh,1.5rem)] text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                            </svg>
+                          </span>
+                        </div>
+                      );
+                    }
+
+                    if (!othersVisible) return null;
+
+                    return (
+                      <div
+                        key={idx}
+                        className="animate-in fade-in duration-700 flex items-center p-[clamp(0.75rem,2dvh,1.25rem)] rounded-[1rem] sm:rounded-[1.25rem] border border-white/[0.05] bg-white/[0.01] text-slate-600 opacity-40"
+                      >
+                        <span className="text-[clamp(0.85rem,2.2dvh,1.1rem)] font-medium leading-[1.3]">
+                          {opt}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Navigasyon */}
+          <div className="shrink-0 pt-4 pb-2 flex items-center justify-between gap-4">
+            <button
+              onClick={prevStudyQuestion}
+              disabled={studyQuestionIndex === 0}
+              className="w-[3.5rem] h-[3.5rem] sm:w-[4rem] sm:h-[4rem] flex items-center justify-center bg-white/[0.05] rounded-full text-slate-400 hover:text-white hover:bg-white/10 disabled:opacity-20 transition-all border border-white/5 active:scale-95"
+              aria-label="Önceki soru"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {isLastStudyQuestion ? (
+              <button
+                onClick={exitStudyMode}
+                className="flex-1 h-[3.5rem] sm:h-[4rem] flex items-center justify-center bg-emerald-600 text-white text-[clamp(14px,2dvh,16px)] font-bold rounded-full hover:bg-emerald-500 transition-all active:scale-[0.98] shadow-lg shadow-emerald-500/20 tracking-wide"
+              >
+                ÇALIŞMAYI BİTİR
+              </button>
+            ) : (
+              <button
+                onClick={nextStudyQuestion}
+                className="flex-1 h-[3.5rem] sm:h-[4rem] flex items-center justify-center gap-2 bg-white text-black text-[clamp(14px,2dvh,16px)] font-bold rounded-full hover:bg-slate-200 transition-all active:scale-[0.98] tracking-wide"
+              >
+                SONRAKİ
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -225,58 +508,91 @@ export default function QuizApp() {
           <div className="grid gap-4 sm:gap-5">
             {lessons.map((lesson) => {
               const accent = ACCENT_STYLES[lesson.accent];
-              const isLocked = lesson.id !== "Açık Kaynak İşletim Sistemleri";
+              const isLocked = lesson.id !== "Açık Kaynak İşletim Sistemleri" && lesson.id !== "Dijital Liderlik" && lesson.id !== "Stratejik Yönetim";
               return (
-                <button
+                <div
                   key={lesson.id}
-                  onClick={() => !isLocked && selectLesson(lesson.id)}
-                  disabled={isLocked}
-                  className={`group relative text-left backdrop-blur-xl border-2 rounded-3xl p-6 sm:p-7 transition-all duration-300 overflow-hidden
+                  className={`group relative backdrop-blur-xl border-2 rounded-3xl overflow-hidden transition-all duration-300
                     ${isLocked
-                      ? "bg-white/[0.015] border-white/5 cursor-not-allowed opacity-50 grayscale"
-                      : `bg-white/[0.03] ${accent.ring} hover:bg-white/[0.05] active:scale-[0.98]`
+                      ? "bg-white/[0.015] border-white/5 opacity-50 grayscale"
+                      : `bg-white/[0.03] ${accent.ring} hover:bg-white/[0.05]`
                     }`}
                 >
                   {!isLocked && (
-                    <div
-                      className={`absolute -top-12 -right-12 w-40 h-40 ${accent.glow} blur-3xl rounded-full pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity`}
-                    />
+                    <div className={`absolute -top-12 -right-12 w-40 h-40 ${accent.glow} blur-3xl rounded-full pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity`} />
                   )}
-                  <div className="relative flex items-center gap-4">
-                    <div
-                      className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center font-black text-lg sm:text-xl
-                        ${isLocked ? "border-white/10 text-white/30" : accent.chip}`}
-                    >
-                      {isLocked ? (
-                        <svg className="w-5 h-5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                          />
-                        </svg>
-                      ) : (
-                        lesson.questions.length
+
+                  {/* Sınav başlatma alanı */}
+                  <button
+                    onClick={() => !isLocked && selectLesson(lesson.id)}
+                    disabled={isLocked}
+                    className={`relative w-full text-left p-6 sm:p-7 transition-all
+                      ${isLocked ? "cursor-not-allowed" : "active:scale-[0.99] cursor-pointer"}`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center font-black text-lg sm:text-xl
+                          ${isLocked ? "border-white/10 text-white/30" : accent.chip}`}
+                      >
+                        {isLocked ? (
+                          <svg className="w-5 h-5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                            />
+                          </svg>
+                        ) : (
+                          lesson.questions.length
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h2 className={`text-lg sm:text-xl font-bold tracking-tight ${isLocked ? "text-white/30" : "text-white"}`}>
+                          {lesson.title}
+                        </h2>
+                        <p className={`text-xs sm:text-sm mt-1 line-clamp-2 ${isLocked ? "text-white/20" : "text-slate-400"}`}>
+                          {isLocked ? "Yakında açılacak" : lesson.description}
+                        </p>
+                      </div>
+                      {!isLocked && (
+                        <div className="shrink-0 flex flex-col items-end gap-0.5">
+                          <svg
+                            className={`w-5 h-5 ${accent.text} transition-transform group-hover:translate-x-1`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                          </svg>
+                          <span className="text-[10px] text-slate-600 font-semibold">Sınav</span>
+                        </div>
                       )}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h2 className={`text-lg sm:text-xl font-bold tracking-tight ${isLocked ? "text-white/30" : "text-white"}`}>
-                        {lesson.title}
-                      </h2>
-                      <p className={`text-xs sm:text-sm mt-1 line-clamp-2 ${isLocked ? "text-white/20" : "text-slate-400"}`}>
-                        {isLocked ? "Yakında açılacak" : lesson.description}
-                      </p>
-                    </div>
-                    {!isLocked && (
-                      <svg
-                        className={`shrink-0 w-5 h-5 ${accent.text} transition-transform group-hover:translate-x-1`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                  </button>
+
+                  {/* Çalışma modu butonları */}
+                  {!isLocked && (
+                    <div className="relative px-6 pb-5 pt-3 flex gap-2 border-t border-white/[0.04]">
+                      <button
+                        onClick={() => startStudyMode(lesson.id, "list")}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-slate-400 hover:text-white hover:border-white/20 text-xs font-semibold transition-all active:scale-95"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                      </svg>
-                    )}
-                  </div>
-                </button>
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                        </svg>
+                        Liste
+                      </button>
+                      <button
+                        onClick={() => startStudyMode(lesson.id, "reveal")}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all active:scale-95 border ${accent.chip} hover:opacity-80`}
+                      >
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        Aktif Tahmin
+                      </button>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -294,9 +610,6 @@ export default function QuizApp() {
 
   // === SONUÇ EKRANI ===
   if (isQuizFinished) {
-    // Hata modunda finishQuiz, wrongQuestions'ı yeni (küçülmüş) listeyle günceller.
-    // Bu yüzden currentQuestionsList artık sadece yeni yanlışları içerir → doğru sayısı
-    // hesabı bozulur. Hata modunda userAnswers üzerinden sayıyoruz.
     const lessonQs = selectedLesson.questions;
     const answeredIds = Object.keys(userAnswers).map(Number);
 
@@ -323,8 +636,6 @@ export default function QuizApp() {
         ? (currentListWrongCount / currentQuestionsList.length) * 100
         : 0;
 
-    // Easter egg: sabri dersi her zaman özel video
-    // v1 = kusursuz, v2 = ≤%10, v3 = ≤%20, v4 = ≤%30, v5 = >%30
     const videoSrc =
       selectedLesson.id === "sabri"
         ? "/videos/easteregg.mp4"
@@ -340,13 +651,6 @@ export default function QuizApp() {
 
     return (
       <div className="h-[100dvh] w-full text-slate-200 flex items-end justify-center overflow-hidden relative">
-        {/*
-         * VIDEO ARKAPLAN
-         * preload="none"  → tarayıcı hiç veri indirmez ta kullanıcı sonuç ekranına gelene kadar
-         * autoPlay muted playsInline loop → mobil otomatik oynatma için zorunlu üçlü
-         * key={videoSrc}  → farklı video gelince React elemanı yeniden mount eder,
-         *                    böylece eski videonun buffer'ı bellekte kalmaz
-         */}
         <video
           key={videoSrc}
           className="absolute inset-0 w-full h-full object-cover z-0"
@@ -358,10 +662,8 @@ export default function QuizApp() {
           <source src={videoSrc} type="video/mp4" />
         </video>
 
-        {/* Gradient overlay — altta içerik okunabilir olsun */}
         <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/95 via-black/55 to-black/10 pointer-events-none" />
 
-        {/* İçerik */}
         <div className="relative z-[2] w-full max-w-md px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] flex flex-col gap-4">
           <div className="text-center space-y-1">
             <span
@@ -417,18 +719,8 @@ export default function QuizApp() {
               onClick={goToLessonSelection}
               className="w-full py-3 text-slate-400 hover:text-white text-sm font-semibold rounded-2xl transition-colors active:scale-[0.98] flex items-center justify-center gap-2"
             >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
               Derslere Dön
             </button>
@@ -464,66 +756,41 @@ export default function QuizApp() {
       {/* === ÜST BAR === */}
       <div className="w-full max-w-3xl mx-auto px-4 pt-4 sm:pt-6 pb-2 flex items-center justify-between shrink-0 z-10 gap-2">
         <div className="flex items-center gap-2 min-w-0">
-          {/* DERSLER BUTONU */}
           <button
             onClick={goToLessonSelection}
             className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
             aria-label="Derslere dön"
           >
-            <svg
-              className="w-[14px] h-[14px]"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2.5"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+            <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
             Dersler
           </button>
 
-          {/* DERS / MOD BADGE */}
           <span
             className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${isWrongAnswersMode ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : accent.chip}`}
           >
             {isWrongAnswersMode ? "Hata Modu" : selectedLesson.title}
           </span>
 
-          {/* KARIŞTIR BUTONU - sadece 1. soruda */}
           {!isWrongAnswersMode && activeQuestionIndex === 0 && (
             <button
               onClick={shuffleQuestions}
               className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20 hover:bg-fuchsia-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 animate-in fade-in slide-in-from-left-2 duration-300"
             >
-              <svg
-                className="w-[14px] h-[14px]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                />
+              <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
               Karıştır
             </button>
           )}
 
-          {/* ŞÜPHELİ SORU BADGE */}
           {currentSuspicion && (
             <button
               onClick={() => setSuspiciousModalOpen(true)}
               className="shrink-0 relative flex items-center gap-1 animate-in fade-in slide-in-from-left-2 duration-300"
               aria-label="Şüpheli soru açıklamasını gör"
             >
-              {/* Dış halka animasyonu */}
               <span
                 className={`absolute inset-0 rounded-full animate-ping opacity-40 ${
                   currentSuspicion.level === "strongly-suspicious"
@@ -576,12 +843,7 @@ export default function QuizApp() {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2.5"
-                        d="M5 13l4 4L19 7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                     </svg>
                   );
                 } else if (isSelected && !isCorrectAnswer) {
@@ -594,12 +856,7 @@ export default function QuizApp() {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2.5"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   );
                 } else {
@@ -691,18 +948,8 @@ export default function QuizApp() {
             className="w-[3.5rem] h-[3.5rem] sm:w-[4rem] sm:h-[4rem] flex items-center justify-center bg-white/[0.05] rounded-full text-slate-400 hover:text-white hover:bg-white/10 disabled:opacity-20 transition-all border border-white/5 active:scale-95"
             aria-label="Önceki soru"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 19l-7-7 7-7"
-              />
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           {isLastQuestion ? (
@@ -720,18 +967,8 @@ export default function QuizApp() {
               className="flex-1 h-[3.5rem] sm:h-[4rem] flex items-center justify-center gap-2 bg-white text-black text-[clamp(14px,2dvh,16px)] font-bold rounded-full hover:bg-slate-200 disabled:bg-white/10 disabled:text-white/30 transition-all active:scale-[0.98] tracking-wide"
             >
               SONRAKİ
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  d="M9 5l7 7-7 7"
-                />
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
               </svg>
             </button>
           )}

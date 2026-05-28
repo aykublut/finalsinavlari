@@ -23,6 +23,10 @@ export interface QuizState {
   wrongQuestions: Question[];
   shuffledQuestions: Question[] | null;
 
+  studyMode: "none" | "list" | "reveal";
+  studyLessonId: string | null;
+  studyQuestionIndex: number;
+
   selectLesson: (lessonId: string) => void;
   goToLessonSelection: () => void;
   answerQuestion: (questionId: number, answer: string) => void;
@@ -32,4 +36,8 @@ export interface QuizState {
   restartQuiz: () => void;
   retryWrongAnswers: () => void;
   shuffleQuestions: () => void;
+  startStudyMode: (lessonId: string, mode: "list" | "reveal") => void;
+  exitStudyMode: () => void;
+  nextStudyQuestion: () => void;
+  prevStudyQuestion: () => void;
 }

@@ -33,6 +33,10 @@ export const useQuizStore = create<QuizState>()(
       wrongQuestions: [],
       shuffledQuestions: null,
 
+      studyMode: "none",
+      studyLessonId: null,
+      studyQuestionIndex: 0,
+
       selectLesson: (lessonId) =>
         set({
           selectedLessonId: lessonId,
@@ -113,6 +117,38 @@ export const useQuizStore = create<QuizState>()(
           isQuizFinished: false,
           isWrongAnswersMode: true,
         }),
+
+      startStudyMode: (lessonId, mode) =>
+        set({
+          studyMode: mode,
+          studyLessonId: lessonId,
+          studyQuestionIndex: 0,
+        }),
+
+      exitStudyMode: () =>
+        set({
+          studyMode: "none",
+          studyLessonId: null,
+          studyQuestionIndex: 0,
+        }),
+
+      nextStudyQuestion: () =>
+        set((state) => {
+          const lesson = lessons.find((l) => l.id === state.studyLessonId);
+          const total = lesson?.questions.length ?? 0;
+          if (state.studyQuestionIndex < total - 1) {
+            return { studyQuestionIndex: state.studyQuestionIndex + 1 };
+          }
+          return {};
+        }),
+
+      prevStudyQuestion: () =>
+        set((state) => {
+          if (state.studyQuestionIndex > 0) {
+            return { studyQuestionIndex: state.studyQuestionIndex - 1 };
+          }
+          return {};
+        }),
     }),
     {
       name: "quiz-state-v1",
@@ -125,6 +161,9 @@ export const useQuizStore = create<QuizState>()(
         isWrongAnswersMode: state.isWrongAnswersMode,
         wrongQuestions: state.wrongQuestions,
         shuffledQuestions: state.shuffledQuestions,
+        studyMode: state.studyMode,
+        studyLessonId: state.studyLessonId,
+        studyQuestionIndex: state.studyQuestionIndex,
       }),
     },
   ),
