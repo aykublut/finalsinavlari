@@ -13,6 +13,7 @@ import type { Lesson } from "@/types/quiz";
 import { suspiciousQuestions } from "@/store/suspiciousQuestions";
 import CompetitionRoom from "./competition/CompetitionRoom";
 import InstallPrompt from "./InstallPrompt";
+import { useFitScale } from "@/lib/useFitScale";
 import { claimProfile } from "./competition/actions";
 
 const subscribeHydration = (cb: () => void) =>
@@ -279,6 +280,15 @@ export default function QuizApp() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
+  // Uzun soru/şıklarda kartı taşırmamak için font'u orantılı küçülten "sığdır".
+  const quizFitRef = useFitScale([currentQuestion?.id]);
+  const studyFitRef = useFitScale([
+    studyMode,
+    studyQuestionIndex,
+    revealed,
+    othersVisible,
+  ]);
+
   if (!mounted) {
     return (
       <div className="h-[100dvh] w-full flex items-center justify-center bg-[#050505]">
@@ -416,25 +426,26 @@ export default function QuizApp() {
         {/* Ana içerik */}
         <div className="flex-1 min-h-0 w-full max-w-3xl mx-auto flex flex-col px-4 pb-4 sm:px-6 z-10">
           <div
+            ref={studyFitRef}
             onClick={!revealed ? handleReveal : undefined}
             className={`flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2.5rem)] flex flex-col shadow-2xl relative transition-all duration-200
               ${!revealed ? "cursor-pointer hover:bg-white/[0.04] hover:border-white/10 active:scale-[0.99]" : ""}`}
           >
             {/* Soru metni */}
-            <div className="shrink-0 mb-[clamp(1rem,3dvh,2.5rem)]">
-              <h2 className="text-[clamp(1.1rem,2.8dvh,1.75rem)] font-semibold text-slate-100 leading-[1.3] tracking-tight">
+            <div className="shrink-0 mb-[calc(clamp(1rem,3dvh,2.5rem)*var(--fit,1))]">
+              <h2 className="text-[calc(clamp(1.1rem,2.8dvh,1.75rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight">
                 {studyQuestion.questionText}
               </h2>
             </div>
 
             {/* Şıklar alanı */}
-            <div className="flex-1 min-h-0 flex flex-col justify-center gap-[clamp(0.5rem,1.5dvh,1rem)]">
+            <div className="flex-1 min-h-0 flex flex-col justify-center gap-[calc(clamp(0.5rem,1.5dvh,1rem)*var(--fit,1))]">
               {!revealed ? (
                 <div className="flex items-center justify-center py-6">
                   <p className="text-sm text-slate-600 select-none">Cevabı görmek için dokun</p>
                 </div>
               ) : (
-                <div className="flex flex-col gap-[clamp(0.5rem,1.5dvh,1rem)]">
+                <div className="flex flex-col gap-[calc(clamp(0.5rem,1.5dvh,1rem)*var(--fit,1))]">
                   {studyQuestion.options.map((opt, idx) => {
                     const isCorrect = opt === studyQuestion.correctAnswer;
 
@@ -442,9 +453,9 @@ export default function QuizApp() {
                       return (
                         <div
                           key={idx}
-                          className="animate-in zoom-in duration-300 flex items-center justify-between p-[clamp(0.75rem,2dvh,1.25rem)] rounded-[1rem] sm:rounded-[1.25rem] border-2 border-emerald-500/50 bg-emerald-500/10 text-emerald-300 scale-[1.02] shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+                          className="animate-in zoom-in duration-300 flex items-center justify-between p-[calc(clamp(0.75rem,2dvh,1.25rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border-2 border-emerald-500/50 bg-emerald-500/10 text-emerald-300 scale-[1.02] shadow-[0_0_20px_rgba(16,185,129,0.15)]"
                         >
-                          <span className="text-[clamp(0.85rem,2.2dvh,1.1rem)] font-medium leading-[1.3] pr-4">
+                          <span className="text-[calc(clamp(0.85rem,2.2dvh,1.1rem)*var(--fit,1))] font-medium leading-[1.3] pr-4">
                             {opt}
                           </span>
                           <span className="animate-in zoom-in duration-300">
@@ -461,9 +472,9 @@ export default function QuizApp() {
                     return (
                       <div
                         key={idx}
-                        className="animate-in fade-in duration-700 flex items-center p-[clamp(0.75rem,2dvh,1.25rem)] rounded-[1rem] sm:rounded-[1.25rem] border border-white/[0.05] bg-white/[0.01] text-slate-600 opacity-40"
+                        className="animate-in fade-in duration-700 flex items-center p-[calc(clamp(0.75rem,2dvh,1.25rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border border-white/[0.05] bg-white/[0.01] text-slate-600 opacity-40"
                       >
-                        <span className="text-[clamp(0.85rem,2.2dvh,1.1rem)] font-medium leading-[1.3]">
+                        <span className="text-[calc(clamp(0.85rem,2.2dvh,1.1rem)*var(--fit,1))] font-medium leading-[1.3]">
                           {opt}
                         </span>
                       </div>
@@ -1058,13 +1069,13 @@ export default function QuizApp() {
       </div>
 
       <div className="flex-1 min-h-0 w-full max-w-3xl mx-auto flex flex-col px-4 pb-4 sm:px-6 z-10">
-        <div className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2.5rem)] flex flex-col shadow-2xl relative">
-          <div className="shrink-0 mb-[clamp(1rem,3dvh,2.5rem)]">
-            <h2 className="text-[clamp(1.1rem,2.8dvh,1.75rem)] font-semibold text-slate-100 leading-[1.3] tracking-tight">
+        <div ref={quizFitRef} className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2.5rem)] flex flex-col shadow-2xl relative">
+          <div className="shrink-0 mb-[calc(clamp(1rem,3dvh,2.5rem)*var(--fit,1))]">
+            <h2 className="text-[calc(clamp(1.1rem,2.8dvh,1.75rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight">
               {currentQuestion.questionText}
             </h2>
           </div>
-          <div className="flex-1 min-h-0 flex flex-col justify-center gap-[clamp(0.5rem,1.5dvh,1rem)]">
+          <div className="flex-1 min-h-0 flex flex-col justify-center gap-[calc(clamp(0.5rem,1.5dvh,1rem)*var(--fit,1))]">
             {currentQuestion.options.map((option, index) => {
               const isSelected = userAnswers[currentQuestion.id] === option;
               const isCorrectAnswer = option === currentQuestion.correctAnswer;
@@ -1110,9 +1121,9 @@ export default function QuizApp() {
                   key={index}
                   disabled={hasAnswered}
                   onClick={() => answerQuestion(currentQuestion.id, option)}
-                  className={`group w-full flex items-center justify-between p-[clamp(0.75rem,2dvh,1.25rem)] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-300 outline-none text-left ${baseStyle} ${!hasAnswered && "active:scale-[0.98]"}`}
+                  className={`group w-full flex items-center justify-between p-[calc(clamp(0.75rem,2dvh,1.25rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-300 outline-none text-left ${baseStyle} ${!hasAnswered && "active:scale-[0.98]"}`}
                 >
-                  <span className="text-[clamp(0.85rem,2.2dvh,1.1rem)] font-medium leading-[1.3] pr-4 line-clamp-4">
+                  <span className="text-[calc(clamp(0.85rem,2.2dvh,1.1rem)*var(--fit,1))] font-medium leading-[1.3] pr-4">
                     {option}
                   </span>
                   {icon && (

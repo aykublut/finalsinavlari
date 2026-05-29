@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { lessons } from "@/store/questions";
 import { COMPETITION_CONFIG } from "@/lib/competition/config";
 import { useMatch, type MatchRow, type MatchPlayerRow } from "@/lib/competition/useMatch";
+import { useFitScale } from "@/lib/useFitScale";
 import {
   claimProfile,
   joinCompetition,
@@ -159,6 +160,9 @@ export default function CompetitionRoom({
     [parts, pid],
   );
   const iFinished = !!myPart?.finished_at;
+
+  // Uzun soru/şıklarda kartı taşırmamak için font'u orantılı küçülten "sığdır".
+  const fitRef = useFitScale([myPart?.current_question_index, status]);
 
   // Zaman geçişlerini yürüt (lobi başlat / geri sayım bitir / maç bitir).
   // Aktif maçta yalnız "bitirmiş" oyuncular tikler: rakipleri terk ettiyse maçı
@@ -566,14 +570,14 @@ export default function CompetitionRoom({
         </div>
 
         {/* Soru kartı */}
-        <div className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2rem)] flex flex-col shadow-2xl">
-          <div className="shrink-0 mb-[clamp(1rem,3dvh,2rem)]">
-            <h2 className="text-[clamp(1.1rem,2.6dvh,1.6rem)] font-semibold text-slate-100 leading-[1.3] tracking-tight">
+        <div ref={fitRef} className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2rem)] flex flex-col shadow-2xl">
+          <div className="shrink-0 mb-[calc(clamp(1rem,3dvh,2rem)*var(--fit,1))]">
+            <h2 className="text-[calc(clamp(1.1rem,2.6dvh,1.6rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight">
               {question?.questionText ?? "…"}
             </h2>
           </div>
 
-          <div className="flex-1 min-h-0 flex flex-col justify-center gap-[clamp(0.5rem,1.4dvh,0.9rem)]">
+          <div className="flex-1 min-h-0 flex flex-col justify-center gap-[calc(clamp(0.5rem,1.4dvh,0.9rem)*var(--fit,1))]">
             {question?.options.map((option, index) => {
               const isCorrect = option === question.correctAnswer;
               let style =
@@ -604,9 +608,9 @@ export default function CompetitionRoom({
                   key={index}
                   disabled={!!feedback || submitting}
                   onClick={() => handleAnswer(option)}
-                  className={`group w-full flex items-center justify-between p-[clamp(0.7rem,1.8dvh,1.1rem)] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-200 outline-none text-left ${style} ${!feedback && !pendingOption && "active:scale-[0.98]"}`}
+                  className={`group w-full flex items-center justify-between p-[calc(clamp(0.7rem,1.8dvh,1.1rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-200 outline-none text-left ${style} ${!feedback && !pendingOption && "active:scale-[0.98]"}`}
                 >
-                  <span className="text-[clamp(0.85rem,2.1dvh,1.05rem)] font-medium leading-[1.3] pr-3 line-clamp-3">
+                  <span className="text-[calc(clamp(0.85rem,2.1dvh,1.05rem)*var(--fit,1))] font-medium leading-[1.3] pr-3">
                     {option}
                   </span>
                 </button>

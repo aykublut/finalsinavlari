@@ -54,6 +54,53 @@ textarea,
   padding-left: env(safe-area-inset-left);
 }
 
+/* İndir alt-sayfası animasyonları — sadece transform+opacity (GPU compositor,
+   layout/paint tetiklemez), kısa ve akıcı. Reduced-motion'da kapanır. */
+@keyframes sheetUp {
+  from {
+    transform: translate3d(0, 115%, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes sheetDown {
+  to {
+    transform: translate3d(0, 115%, 0);
+    opacity: 0;
+  }
+}
+@keyframes revealDown {
+  from {
+    transform: translate3d(0, -6px, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.sheet-enter {
+  animation: sheetUp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sheet-exit {
+  animation: sheetDown 0.2s ease-in both;
+}
+.reveal-down {
+  animation: revealDown 0.26s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-enter,
+  .sheet-exit,
+  .reveal-down {
+    animation: none;
+  }
+}
+
 @keyframes suspWiggle {
   0%, 100% { transform: rotate(0deg) scale(1); }
   15%       { transform: rotate(-12deg) scale(1.15); }
