@@ -12,6 +12,7 @@ import {
 import type { Lesson } from "@/types/quiz";
 import { suspiciousQuestions } from "@/store/suspiciousQuestions";
 import CompetitionRoom from "./competition/CompetitionRoom";
+import InstallPrompt from "./InstallPrompt";
 import { claimProfile } from "./competition/actions";
 
 const subscribeHydration = (cb: () => void) =>
@@ -293,7 +294,7 @@ export default function QuizApp() {
   if (studyMode === "list" && studyLesson) {
     const studyAccent = ACCENT_STYLES[studyLesson.accent];
     return (
-      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-indigo-500/30">
+      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-indigo-500/30 safe-area">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
         {/* Sticky header */}
@@ -376,7 +377,7 @@ export default function QuizApp() {
     const isLastStudyQuestion = studyQuestionIndex === totalStudyQuestions - 1;
 
     return (
-      <div className="h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-hidden relative selection:bg-indigo-500/30">
+      <div className="h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-hidden relative selection:bg-indigo-500/30 safe-area">
         {/* Progress bar */}
         <div className="absolute top-0 left-0 w-full h-1 bg-white/5 z-50">
           <div
@@ -535,7 +536,7 @@ export default function QuizApp() {
 
     // Profil yoksa: isim + avatar seçimi
     return (
-      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-fuchsia-500/30 overflow-y-auto">
+      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-fuchsia-500/30 overflow-y-auto safe-area">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-fuchsia-600/15 blur-[100px] pointer-events-none rounded-full" />
 
@@ -656,7 +657,7 @@ export default function QuizApp() {
   // === DERS SEÇİM EKRANI ===
   if (!selectedLesson) {
     return (
-      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-y-auto relative selection:bg-indigo-500/30">
+      <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-y-auto relative selection:bg-indigo-500/30 safe-area">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-indigo-600/10 blur-[100px] pointer-events-none rounded-full" />
 
@@ -840,6 +841,7 @@ export default function QuizApp() {
             </p>
           </footer>
         </div>
+        <InstallPrompt />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import ServiceWorkerRegister from "./sw-register";
 
 // Not: Geist/Geist_Mono web fontları kaldırıldı — gövde fontu globals.css'te
 // Arial olarak sabit ve hiçbir yerde `font-sans`/`font-mono` kullanılmıyordu.
@@ -12,6 +13,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false, // Kullanıcının parmakla zoom yapmasını engeller (App hissi verir)
+  viewportFit: "cover", // Çentik/durum çubuğu altına tam ekran taşar (env(safe-area-*) ile)
   themeColor: "#050505", // iOS/Android üst durum çubuğu rengi (uygulamanın arkaplan rengiyle aynı yap)
 };
 
@@ -71,6 +73,7 @@ export default function RootLayout({
       */}
       <body className="min-h-[100dvh] flex flex-col overscroll-none bg-[#050505] text-slate-200 select-none">
         {children}
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

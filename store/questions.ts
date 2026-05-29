@@ -3636,7 +3636,7 @@ export const lessons: Lesson[] = [
   {
     id: "Stratejik Yönetim",
     title: "Stratejik Yönetim",
-    description: `${StratejikYonetim.length} — soruları sen ekleyeceksin.`,
+    description: `${StratejikYonetim.length} soruluk tam tarama testi.`,
     accent: "emerald",
     questions: StratejikYonetim,
   },

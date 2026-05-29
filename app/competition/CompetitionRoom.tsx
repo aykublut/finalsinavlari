@@ -36,7 +36,7 @@ function Shell({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-fuchsia-500/30 overflow-y-auto">
+    <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-fuchsia-500/30 overflow-y-auto safe-area">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-fuchsia-600/15 blur-[100px] pointer-events-none rounded-full" />
       <div className="flex-1 w-full max-w-md mx-auto px-4 py-8 z-10 flex flex-col">
@@ -493,7 +493,7 @@ export default function CompetitionRoom({
   );
 
   return (
-    <div className="h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-hidden relative selection:bg-fuchsia-500/30">
+    <div className="h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-hidden relative selection:bg-fuchsia-500/30 safe-area">
       {/* Süre çubuğu */}
       <div className="absolute top-0 left-0 w-full h-1.5 bg-white/5 z-50">
         <div
