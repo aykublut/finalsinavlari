@@ -16,12 +16,16 @@ export const COMPETITION_CONFIG = {
   // Lobi / eşleşme
   lobbyMaxBeforeFastStart: 10, // 10 kişi olunca geri sayım başlar
   lobbyCountdownMs: 30_000, // 10 kişi → 30 sn sonra başla
-  lobbyMinForTimeout: 2, // en az 5 kişi varsa...
+  lobbyMinForTimeout: 2, // en az 2 kişi varsa...
   lobbyTimeoutMs: 60_000, // ...60 sn dolunca 10 beklemeden başla
 
   // Bitiş
-  finishersToTriggerEnd: 3, // 3 kişi bitirince
+  finishersToTriggerEnd: 3, // 3 kişi bitirince (ya da lobi daha azsa: herkes bitince)
   finishCountdownMs: 10_000, // 10 sn geri sayım sonra maç biter
+  // Aktif maçta bir oyuncu, soru süresi + bu pay kadar hiç ilerlemediyse
+  // istemcisi "ölü" (terk edilmiş) sayılır. Watchdog, bitirenleri terk eden
+  // rakipler yüzünden sonsuza dek bekletmemek için bunu kullanır.
+  abandonGraceMs: 8_000,
 } as const;
 
 /**

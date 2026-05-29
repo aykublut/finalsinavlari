@@ -60,6 +60,11 @@ const AVATARS = [
   "🐯", "🐺", "🦅", "🐬", "🦖", "🐝", "🦋", "🐧",
 ];
 
+// Easter egg dersinin id'si — bu derste bitiş raporunda özel video oynar.
+// Hem sonuç ekranı hem önden-yükleme aynı id'yi kullanmalı (yoksa farklı video
+// indirilir). Tek kaynak olarak burada tutuluyor.
+const EASTER_EGG_LESSON_ID = "sabri";
+
 export default function QuizApp() {
   const lessons = useQuizStore((s) => s.lessons);
   const selectedLessonId = useQuizStore((s) => s.selectedLessonId);
@@ -187,7 +192,7 @@ export default function QuizApp() {
         : 0;
 
     const predictedSrc =
-      selectedLessonId === "easteregg"
+      selectedLessonId === EASTER_EGG_LESSON_ID
         ? "/videos/easteregg.mp4"
         : wrongSoFar === 0
           ? "/videos/v1.mp4"
@@ -870,7 +875,7 @@ export default function QuizApp() {
         : 0;
 
     const videoSrc =
-      selectedLesson.id === "sabri"
+      selectedLesson.id === EASTER_EGG_LESSON_ID
         ? "/videos/easteregg.mp4"
         : currentListWrongCount === 0
           ? "/videos/v1.mp4"

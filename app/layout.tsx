@@ -1,16 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Not: Geist/Geist_Mono web fontları kaldırıldı — gövde fontu globals.css'te
+// Arial olarak sabit ve hiçbir yerde `font-sans`/`font-mono` kullanılmıyordu.
+// İki self-hosted font indirmesi + preload'u boşunaydı; kaldırınca ilk yük hızlanır.
+// Görsel çıktı aynı (Arial).
 
 // 1. VIEWPORT AYARLARI: Uygulama hissiyatı için en kritik kısım
 export const viewport: Viewport = {
@@ -69,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="tr" // Dil ayarını Türkçe yaptık
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
       {/* 3. BODY STİLLERİ: 
         - overscroll-none: Safari'de sayfayı en yukarı çektiğinde seken beyaz boşluğu yok eder.

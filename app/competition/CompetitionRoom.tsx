@@ -23,6 +23,47 @@ type Props = {
 
 const LIMIT = COMPETITION_CONFIG.questionTimeLimitMs;
 
+// Lobi/geri sayım/sonuç ekranlarının ortak çerçevesi. Modül seviyesinde tanımlı:
+// bileşen içinde tanımlanırsa her render'da (sayaç 200ms'de bir) yeni bir bileşen
+// referansı olur ve tüm alt ağaç unmount/remount olur (titreme, animasyon reseti).
+function Shell({
+  title,
+  onExit,
+  children,
+}: {
+  title?: string;
+  onExit: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-fuchsia-500/30 overflow-y-auto">
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-fuchsia-600/15 blur-[100px] pointer-events-none rounded-full" />
+      <div className="flex-1 w-full max-w-md mx-auto px-4 py-8 z-10 flex flex-col">
+        <div className="flex items-center gap-2 mb-6">
+          <button
+            onClick={onExit}
+            className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:text-white active:scale-95 transition-all"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+            </svg>
+            Çık
+          </button>
+          <span className="px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border truncate bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/20">
+            {title ?? "Yarışma"}
+          </span>
+          <span className="shrink-0 px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30 flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400 animate-pulse" />
+            Yarışma
+          </span>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function CompetitionRoom({
   lessonId,
   playerId,
@@ -92,22 +133,31 @@ export default function CompetitionRoom({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Zaman geçişlerini yürüt (lobi başlat / geri sayım bitir / maç bitir)
   const status = match?.status;
-  useEffect(() => {
-    if (!matchId) return;
-    if (status === "waiting" || status === "countdown" || status === "finishing") {
-      const i = setInterval(() => {
-        tickMatch(matchId).catch(() => {});
-      }, 1000);
-      return () => clearInterval(i);
-    }
-  }, [matchId, status]);
 
   const myPart = useMemo(
     () => parts.find((p) => p.player_id === pid) ?? null,
     [parts, pid],
   );
+  const iFinished = !!myPart?.finished_at;
+
+  // Zaman geçişlerini yürüt (lobi başlat / geri sayım bitir / maç bitir).
+  // Aktif maçta yalnız "bitirmiş" oyuncular tikler: rakipleri terk ettiyse maçı
+  // sonlandırmaya alan watchdog'u (tickMatch) tetiklemek için. Hâlâ oynayanlar
+  // gereksiz yük bindirmesin diye aktif durumda tiklemez.
+  useEffect(() => {
+    if (!matchId) return;
+    const drive =
+      status === "waiting" ||
+      status === "countdown" ||
+      status === "finishing" ||
+      (status === "active" && iFinished);
+    if (!drive) return;
+    const i = setInterval(() => {
+      tickMatch(matchId).catch(() => {});
+    }, 1000);
+    return () => clearInterval(i);
+  }, [matchId, status, iFinished]);
 
   const handleAnswer = useCallback(
     async (answer: string | null) => {
@@ -147,6 +197,9 @@ export default function CompetitionRoom({
     if (!myPart || myPart.finished_at || feedback || submitting) return;
     if (startedAtMs === null) return;
     if (now - startedAtMs >= LIMIT) {
+      // Süre bitti: sunucuya cevapsız gönder. Kasıtlı "zamanlayıcı → aksiyon"
+      // deseni; submitting/feedback ile korunduğu için döngüye girmez.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       handleAnswer(null);
     }
   }, [now, startedAtMs, myPart, feedback, submitting, status, handleAnswer]);
@@ -158,37 +211,9 @@ export default function CompetitionRoom({
 
   // ---------- RENDER ----------
 
-  const Shell = ({ children }: { children: React.ReactNode }) => (
-    <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-fuchsia-500/30 overflow-y-auto">
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-fuchsia-600/15 blur-[100px] pointer-events-none rounded-full" />
-      <div className="flex-1 w-full max-w-md mx-auto px-4 py-8 z-10 flex flex-col">
-        <div className="flex items-center gap-2 mb-6">
-          <button
-            onClick={handleExit}
-            className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:text-white active:scale-95 transition-all"
-          >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
-            </svg>
-            Çık
-          </button>
-          <span className="px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border truncate bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/20">
-            {lesson?.title ?? "Yarışma"}
-          </span>
-          <span className="shrink-0 px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30 flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400 animate-pulse" />
-            Yarışma
-          </span>
-        </div>
-        {children}
-      </div>
-    </div>
-  );
-
   if (joinError) {
     return (
-      <Shell>
+      <Shell title={lesson?.title} onExit={handleExit}>
         <div className="flex-1 flex flex-col items-center justify-center text-center gap-4">
           <p className="text-lg font-bold text-white">Bağlantı kurulamadı</p>
           <p className="text-sm text-slate-400 max-w-xs">
@@ -207,7 +232,7 @@ export default function CompetitionRoom({
 
   if (!matchId || !match) {
     return (
-      <Shell>
+      <Shell title={lesson?.title} onExit={handleExit}>
         <div className="flex-1 flex flex-col items-center justify-center text-center gap-5">
           <div className="relative w-14 h-14 flex items-center justify-center">
             <div className="absolute inset-0 rounded-full border-t-2 border-fuchsia-500 animate-spin" />
@@ -223,7 +248,7 @@ export default function CompetitionRoom({
   if (match.status === "waiting") {
     const countNeeded = COMPETITION_CONFIG.lobbyMaxBeforeFastStart;
     return (
-      <Shell>
+      <Shell title={lesson?.title} onExit={handleExit}>
         <div className="flex-1 flex flex-col">
           <header className="text-center mb-6">
             <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 tracking-tighter">
@@ -283,7 +308,7 @@ export default function CompetitionRoom({
     const startMs = match.starts_at ? new Date(match.starts_at).getTime() : now;
     const secs = Math.max(0, Math.ceil((startMs - now) / 1000));
     return (
-      <Shell>
+      <Shell title={lesson?.title} onExit={handleExit}>
         <div className="flex-1 flex flex-col items-center justify-center text-center gap-6">
           <p className="text-sm font-bold tracking-widest uppercase text-fuchsia-300">
             Hazır ol!
@@ -307,7 +332,7 @@ export default function CompetitionRoom({
     const ranked = [...parts].sort((a, b) => b.score - a.score);
     const medals = ["🥇", "🥈", "🥉"];
     return (
-      <Shell>
+      <Shell title={lesson?.title} onExit={handleExit}>
         <div className="flex-1 flex flex-col">
           <header className="text-center mb-6">
             <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 tracking-tighter">
@@ -359,7 +384,7 @@ export default function CompetitionRoom({
   // === AKTİF / FINISHING (soru ekranı) ===
   if (!myPart) {
     return (
-      <Shell>
+      <Shell title={lesson?.title} onExit={handleExit}>
         <div className="flex-1 flex items-center justify-center text-slate-400 text-sm">
           Senkronize ediliyor…
         </div>
@@ -376,7 +401,7 @@ export default function CompetitionRoom({
   if (myPart.finished_at) {
     const ranked = [...parts].sort((a, b) => b.score - a.score);
     return (
-      <Shell>
+      <Shell title={lesson?.title} onExit={handleExit}>
         <div className="flex-1 flex flex-col">
           <div className="text-center mb-6">
             <div className="text-5xl mb-2">{myPart.avatar}</div>

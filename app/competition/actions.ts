@@ -76,39 +76,46 @@ export async function joinCompetition(input: {
   name: string;
   avatar: string;
 }): Promise<{ matchId: string }> {
-  // Bekleyen VEYA geri sayımdaki bir maça katıl (10 limit değil; geri sayım
-  // sırasında gelen de yarışmaya dahil olur). Aktif/biten maça katılım olmaz.
-  let [match] = await db
-    .select()
-    .from(matches)
-    .where(
-      and(
-        eq(matches.lessonId, input.lessonId),
-        inArray(matches.status, ["waiting", "countdown"]),
-      ),
-    )
-    .orderBy(asc(matches.createdAt))
-    .limit(1);
+  // Aynı ders için eşzamanlı katılımları serileştir; yoksa hiç maç yokken iki
+  // kişi aynı anda "maç yok" görüp ayrı maç açar ve lobi bölünür. Transaction
+  // düzeyinde advisory lock commit'te bırakılır (pooler/pgbouncer ile uyumlu).
+  return await db.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${input.lessonId}))`);
 
-  if (!match) {
-    const qids = pickQuestionIds(input.lessonId);
-    [match] = await db
-      .insert(matches)
-      .values({ lessonId: input.lessonId, status: "waiting", questionIds: qids })
-      .returning();
-  }
+    // Bekleyen VEYA geri sayımdaki bir maça katıl (10 limit değil; geri sayım
+    // sırasında gelen de yarışmaya dahil olur). Aktif/biten maça katılım olmaz.
+    let [match] = await tx
+      .select()
+      .from(matches)
+      .where(
+        and(
+          eq(matches.lessonId, input.lessonId),
+          inArray(matches.status, ["waiting", "countdown"]),
+        ),
+      )
+      .orderBy(asc(matches.createdAt))
+      .limit(1);
 
-  await db
-    .insert(matchPlayers)
-    .values({
-      matchId: match.id,
-      playerId: input.playerId,
-      name: input.name.trim().slice(0, 18) || "Yarışmacı",
-      avatar: input.avatar,
-    })
-    .onConflictDoNothing();
+    if (!match) {
+      const qids = pickQuestionIds(input.lessonId);
+      [match] = await tx
+        .insert(matches)
+        .values({ lessonId: input.lessonId, status: "waiting", questionIds: qids })
+        .returning();
+    }
 
-  return { matchId: match.id };
+    await tx
+      .insert(matchPlayers)
+      .values({
+        matchId: match.id,
+        playerId: input.playerId,
+        name: input.name.trim().slice(0, 18) || "Yarışmacı",
+        avatar: input.avatar,
+      })
+      .onConflictDoNothing();
+
+    return { matchId: match.id };
+  });
 }
 
 // Lobiden ayrıl (sadece bekleme aşamasında siler).
@@ -176,6 +183,55 @@ export async function tickMatch(matchId: string): Promise<void> {
           .where(eq(matchPlayers.matchId, matchId));
       }
     }
+    return;
+  }
+
+  if (match.status === "active") {
+    // Terk edilen maç koruması. Bir maç en az 2 kişiyle başlayabildiğinden ya da
+    // oyuncular sekmeyi kapatabildiğinden, "3 kişi bitince bit" kuralı hiç
+    // tetiklenmeyebilir. Bu durumda: en az bir oyuncu bitirmişken, bitirmemiş
+    // herkesin istemcisi "ölü" (süresi çoktan geçmiş, ilerlemiyor) ise son geri
+    // sayımı başlat. Hâlâ aktif oynayan biri varsa dokunma.
+    const ps = await db
+      .select({
+        finishedAt: matchPlayers.finishedAt,
+        questionStartedAt: matchPlayers.questionStartedAt,
+      })
+      .from(matchPlayers)
+      .where(eq(matchPlayers.matchId, matchId));
+
+    // Geçiş anı yarışı yüzünden başlangıcı boş kalan oyuncuya başlangıç ver
+    // (sayaç/oto-cevap çalışsın, aksi halde takılır). Bu tikte burada kal.
+    if (ps.some((p) => !p.finishedAt && p.questionStartedAt == null)) {
+      await db
+        .update(matchPlayers)
+        .set({ questionStartedAt: new Date() })
+        .where(
+          and(
+            eq(matchPlayers.matchId, matchId),
+            sql`${matchPlayers.finishedAt} is null`,
+            sql`${matchPlayers.questionStartedAt} is null`,
+          ),
+        );
+      return;
+    }
+
+    if (!ps.some((p) => p.finishedAt)) return; // bekleyen bitiren yok
+    const staleAfter =
+      COMPETITION_CONFIG.questionTimeLimitMs + COMPETITION_CONFIG.abandonGraceMs;
+    const someoneStillPlaying = ps.some(
+      (p) =>
+        !p.finishedAt &&
+        p.questionStartedAt != null &&
+        now - new Date(p.questionStartedAt).getTime() <= staleAfter,
+    );
+    if (someoneStillPlaying) return;
+
+    const finishesAt = new Date(now + COMPETITION_CONFIG.finishCountdownMs);
+    await db
+      .update(matches)
+      .set({ status: "finishing", finishesAt })
+      .where(and(eq(matches.id, matchId), eq(matches.status, "active")));
     return;
   }
 
@@ -278,10 +334,10 @@ export async function submitAnswer(input: {
       ),
     );
 
-  // 3 kişi bitirince son geri sayımı başlat.
+  // 3 kişi bitirince — ya da lobi 3'ten azsa herkes bitirince — son geri sayımı başlat.
   if (isFinished) {
-    const [{ c }] = await db
-      .select({ c: count() })
+    const [{ finishedCount }] = await db
+      .select({ finishedCount: count() })
       .from(matchPlayers)
       .where(
         and(
@@ -289,7 +345,15 @@ export async function submitAnswer(input: {
           sql`${matchPlayers.finishedAt} is not null`,
         ),
       );
-    if (c >= COMPETITION_CONFIG.finishersToTriggerEnd) {
+    const [{ totalCount }] = await db
+      .select({ totalCount: count() })
+      .from(matchPlayers)
+      .where(eq(matchPlayers.matchId, input.matchId));
+    const threshold = Math.min(
+      COMPETITION_CONFIG.finishersToTriggerEnd,
+      totalCount,
+    );
+    if (finishedCount >= threshold) {
       const finishesAt = new Date(
         Date.now() + COMPETITION_CONFIG.finishCountdownMs,
       );
