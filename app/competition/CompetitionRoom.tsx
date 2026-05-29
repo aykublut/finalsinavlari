@@ -49,6 +49,7 @@ export default function CompetitionRoom({
     picked: string | null;
   } | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [pendingOption, setPendingOption] = useState<string | null>(null);
 
   // Tik (geri sayımlar ve sayaç için)
   useEffect(() => {
@@ -114,6 +115,7 @@ export default function CompetitionRoom({
       if (myPart.finished_at) return;
       const qIndex = myPart.current_question_index;
       setSubmitting(true);
+      if (answer !== null) setPendingOption(answer); // anında tıklanma efekti
       try {
         const res = await submitAnswer({
           matchId,
@@ -121,6 +123,7 @@ export default function CompetitionRoom({
           questionIndex: qIndex,
           answer,
         });
+        setPendingOption(null);
         setFeedback({
           correct: res.correct,
           awarded: res.awarded,
@@ -531,7 +534,16 @@ export default function CompetitionRoom({
               const isCorrect = option === question.correctAnswer;
               let style =
                 "border-white/5 bg-white/[0.03] text-slate-300 hover:border-fuchsia-500/40 hover:bg-fuchsia-500/10";
-              if (feedback) {
+
+              if (pendingOption === option) {
+                // Anında tıklanma geri bildirimi — sunucu yanıtı bekleniyor
+                style =
+                  "border-fuchsia-400/60 bg-fuchsia-500/20 text-fuchsia-200 scale-[1.01]";
+              } else if (pendingOption !== null) {
+                // Başka bir şık beklerken diğerleri soluk
+                style =
+                  "border-transparent bg-white/[0.01] text-slate-600 opacity-30";
+              } else if (feedback) {
                 if (isCorrect) {
                   style =
                     "border-emerald-500/50 bg-emerald-500/10 text-emerald-300 scale-[1.02] shadow-[0_0_20px_rgba(16,185,129,0.15)]";
@@ -542,12 +554,13 @@ export default function CompetitionRoom({
                     "border-transparent bg-white/[0.01] text-slate-600 opacity-30";
                 }
               }
+
               return (
                 <button
                   key={index}
                   disabled={!!feedback || submitting}
                   onClick={() => handleAnswer(option)}
-                  className={`group w-full flex items-center justify-between p-[clamp(0.7rem,1.8dvh,1.1rem)] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-200 outline-none text-left ${style} ${!feedback && "active:scale-[0.98]"}`}
+                  className={`group w-full flex items-center justify-between p-[clamp(0.7rem,1.8dvh,1.1rem)] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-200 outline-none text-left ${style} ${!feedback && !pendingOption && "active:scale-[0.98]"}`}
                 >
                   <span className="text-[clamp(0.85rem,2.1dvh,1.05rem)] font-medium leading-[1.3] pr-3 line-clamp-3">
                     {option}
