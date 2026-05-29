@@ -5,6 +5,41 @@ import { players, matches, matchPlayers, matchAnswers } from "@/lib/db/schema";
 import { and, eq, sql, asc, count, inArray } from "drizzle-orm";
 import { lessons } from "@/store/questions";
 import { COMPETITION_CONFIG, scoreForCorrect } from "@/lib/competition/config";
+import type { MatchStatus } from "@/lib/competition/config";
+import type { MatchRow, MatchPlayerRow } from "@/lib/competition/useMatch";
+
+// Drizzle satırlarını istemcinin beklediği snake_case + ISO-string şekline çevir.
+// Böylece joinCompetition lobiyi tek gidiş-gelişte tohumlayabilir (ekstra
+// loadMatch/loadParts beklemeden), Supabase realtime ile aynı biçimde.
+function toMatchRow(m: typeof matches.$inferSelect): MatchRow {
+  return {
+    id: m.id,
+    lesson_id: m.lessonId,
+    status: m.status as MatchStatus,
+    question_ids: m.questionIds,
+    starts_at: m.startsAt ? m.startsAt.toISOString() : null,
+    finishes_at: m.finishesAt ? m.finishesAt.toISOString() : null,
+    created_at: m.createdAt.toISOString(),
+    finished_at: m.finishedAt ? m.finishedAt.toISOString() : null,
+  };
+}
+
+function toMatchPlayerRow(p: typeof matchPlayers.$inferSelect): MatchPlayerRow {
+  return {
+    id: p.id,
+    match_id: p.matchId,
+    player_id: p.playerId,
+    name: p.name,
+    avatar: p.avatar,
+    score: p.score,
+    current_question_index: p.currentQuestionIndex,
+    question_started_at: p.questionStartedAt
+      ? p.questionStartedAt.toISOString()
+      : null,
+    finished_at: p.finishedAt ? p.finishedAt.toISOString() : null,
+    joined_at: p.joinedAt.toISOString(),
+  };
+}
 
 // Bir dersin sorularından rastgele N tane seçer (sıralı, herkese aynı set).
 function pickQuestionIds(lessonId: string): number[] {
@@ -75,7 +110,7 @@ export async function joinCompetition(input: {
   playerId: string;
   name: string;
   avatar: string;
-}): Promise<{ matchId: string }> {
+}): Promise<{ matchId: string; match: MatchRow; players: MatchPlayerRow[] }> {
   // Aynı ders için eşzamanlı katılımları serileştir; yoksa hiç maç yokken iki
   // kişi aynı anda "maç yok" görüp ayrı maç açar ve lobi bölünür. Transaction
   // düzeyinde advisory lock commit'te bırakılır (pooler/pgbouncer ile uyumlu).
@@ -114,7 +149,19 @@ export async function joinCompetition(input: {
       })
       .onConflictDoNothing();
 
-    return { matchId: match.id };
+    // Lobiyi anında gösterebilmek için güncel oyuncu listesini de döndür —
+    // istemci ekstra loadMatch/loadParts gidiş-gelişini beklemeden render eder.
+    const roster = await tx
+      .select()
+      .from(matchPlayers)
+      .where(eq(matchPlayers.matchId, match.id))
+      .orderBy(asc(matchPlayers.joinedAt));
+
+    return {
+      matchId: match.id,
+      match: toMatchRow(match),
+      players: roster.map(toMatchPlayerRow),
+    };
   });
 }
 

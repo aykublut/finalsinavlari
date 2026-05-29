@@ -54,7 +54,9 @@ export function useMatch(matchId: string | null) {
       const { data } = await supabase
         .from("match_players")
         .select("*")
-        .eq("match_id", matchId);
+        .eq("match_id", matchId)
+        // Katılım sırasına göre sabit sıra — seed ile aynı, ızgara titremez.
+        .order("joined_at", { ascending: true });
       if (active && data) setParts(data as MatchPlayerRow[]);
     };
 

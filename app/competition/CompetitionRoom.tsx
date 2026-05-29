@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { lessons } from "@/store/questions";
 import { COMPETITION_CONFIG } from "@/lib/competition/config";
-import { useMatch } from "@/lib/competition/useMatch";
+import { useMatch, type MatchRow, type MatchPlayerRow } from "@/lib/competition/useMatch";
 import {
   claimProfile,
   joinCompetition,
@@ -80,7 +80,18 @@ export default function CompetitionRoom({
   const [matchId, setMatchId] = useState<string | null>(null);
   const [pid, setPid] = useState<string | null>(playerId);
   const [joinError, setJoinError] = useState(false);
-  const { match, parts } = useMatch(matchId);
+  // joinCompetition'ın döndürdüğü ilk anlık görüntü — lobiyi spinner beklemeden
+  // anında çizer; canlı veri (loadMatch/loadParts + realtime) gelince devralır.
+  const [seed, setSeed] = useState<{
+    match: MatchRow;
+    parts: MatchPlayerRow[];
+  } | null>(null);
+  const { match: liveMatch, parts: liveParts } = useMatch(matchId);
+  const match = liveMatch ?? seed?.match ?? null;
+  const parts = useMemo(
+    () => (liveParts.length ? liveParts : seed?.parts ?? []),
+    [liveParts, seed],
+  );
 
   const [now, setNow] = useState(() => Date.now());
   const [feedback, setFeedback] = useState<{
@@ -103,25 +114,33 @@ export default function CompetitionRoom({
     let cancelled = false;
     (async () => {
       try {
-        const claim = await claimProfile({
-          id: playerId,
-          name: playerName,
-          avatar: playerAvatar,
-        });
-        if (cancelled) return;
-        if (!claim.ok) {
-          setJoinError(true);
-          return;
+        // Kalıcı id zaten varsa claimProfile'ı atla (profil ekranında ya da
+        // önceki oturumda zaten alınmıştı) — gereksiz bir gidiş-gelişi kaldırır.
+        // Yalnız id yoksa (yeni oyuncu) sunucuda oluştur.
+        let effectiveId = playerId;
+        if (!effectiveId) {
+          const claim = await claimProfile({
+            id: playerId,
+            name: playerName,
+            avatar: playerAvatar,
+          });
+          if (cancelled) return;
+          if (!claim.ok) {
+            setJoinError(true);
+            return;
+          }
+          effectiveId = claim.id;
+          setPid(claim.id);
+          onPlayerId(claim.id);
         }
-        setPid(claim.id);
-        onPlayerId(claim.id);
         const res = await joinCompetition({
           lessonId,
-          playerId: claim.id,
+          playerId: effectiveId,
           name: playerName,
           avatar: playerAvatar,
         });
         if (cancelled) return;
+        setSeed({ match: res.match, parts: res.players });
         setMatchId(res.matchId);
       } catch {
         if (!cancelled) setJoinError(true);
