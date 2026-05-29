@@ -467,12 +467,13 @@ export default function QuizApp() {
                       );
                     }
 
-                    if (!othersVisible) return null;
-
+                    // Yanlış şıklar BAŞTAN yer kaplar (görünmez), süre dolunca
+                    // yumuşakça belirir. Böylece doğru şık kendi sırasında kalır,
+                    // ortada belirip yerine zıplamaz.
                     return (
                       <div
                         key={idx}
-                        className="animate-in fade-in duration-700 flex items-center p-[calc(clamp(0.75rem,2dvh,1.25rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border border-white/[0.05] bg-white/[0.01] text-slate-600 opacity-40"
+                        className={`flex items-center p-[calc(clamp(0.75rem,2dvh,1.25rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border border-white/[0.05] bg-white/[0.01] text-slate-600 transition-opacity duration-500 ${othersVisible ? "opacity-40" : "opacity-0"}`}
                       >
                         <span className="text-[calc(clamp(0.85rem,2.2dvh,1.1rem)*var(--fit,1))] font-medium leading-[1.3]">
                           {opt}
