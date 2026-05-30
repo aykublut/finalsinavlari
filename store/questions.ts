@@ -3621,7 +3621,7 @@ const KalkinmaEkonomisi = [
   {
     id: 1,
     questionText:
-      "1-) Bir ülkede belli bir dönemde üretilen nihai mal ve hizmet miktarındaki artış neyi gösterir?[cite: 10]",
+      "1-) Bir ülkede belli bir dönemde üretilen nihai mal ve hizmet miktarındaki artış neyi gösterir?",
     options: [
       "A) İktisadi kalkınma",
       "B) Nominal milli gelir",
@@ -3634,7 +3634,7 @@ const KalkinmaEkonomisi = [
   {
     id: 2,
     questionText:
-      "2-) Aşağıdakilerden hangisi iktisadi büyümeyi etkileyen faktörlerden değildir?[cite: 10]",
+      "2-) Aşağıdakilerden hangisi iktisadi büyümeyi etkileyen faktörlerden değildir?",
     options: [
       "A) Fiziki ve beşeri sermaye birikimi",
       "B) Demografik etkenler",
@@ -3647,7 +3647,7 @@ const KalkinmaEkonomisi = [
   {
     id: 3,
     questionText:
-      "3-) İktisadi büyümenin nedenleri arasında hangi faktör yer almaz?[cite: 10]",
+      "3-) İktisadi büyümenin nedenleri arasında hangi faktör yer almaz?",
     options: [
       "A) Yatırımlar",
       "B) İstihdam oranı",
@@ -3660,7 +3660,7 @@ const KalkinmaEkonomisi = [
   {
     id: 4,
     questionText:
-      "4-) Aşağıdakilerden hangisi sürdürülebilir iktisadi büyümeyi sağlayan koşullardan biridir?[cite: 10]",
+      "4-) Aşağıdakilerden hangisi sürdürülebilir iktisadi büyümeyi sağlayan koşullardan biridir?",
     options: [
       "A) Tasarruf oranının düşüklüğü",
       "B) Genç işsiz oranındaki artış",
@@ -3673,7 +3673,7 @@ const KalkinmaEkonomisi = [
   {
     id: 5,
     questionText:
-      "5-) İktisadi büyümenin ölçülmesinde kullanılan gösterge hangisidir?[cite: 10]",
+      "5-) İktisadi büyümenin ölçülmesinde kullanılan gösterge hangisidir?",
     options: [
       "A) GSMH",
       "B) GSMH/100",
@@ -3686,7 +3686,7 @@ const KalkinmaEkonomisi = [
   {
     id: 6,
     questionText:
-      '6-) Aşağıdakilerden hangisi Birleşmiş Milletler tarafından tanımlanan "kötü büyüme" türlerinden biri değildir?[cite: 10]',
+      '6-) Aşağıdakilerden hangisi Birleşmiş Milletler tarafından tanımlanan "kötü büyüme" türlerinden biri değildir?',
     options: [
       "A) Dengesiz büyüme",
       "B) Sessiz büyüme",
@@ -3699,7 +3699,7 @@ const KalkinmaEkonomisi = [
   {
     id: 7,
     questionText:
-      "7-) Uluslararası bağımlılık teorileri hangi dönemde önem kazanmıştır?[cite: 10]",
+      "7-) Uluslararası bağımlılık teorileri hangi dönemde önem kazanmıştır?",
     options: [
       "A) 1990'lar",
       "B) 1980'ler",
@@ -3712,7 +3712,7 @@ const KalkinmaEkonomisi = [
   {
     id: 8,
     questionText:
-      "8-) Aşağıdakilerden hangisi uluslararası bağımlılık teorilerinin içinde bulunan modellerden biridir?[cite: 10]",
+      "8-) Aşağıdakilerden hangisi uluslararası bağımlılık teorilerinin içinde bulunan modellerden biridir?",
     options: [
       "A) Monopolist kalkınma tezi",
       "B) Yanlış paradigma modeli",
@@ -3725,7 +3725,7 @@ const KalkinmaEkonomisi = [
   {
     id: 9,
     questionText:
-      "9-) Aşağıdakilerden hangisi 1990'lara damgasını vuran kalkınma yaklaşımıdır?[cite: 10]",
+      "9-) Aşağıdakilerden hangisi 1990'lara damgasını vuran kalkınma yaklaşımıdır?",
     options: [
       "A) Yapısalcı değişim modeli",
       "B) Neo-yapısalcı yaklaşım",
@@ -3738,7 +3738,7 @@ const KalkinmaEkonomisi = [
   {
     id: 10,
     questionText:
-      "10-) Aşağıdakilerden hangisi neo-liberal yaklaşımın varsayımlarından biri değildir?[cite: 10]",
+      "10-) Aşağıdakilerden hangisi neo-liberal yaklaşımın varsayımlarından biri değildir?",
     options: [
       "A) Devletin ekonomik yaşama müdahalesinin sınırlandırılması",
       "B) Toplumsal etkinliğin yerini bireysel etkinliğe bırakması",
@@ -3751,7 +3751,7 @@ const KalkinmaEkonomisi = [
   {
     id: 11,
     questionText:
-      "11-) Aşağıdaki ülkelerden hangisi neo-liberal kalkınma modelini deneyimleyen ülkelerden değildir?[cite: 10]",
+      "11-) Aşağıdaki ülkelerden hangisi neo-liberal kalkınma modelini deneyimleyen ülkelerden değildir?",
     options: [
       "A) Güney Kore",
       "B) Çin",
@@ -3764,7 +3764,7 @@ const KalkinmaEkonomisi = [
   {
     id: 12,
     questionText:
-      "12-) Neo-liberal yaklaşımlara göre sermaye düzeyindeki bir değişme aşağıdakilerden hangisine bağlıdır?[cite: 10]",
+      "12-) Neo-liberal yaklaşımlara göre sermaye düzeyindeki bir değişme aşağıdakilerden hangisine bağlıdır?",
     options: [
       "A) Eğitim düzeyi",
       "B) Fiyat istikrarı",
@@ -3777,7 +3777,7 @@ const KalkinmaEkonomisi = [
   {
     id: 13,
     questionText:
-      "13-) Aşağıdakilerden hangisi kalkınma teorilerine yöneltilen eleştirilerden biridir?[cite: 10]",
+      "13-) Aşağıdakilerden hangisi kalkınma teorilerine yöneltilen eleştirilerden biridir?",
     options: [
       "A) Sosyokültürel etkileri hesaba katmamaları",
       "B) Toplumsal faktörleri göz ardı etmeleri",
@@ -3790,7 +3790,7 @@ const KalkinmaEkonomisi = [
   {
     id: 14,
     questionText:
-      "14-) Bütüncül kalkınma yöntemi, aşağıdakilerden hangisini içermez?[cite: 10]",
+      "14-) Bütüncül kalkınma yöntemi, aşağıdakilerden hangisini içermez?",
     options: [
       "A) Kültürel faktörler",
       "B) Psikolojik faktörler",
@@ -3803,7 +3803,7 @@ const KalkinmaEkonomisi = [
   {
     id: 15,
     questionText:
-      "15-) Aşağıdakilerden hangisi geleneksel iktisada dayalı kalkınma yaklaşımını savunan iktisatçıların varsayımlarından biri değildir?[cite: 10]",
+      "15-) Aşağıdakilerden hangisi geleneksel iktisada dayalı kalkınma yaklaşımını savunan iktisatçıların varsayımlarından biri değildir?",
     options: [
       "A) Az gelişmiş ülke ekonomileri, gelişmiş ülke ekonomilerinden nitelik olarak farklıdır.",
       "B) Azgelişmiş ülkeler, gelişmiş ülkelerin kapitalizm öncesi yapılarına benzer geleneksel toplumlardır.",
@@ -3817,7 +3817,7 @@ const KalkinmaEkonomisi = [
   {
     id: 16,
     questionText:
-      "16-) Geleneksel iktisada dayalı kalkınma teorisyenlerine göre aşağıdakilerden hangisi az gelişmişliğin nedenlerinden değildir?[cite: 10]",
+      "16-) Geleneksel iktisada dayalı kalkınma teorisyenlerine göre aşağıdakilerden hangisi az gelişmişliğin nedenlerinden değildir?",
     options: [
       "A) İşçi sınıfının gelişmemesi",
       "B) Tasarruf oranlarındaki yetersizlik",
@@ -3830,7 +3830,7 @@ const KalkinmaEkonomisi = [
   {
     id: 17,
     questionText:
-      "17-) Yapısalcılara göre ekonomik kalkınmada temel unsur aşağıdakilerden hangisidir?[cite: 10]",
+      "17-) Yapısalcılara göre ekonomik kalkınmada temel unsur aşağıdakilerden hangisidir?",
     options: [
       "A) Sermaye birikimi",
       "B) İnsan",
@@ -3843,7 +3843,7 @@ const KalkinmaEkonomisi = [
   {
     id: 18,
     questionText:
-      "18-) Aşağıdakilerden hangisi Prebisch'in az gelişmiş ülkeler için sunduğu çözüm önerilerindendir?[cite: 10]",
+      "18-) Aşağıdakilerden hangisi Prebisch'in az gelişmiş ülkeler için sunduğu çözüm önerilerindendir?",
     options: [
       "A) Beşeri sermayeye dayalı kalkınma",
       "B) Tarıma dayalı kalkınma",
@@ -3856,7 +3856,7 @@ const KalkinmaEkonomisi = [
   {
     id: 19,
     questionText:
-      "19-) Aşağıdakilerden hangisi neo-yapısalcı yaklaşımın koşullarından biri değildir?[cite: 10]",
+      "19-) Aşağıdakilerden hangisi neo-yapısalcı yaklaşımın koşullarından biri değildir?",
     options: [
       "A) Yerli sanayinin gelişiminin teşvik edilmesi",
       "B) Tarımsal üretim artışı",
@@ -3869,7 +3869,7 @@ const KalkinmaEkonomisi = [
   {
     id: 20,
     questionText:
-      "20-) D.Seers'a göre kalkınmanın merkezinde yer alan faktör aşağıdakilerden hangisidir?[cite: 10]",
+      "20-) D.Seers'a göre kalkınmanın merkezinde yer alan faktör aşağıdakilerden hangisidir?",
     options: [
       "A) Üretim",
       "B) İnsan",
@@ -3882,7 +3882,7 @@ const KalkinmaEkonomisi = [
   {
     id: 21,
     questionText:
-      "21-) İnsan merkezli kalkınma yaklaşımının odağında aşağıdaki unsurlardan hangisi yer almaz?[cite: 10]",
+      "21-) İnsan merkezli kalkınma yaklaşımının odağında aşağıdaki unsurlardan hangisi yer almaz?",
     options: [
       "A) İyi bir eğitim",
       "B) Demokratik hak",
@@ -3895,7 +3895,7 @@ const KalkinmaEkonomisi = [
   {
     id: 22,
     questionText:
-      "22-) Aşağıdakilerden hangisi temel ihtiyaçlar yaklaşımına göre az gelişmişliğin çözümlerinden biri değildir?[cite: 10]",
+      "22-) Aşağıdakilerden hangisi temel ihtiyaçlar yaklaşımına göre az gelişmişliğin çözümlerinden biri değildir?",
     options: [
       "A) İşsizlik sorununun çözülmesi",
       "B) İstikrarlı tüketim yapısı",
@@ -3908,7 +3908,7 @@ const KalkinmaEkonomisi = [
   {
     id: 23,
     questionText:
-      "23-) Sürdürülebilir kalkınma anlayışının odağında hangi faktör yatar?[cite: 10]",
+      "23-) Sürdürülebilir kalkınma anlayışının odağında hangi faktör yatar?",
     options: [
       "A) İnsan",
       "B) Verimlilik",
@@ -3921,7 +3921,7 @@ const KalkinmaEkonomisi = [
   {
     id: 24,
     questionText:
-      "24-) Nurkse'a göre gelişmemiş ülkeler aşağıdakilerden hangi özelliklere sahiptir?[cite: 10]",
+      "24-) Nurkse'a göre gelişmemiş ülkeler aşağıdakilerden hangi özelliklere sahiptir?",
     options: [
       "A) Geniş pazar büyüklüğü",
       "B) Yüksek üretim düzeyi",
@@ -3934,7 +3934,7 @@ const KalkinmaEkonomisi = [
   {
     id: 25,
     questionText:
-      "25-) Aşağıdakilerden hangisi geleneksel iktisada karşı geliştirilen yaklaşımlardan biridir?[cite: 10]",
+      "25-) Aşağıdakilerden hangisi geleneksel iktisada karşı geliştirilen yaklaşımlardan biridir?",
     options: [
       "A) İnsan merkezli kalkınma yaklaşımı",
       "B) Meta merkezli kalkınma yaklaşımı",
@@ -3947,7 +3947,7 @@ const KalkinmaEkonomisi = [
   {
     id: 26,
     questionText:
-      "26-) Aşağıdakilerden hangisi Nurkse'a göre az gelişmiş ülkeler içine düştükleri kısır döngüyü kırma yollarından biri değildir?[cite: 10]",
+      "26-) Aşağıdakilerden hangisi Nurkse'a göre az gelişmiş ülkeler içine düştükleri kısır döngüyü kırma yollarından biri değildir?",
     options: [
       "A) Tasarruflar",
       "B) Dış yardımlar",
@@ -3960,7 +3960,7 @@ const KalkinmaEkonomisi = [
   {
     id: 27,
     questionText:
-      "27-) Nobel ödüllü iktisatçı Robert Lucas, aşağıdaki yaklaşımlardan hangisinin öncüsüdür?[cite: 10]",
+      "27-) Nobel ödüllü iktisatçı Robert Lucas, aşağıdaki yaklaşımlardan hangisinin öncüsüdür?",
     options: [
       "A) Bilgi üretimi ve dışsallıklar",
       "B) Yakınsama hipotezi",
@@ -3973,7 +3973,7 @@ const KalkinmaEkonomisi = [
   {
     id: 28,
     questionText:
-      "28-) Aşağıdakilerden hangisi Barro'nun varsayımlarından biridir?[cite: 10]",
+      "28-) Aşağıdakilerden hangisi Barro'nun varsayımlarından biridir?",
     options: [
       "A) Kamu harcamaları büyüme sürecini hızlandıran önemli bir etkendir.",
       "B) Vergilendirmeden kaynaklanan özel tasarruflardaki azalma büyümeyi olumsuz etkiler.",
@@ -3986,14 +3986,14 @@ const KalkinmaEkonomisi = [
   {
     id: 29,
     questionText:
-      "29-) Aşağıdaki iktisatçılardan hangisi içsel büyüme teorilerine katkıda bulunmamıştır?[cite: 10]",
+      "29-) Aşağıdaki iktisatçılardan hangisi içsel büyüme teorilerine katkıda bulunmamıştır?",
     options: ["A) Romer", "B) Solow", "C) Arrow", "D) Lucas", "E) Hiçbiri"],
     correctAnswer: "B) Solow",
   },
   {
     id: 30,
     questionText:
-      '30-) "Hızlı kentleşme ile birlikte modern ve geleneksel kesimin faaliyetlerini beraber sürdürmeye çalıştığı...... bir yapı ortaya çıkmaktadır. Söz konusu...... yapı hem gelişmiş hem de az gelişmiş ülkelerde görülebilmektedir. Fakat az gelişmiş ülkelerde daha çok rastlanan bir olgudur" şeklindeki paragrafta bulunan boşluklara aşağıdaki ifadelerden hangisi gelmelidir?[cite: 10]',
+      '30-) "Hızlı kentleşme ile birlikte modern ve geleneksel kesimin faaliyetlerini beraber sürdürmeye çalıştığı...... bir yapı ortaya çıkmaktadır. Söz konusu...... yapı hem gelişmiş hem de az gelişmiş ülkelerde görülebilmektedir. Fakat az gelişmiş ülkelerde daha çok rastlanan bir olgudur" şeklindeki paragrafta bulunan boşluklara aşağıdaki ifadelerden hangisi gelmelidir?',
     options: [
       "A) Monoist (Tekli)",
       "B) Dualist (İkili)",
@@ -4006,7 +4006,7 @@ const KalkinmaEkonomisi = [
   {
     id: 31,
     questionText:
-      "31-) Kalkınma iktisadi terminolojisinde piyasaları düzgün işlemeyen, üreticiler ve tüketicilerin tam bilgiye sahip olmadığı, piyasa fiyatının arz ve talep tarafından belirlenemediği ve piyasa dengesizliğinin çok yaygın olduğu ülkeler için aşağıdaki ifadelerden hangisi kullanılır?[cite: 10]",
+      "31-) Kalkınma iktisadi terminolojisinde piyasaları düzgün işlemeyen, üreticiler ve tüketicilerin tam bilgiye sahip olmadığı, piyasa fiyatının arz ve talep tarafından belirlenemediği ve piyasa dengesizliğinin çok yaygın olduğu ülkeler için aşağıdaki ifadelerden hangisi kullanılır?",
     options: [
       "A) Gelişmiş ekonomi",
       "B) Kuzey ekonomisi",
@@ -4019,7 +4019,7 @@ const KalkinmaEkonomisi = [
   {
     id: 32,
     questionText:
-      "32-) Ekonomik gelişmişliğin kişi başına düşen milli gelir ile ölçümlenmesi yöntemine göre kişi başına yıllık 10,000 dolar gelire sahip bir ekonomi aşağıdakilerden hangisine dâhildir?[cite: 10]",
+      "32-) Ekonomik gelişmişliğin kişi başına düşen milli gelir ile ölçümlenmesi yöntemine göre kişi başına yıllık 10,000 dolar gelire sahip bir ekonomi aşağıdakilerden hangisine dâhildir?",
     options: [
       "A) Düşük gelirli",
       "B) Orta gelirli",
@@ -4032,7 +4032,7 @@ const KalkinmaEkonomisi = [
   {
     id: 33,
     questionText:
-      "33-) Aşağıdakilerden hangisi az gelişmiş ülke ekonomilerinin özelliklerinden biri değildir?[cite: 10]",
+      "33-) Aşağıdakilerden hangisi az gelişmiş ülke ekonomilerinin özelliklerinden biri değildir?",
     options: [
       "A) Üretimde en yüksek pay tarım sektörüne aittir.",
       "B) İstihdamda en yüksek pay tarım sektörüne aittir.",
@@ -4045,7 +4045,7 @@ const KalkinmaEkonomisi = [
   {
     id: 34,
     questionText:
-      '34-) "...... söz konusu olduğu ülkelerde gelişme daha hızlı yaşanmakta, girişimler daha fazla desteklenmekte ve yenilikçilik toplumsal kesime daha uygun hale gelmektedir." ifadesini noktalı alan en doğru şekilde aşağıdaki ifadelerin hangisiyle doldurulabilir?[cite: 10]',
+      '34-) "...... söz konusu olduğu ülkelerde gelişme daha hızlı yaşanmakta, girişimler daha fazla desteklenmekte ve yenilikçilik toplumsal kesime daha uygun hale gelmektedir." ifadesini noktalı alan en doğru şekilde aşağıdaki ifadelerin hangisiyle doldurulabilir?',
     options: [
       "A) Kendi kendine yeterliliğin",
       "B) Enflasyonda çok düşük bir seviyenin",
@@ -4058,7 +4058,7 @@ const KalkinmaEkonomisi = [
   {
     id: 35,
     questionText:
-      "35-) İktisatçı Amartya Sen, kalkınma kavramının geniş kapsamlı yapısını hangi çerçevede değerlendirmeyi tercih etmiştir?[cite: 10]",
+      "35-) İktisatçı Amartya Sen, kalkınma kavramının geniş kapsamlı yapısını hangi çerçevede değerlendirmeyi tercih etmiştir?",
     options: [
       "A) Eşitlik",
       "B) Demokrasi",
@@ -4071,7 +4071,7 @@ const KalkinmaEkonomisi = [
   {
     id: 36,
     questionText:
-      "36-) Ekonomik kalkınma uzun dönemde ekonomik büyümenin yanında neyin gerçekleşmesi gerektiğini öngörür?[cite: 10]",
+      "36-) Ekonomik kalkınma uzun dönemde ekonomik büyümenin yanında neyin gerçekleşmesi gerektiğini öngörür?",
     options: [
       "A) Sosyal ve kültürel yapının da değiştirilmesini ve yenileştirilmesini",
       "B) Faiz politikasının sıkılaştırılmasını",
@@ -4085,7 +4085,7 @@ const KalkinmaEkonomisi = [
   {
     id: 37,
     questionText:
-      '37-) Aşağıdakilerin hangisi "ekonomik kalkınmanın gerçekleşmesi için gereken" olmazsa olmazlardan biri değildir?[cite: 10]',
+      '37-) Aşağıdakilerin hangisi "ekonomik kalkınmanın gerçekleşmesi için gereken" olmazsa olmazlardan biri değildir?',
     options: [
       "A) Ekonomik büyüme",
       "B) Üretim artışı",
@@ -4098,7 +4098,7 @@ const KalkinmaEkonomisi = [
   {
     id: 38,
     questionText:
-      "38-) Ünlü iktisatçı Hirschman, ekonomik kalkınmanın çok boyutlu yönünü vurgulamak için hangi benzetmeyi kullanır?[cite: 10]",
+      "38-) Ünlü iktisatçı Hirschman, ekonomik kalkınmanın çok boyutlu yönünü vurgulamak için hangi benzetmeyi kullanır?",
     options: [
       "A) Yapboz bulmacası",
       "B) Dalgalı deniz",
@@ -4111,7 +4111,7 @@ const KalkinmaEkonomisi = [
   {
     id: 39,
     questionText:
-      "39-) Hangi tarihsel dönem sonrasında kalkınma iktisatçıları ile politika yapıcılar çok daha yakın çalışmaya başlamış ve her ülkenin tarihsel yapısına özgü kalkınma planları hazırlanması eğilimi ağırlık kazanmıştır?[cite: 10]",
+      "39-) Hangi tarihsel dönem sonrasında kalkınma iktisatçıları ile politika yapıcılar çok daha yakın çalışmaya başlamış ve her ülkenin tarihsel yapısına özgü kalkınma planları hazırlanması eğilimi ağırlık kazanmıştır?",
     options: [
       "A) Birinci Dünya Savaşı",
       "B) İkinci Dünya Savaşı",
@@ -4124,7 +4124,7 @@ const KalkinmaEkonomisi = [
   {
     id: 40,
     questionText:
-      "40-) Aşağıdaki ikili ifadelerden hangisi Romer'a göre iktisadi büyümenin kaynağıdır?[cite: 10]",
+      "40-) Aşağıdaki ikili ifadelerden hangisi Romer'a göre iktisadi büyümenin kaynağıdır?",
     options: [
       "A) Nüfus - Tarım",
       "B) Sermaye birikimi - Tasarruf",
@@ -4137,14 +4137,14 @@ const KalkinmaEkonomisi = [
   {
     id: 41,
     questionText:
-      "41-) Harrod-Domar büyüme modelinde kaç çeşit büyüme söz konusudur?[cite: 10]",
+      "41-) Harrod-Domar büyüme modelinde kaç çeşit büyüme söz konusudur?",
     options: ["A) 3", "B) 2", "C) 1", "D) 7", "E) 4"],
     correctAnswer: "A) 3",
   },
   {
     id: 42,
     questionText:
-      "42-) Aşağıdakilerden hangisi Harrod-Domar modelinin varsayımlarından değildir?[cite: 10]",
+      "42-) Aşağıdakilerden hangisi Harrod-Domar modelinin varsayımlarından değildir?",
     options: [
       "A) Ekonomi tam istihdam seviyesindedir.",
       "B) Sermaye ve gelir arasında sabit bir teknolojik ilişki vardır.",
@@ -4157,7 +4157,7 @@ const KalkinmaEkonomisi = [
   {
     id: 43,
     questionText:
-      "43-) Harrod-Domar büyüme modeline göre aşağıdakilerden hangisi ekonominin itici gücüdür?[cite: 10]",
+      "43-) Harrod-Domar büyüme modeline göre aşağıdakilerden hangisi ekonominin itici gücüdür?",
     options: [
       "A) İşçiler",
       "B) Tasarruflar",
@@ -4170,7 +4170,7 @@ const KalkinmaEkonomisi = [
   {
     id: 44,
     questionText:
-      "44-) Aşağıdaki tanımlardan hangisi Neo-klasik büyüme modelindeki durağan durumu niteler?[cite: 10]",
+      "44-) Aşağıdaki tanımlardan hangisi Neo-klasik büyüme modelindeki durağan durumu niteler?",
     options: [
       "A) İşçi başına yatırımın, işçi başına yıpranmaya eşit olması",
       "B) İşçi başına çıktı ile işçi başına yıpranma arasındaki farkın en fazla olduğu sermaye düzeyi",
@@ -4184,7 +4184,7 @@ const KalkinmaEkonomisi = [
   {
     id: 45,
     questionText:
-      "45-) Aşağıdakilerden hangisi içsel büyüme modelleri için geçerli olan ifadelerden biridir?[cite: 10]",
+      "45-) Aşağıdakilerden hangisi içsel büyüme modelleri için geçerli olan ifadelerden biridir?",
     options: [
       "A) Eksik rekabet piyasalarının modele dahil edilmesi",
       "B) Sermayenin artan getiriye sahip olduğu varsayımı",
@@ -4197,7 +4197,7 @@ const KalkinmaEkonomisi = [
   {
     id: 46,
     questionText:
-      "46-) İçsel büyüme modellerinin çoğunda aşağıdakilerden hangisi kullanılmaktadır?[cite: 10]",
+      "46-) İçsel büyüme modellerinin çoğunda aşağıdakilerden hangisi kullanılmaktadır?",
     options: [
       "A) Yakınsama hipotezi",
       "B) Geleneksel kalkınma modeli",
@@ -4210,7 +4210,7 @@ const KalkinmaEkonomisi = [
   {
     id: 47,
     questionText:
-      "47-) Ekonomiler hangi faktör nedeniyle Solow modelinde kalıcı büyüme gösterirler?[cite: 10]",
+      "47-) Ekonomiler hangi faktör nedeniyle Solow modelinde kalıcı büyüme gösterirler?",
     options: [
       "A) Nüfus artış hızı",
       "B) Sermaye birikimi",
@@ -4223,7 +4223,7 @@ const KalkinmaEkonomisi = [
   {
     id: 48,
     questionText:
-      "48-) Aşağıdakilerden hangisi içsel büyüme modellerinden biri değildir?[cite: 10]",
+      "48-) Aşağıdakilerden hangisi içsel büyüme modellerinden biri değildir?",
     options: [
       "A) Ar-Ge modeli",
       "B) Durağan durum",
@@ -4236,7 +4236,7 @@ const KalkinmaEkonomisi = [
   {
     id: 49,
     questionText:
-      "49-) Aşağıdakilerden hangisi Neoklasik büyüme modellerinin varsayımlarından biridir?[cite: 10]",
+      "49-) Aşağıdakilerden hangisi Neoklasik büyüme modellerinin varsayımlarından biridir?",
     options: [
       "A) Eksik istihdam",
       "B) Açık ekonomi",
@@ -4249,7 +4249,7 @@ const KalkinmaEkonomisi = [
   {
     id: 50,
     questionText:
-      "50-) Büyüme teorisini oluştururken Malthus'un düştüğü yanılgı aşağıdakilerden hangisidir?[cite: 10]",
+      "50-) Büyüme teorisini oluştururken Malthus'un düştüğü yanılgı aşağıdakilerden hangisidir?",
     options: [
       "A) Nüfus artışına odaklanmak",
       "B) Tasarrufları hesaba katmamak",
@@ -4262,7 +4262,7 @@ const KalkinmaEkonomisi = [
   {
     id: 51,
     questionText:
-      "51-) Harrod-Domar modelinin incelediği durum aşağıdaki ifadelerden hangisi ile açıklanabilir?[cite: 10]",
+      "51-) Harrod-Domar modelinin incelediği durum aşağıdaki ifadelerden hangisi ile açıklanabilir?",
     options: [
       "A) Üretim fonksiyonunun maksimizasyonu",
       "B) Tasarruf katsayısındaki değişim",
@@ -4275,7 +4275,7 @@ const KalkinmaEkonomisi = [
   {
     id: 52,
     questionText:
-      "52-) Malthus'a göre efektif talebin ortaya çıkmasının tek yolu aşağıdakilerden hangisidir?[cite: 10]",
+      "52-) Malthus'a göre efektif talebin ortaya çıkmasının tek yolu aşağıdakilerden hangisidir?",
     options: [
       "A) Nüfus yapısının değişmesi",
       "B) Adil gelir paylaşımı",
@@ -4288,7 +4288,7 @@ const KalkinmaEkonomisi = [
   {
     id: 53,
     questionText:
-      "53-) Aşağıdakilerden hangisi Ricardo'nun büyüme modelinin temel varsayımlarından biri değildir?[cite: 10]",
+      "53-) Aşağıdakilerden hangisi Ricardo'nun büyüme modelinin temel varsayımlarından biri değildir?",
     options: [
       "A) Tasarruf artışı istikrarlıdır.",
       "B) Sermaye birikimini uyaran kâr motivasyonudur.",
@@ -4301,7 +4301,7 @@ const KalkinmaEkonomisi = [
   {
     id: 54,
     questionText:
-      "54-) Aşağıdakilerden hangisi Harrod-Domar modelinde kullanılan üretim fonksiyonunu tanımlar?[cite: 10]",
+      "54-) Aşağıdakilerden hangisi Harrod-Domar modelinde kullanılan üretim fonksiyonunu tanımlar?",
     options: [
       "A) Artan üretim fonksiyonu",
       "B) Azalan üretim fonksiyonu",
@@ -4314,7 +4314,7 @@ const KalkinmaEkonomisi = [
   {
     id: 55,
     questionText:
-      "55-) Ricardo'nun büyüme modelinde temel belirleyici aşağıdakilerden hangisidir?[cite: 10]",
+      "55-) Ricardo'nun büyüme modelinde temel belirleyici aşağıdakilerden hangisidir?",
     options: [
       "A) Toprağın verimliliği",
       "B) Nüfus kontrolü",
@@ -4327,7 +4327,7 @@ const KalkinmaEkonomisi = [
   {
     id: 56,
     questionText:
-      "56-) Marx, emek-değer teorisini oluştururken hangi iktisatçıdan etkilenmiştir?[cite: 10]",
+      "56-) Marx, emek-değer teorisini oluştururken hangi iktisatçıdan etkilenmiştir?",
     options: [
       "A) Thomas R. Malthus",
       "B) J. Baptiste Say",
@@ -4340,7 +4340,7 @@ const KalkinmaEkonomisi = [
   {
     id: 57,
     questionText:
-      "57-) Sürdürülebilir kalkınma kavramının temel politika önceliği hangisidir?[cite: 10]",
+      "57-) Sürdürülebilir kalkınma kavramının temel politika önceliği hangisidir?",
     options: [
       "A) Düşük faiz yüksek kur politikası",
       "B) Her yıl yüzde 5'in üzerinde büyüme",
@@ -4354,7 +4354,7 @@ const KalkinmaEkonomisi = [
   {
     id: 58,
     questionText:
-      "58-) Aşağıdakilerden hangisi bir ülkenin kalkınma sürecinin içermesi gereken öğelerden biri değildir?[cite: 10]",
+      "58-) Aşağıdakilerden hangisi bir ülkenin kalkınma sürecinin içermesi gereken öğelerden biri değildir?",
     options: [
       "A) Büyüme",
       "B) Refah artışı",
@@ -4367,7 +4367,7 @@ const KalkinmaEkonomisi = [
   {
     id: 59,
     questionText:
-      '59-) "Büyümenin sınırları paradigması" ilk dönem çevre politikaları için önemli bir referans olarak kabul edilmektedir. Söz konusu paradigmayı ortaya atan rapor hangi oluşum tarafından ne zaman açıklanmıştır?[cite: 10]',
+      '59-) "Büyümenin sınırları paradigması" ilk dönem çevre politikaları için önemli bir referans olarak kabul edilmektedir. Söz konusu paradigmayı ortaya atan rapor hangi oluşum tarafından ne zaman açıklanmıştır?',
     options: [
       "A) Chicago Okulu, 2000'li yıllar",
       "B) Frankfurt Okulu, 1980'li yıllar",
@@ -4380,7 +4380,7 @@ const KalkinmaEkonomisi = [
   {
     id: 60,
     questionText:
-      "60-) Malthus'un nüfus kavramına göre, hızlı nüfus artışı uzun vadede ülke ekonomisine nasıl bir etki yapar?[cite: 10]",
+      "60-) Malthus'un nüfus kavramına göre, hızlı nüfus artışı uzun vadede ülke ekonomisine nasıl bir etki yapar?",
     options: [
       "A) Üretim yapısının değişmesi",
       "B) Refah artışı",
@@ -4393,7 +4393,7 @@ const KalkinmaEkonomisi = [
   {
     id: 61,
     questionText:
-      '61-) Kurumsal yapı büyümenin kaynaklarından biridir. "Mülkiyet haklarını koruyan ve sözleşmelerin işlemesini sağlayan" kurumlar, iktisadi büyüme terminolojisinde hangi isimle anılır?[cite: 10]',
+      '61-) Kurumsal yapı büyümenin kaynaklarından biridir. "Mülkiyet haklarını koruyan ve sözleşmelerin işlemesini sağlayan" kurumlar, iktisadi büyüme terminolojisinde hangi isimle anılır?',
     options: [
       "A) Piyasa yaratıcı kurumlar",
       "B) Piyasa düzenleyici kurumlar",
@@ -4406,7 +4406,7 @@ const KalkinmaEkonomisi = [
   {
     id: 62,
     questionText:
-      '62-) "Ekonomik birimler arasındaki etkileşim için istikrarlı bir yapı kurarak belirsizliği azaltmayı amaçlayan" kurumlar hangi isimle anılır?[cite: 10]',
+      '62-) "Ekonomik birimler arasındaki etkileşim için istikrarlı bir yapı kurarak belirsizliği azaltmayı amaçlayan" kurumlar hangi isimle anılır?',
     options: [
       "A) Piyasa yaratıcı kurumlar",
       "B) Piyasa düzenleyici kurumlar",
@@ -4419,7 +4419,7 @@ const KalkinmaEkonomisi = [
   {
     id: 63,
     questionText:
-      "63-) Aşağıdakilerden hangisi Rostow'un iktisadi büyümeye ilişkin belirlediği aşamalardan biri değildir?[cite: 10]",
+      "63-) Aşağıdakilerden hangisi Rostow'un iktisadi büyümeye ilişkin belirlediği aşamalardan biri değildir?",
     options: [
       "A) Geleneksel toplum aşaması",
       "B) Kalkış aşaması",
@@ -4432,7 +4432,7 @@ const KalkinmaEkonomisi = [
   {
     id: 64,
     questionText:
-      "64-) İktisadi büyümeyi sınırlayabilecek temel faktörlerden biri aşağıdakilerden hangisidir?[cite: 10]",
+      "64-) İktisadi büyümeyi sınırlayabilecek temel faktörlerden biri aşağıdakilerden hangisidir?",
     options: [
       "A) Deflasyon",
       "B) Devalüasyon",
@@ -4445,7 +4445,7 @@ const KalkinmaEkonomisi = [
   {
     id: 65,
     questionText:
-      "65-) Aşağıdaki faktörlerden hangisinde yaşanacak olan artışın sonunda iktisadi büyüme sağlanabilir?[cite: 10]",
+      "65-) Aşağıdaki faktörlerden hangisinde yaşanacak olan artışın sonunda iktisadi büyüme sağlanabilir?",
     options: [
       "A) Tarım ürünleri",
       "B) İstihdam",
@@ -4458,7 +4458,7 @@ const KalkinmaEkonomisi = [
   {
     id: 66,
     questionText:
-      "66-) Bir ekonomide büyüme aşağıdakilerden hangisine bağlıdır?[cite: 10]",
+      "66-) Bir ekonomide büyüme aşağıdakilerden hangisine bağlıdır?",
     options: [
       "A) Üretim faktörleri arzı",
       "B) İstihdam",
@@ -4471,7 +4471,7 @@ const KalkinmaEkonomisi = [
   {
     id: 67,
     questionText:
-      "67-) Aşağıdakilerden hangisi iktisadi büyüme ile gerçekleşmesi beklenen gelişmelerden biri değildir?[cite: 10]",
+      "67-) Aşağıdakilerden hangisi iktisadi büyüme ile gerçekleşmesi beklenen gelişmelerden biri değildir?",
     options: [
       "A) Üretim yapısının değişmesi",
       "B) Refah artışı",
@@ -4484,7 +4484,7 @@ const KalkinmaEkonomisi = [
   {
     id: 68,
     questionText:
-      "68-) Aşağıdakilerden hangisi Kuznets'in iktisadi büyüme tanımındaki altı özellikten biri değildir?[cite: 10]",
+      "68-) Aşağıdakilerden hangisi Kuznets'in iktisadi büyüme tanımındaki altı özellikten biri değildir?",
     options: [
       "A) Verimlilik artışı",
       "B) Ekonomide yapısal değişim",
@@ -4497,7 +4497,7 @@ const KalkinmaEkonomisi = [
   {
     id: 69,
     questionText:
-      "69-) Bir ekonominin üretim potansiyeli arttığı zaman, üretim imkânları eğrisinde nasıl bir durum meydana gelir?[cite: 10]",
+      "69-) Bir ekonominin üretim potansiyeli arttığı zaman, üretim imkânları eğrisinde nasıl bir durum meydana gelir?",
     options: [
       "A) Sağa doğru kayar.",
       "B) Değişmez.",
@@ -4510,7 +4510,7 @@ const KalkinmaEkonomisi = [
   {
     id: 70,
     questionText:
-      "70-) Bir ülkenin milli gelir artış hızı ile nüfus artış hızı eşitse, bu ülkede görülen iktisadi büyüme türü aşağıdakilerden hangisidir?[cite: 10]",
+      "70-) Bir ülkenin milli gelir artış hızı ile nüfus artış hızı eşitse, bu ülkede görülen iktisadi büyüme türü aşağıdakilerden hangisidir?",
     options: [
       "A) Geleneksiz büyüme",
       "B) Durgun büyüme",
@@ -4523,14 +4523,14 @@ const KalkinmaEkonomisi = [
   {
     id: 71,
     questionText:
-      "71-) Gayrı Safi Yurtiçi Hasıla (GSYİH) kaç farklı yöntemle hesaplanabilir?[cite: 10]",
+      "71-) Gayrı Safi Yurtiçi Hasıla (GSYİH) kaç farklı yöntemle hesaplanabilir?",
     options: ["A) 3", "B) 2", "C) 4", "D) 1", "E) 6"],
     correctAnswer: "A) 3",
   },
   {
     id: 72,
     questionText:
-      "72-) Aşağıdakilerden hangisi ekonomik büyümeyi açıklayan dört temel değişkenden biri değildir?[cite: 10]",
+      "72-) Aşağıdakilerden hangisi ekonomik büyümeyi açıklayan dört temel değişkenden biri değildir?",
     options: [
       "A) Teknoloji",
       "B) Reel sermaye",
@@ -4543,7 +4543,7 @@ const KalkinmaEkonomisi = [
   {
     id: 73,
     questionText:
-      "73-) İktisadi büyümenin bir noktada sınırlanması gerektiğini öne süren fikirlerin temelinde hangi kaygı yatmaktadır?[cite: 10]",
+      "73-) İktisadi büyümenin bir noktada sınırlanması gerektiğini öne süren fikirlerin temelinde hangi kaygı yatmaktadır?",
     options: [
       "A) Çevre sorunları",
       "B) Sermaye yetersizliği",
@@ -4555,7 +4555,7 @@ const KalkinmaEkonomisi = [
   },
   {
     id: 74,
-    questionText: "74-) Aşağıdaki ifadelerden hangisi doğrudur?[cite: 10]",
+    questionText: "74-) Aşağıdaki ifadelerden hangisi doğrudur?",
     options: [
       "A) Büyüme kalkınmayı kapsar.",
       "B) Kalkınma GSYİH artışı yüzde 10'un üzerinde ise gerçekleşir.",
@@ -4568,7 +4568,7 @@ const KalkinmaEkonomisi = [
   {
     id: 75,
     questionText:
-      "75-) Aşağıdakilerden hangisi iktisadi yapıyı oluşturan unsurlardan biri değildir?[cite: 10]",
+      "75-) Aşağıdakilerden hangisi iktisadi yapıyı oluşturan unsurlardan biri değildir?",
     options: [
       "A) Üretim ilişkileri",
       "B) Ticaret",
@@ -4581,7 +4581,7 @@ const KalkinmaEkonomisi = [
   {
     id: 76,
     questionText:
-      "76-) Schumpeter'e göre iktisadi gelişme bir çeşit sıçramadır. Ünlü iktisatçıya göre bu sıçramayı sağlayan en önemli itici güç aşağıdakilerden hangisidir?[cite: 10]",
+      "76-) Schumpeter'e göre iktisadi gelişme bir çeşit sıçramadır. Ünlü iktisatçıya göre bu sıçramayı sağlayan en önemli itici güç aşağıdakilerden hangisidir?",
     options: [
       "A) Girişimciler",
       "B) İşçiler",
@@ -4594,7 +4594,7 @@ const KalkinmaEkonomisi = [
   {
     id: 77,
     questionText:
-      "77-) İktisadi gelişmeyi iktisadi büyümeden ayıran temel farklılık aşağıdakilerden hangisidir?[cite: 10]",
+      "77-) İktisadi gelişmeyi iktisadi büyümeden ayıran temel farklılık aşağıdakilerden hangisidir?",
     options: [
       "A) Sanayi sektöründe hızlı büyüme",
       "B) Gelişme sürecinin yapısal değişim içermesi",
@@ -4606,7 +4606,7 @@ const KalkinmaEkonomisi = [
   },
   {
     id: 78,
-    questionText: "78-) Aşağıdaki ifadelerden hangisi yanlıştır?[cite: 10]",
+    questionText: "78-) Aşağıdaki ifadelerden hangisi yanlıştır?",
     options: [
       "A) İktisadi büyümenin gelir dağılımını iyileştirici özelliği yoktur.",
       "B) Yoksulluk kısır döngüsünü kırmak için iktisadi büyümeye ihtiyaç vardır.",
@@ -4616,6 +4616,32 @@ const KalkinmaEkonomisi = [
     ],
     correctAnswer:
       "C) İktisadi büyümenin ölçümünde reel GSYİH yerine nominal GSYİH kullanılır.",
+  },
+  {
+    id: 79,
+    questionText:
+      "79-) Aşağıdakilerden hangisi ekonomik büyümenin doğal sonuçlarından biri değildir?",
+    options: [
+      "A) GSYİH artışı",
+      "B) Refah artışı",
+      "C) Gelir dağılımında düzelme",
+      "D) İşsizlik artışı",
+      "E) Eğitim düzeyinde artış",
+    ],
+    correctAnswer: "C) Gelir dağılımında düzelme",
+  },
+  {
+    id: 80,
+    questionText:
+      "80-) Aşağıdaki ifadelerden hangisi iktisadi büyümenin karakteristik olgularından biridir?",
+    options: [
+      "A) Sermaye/hasıla katsayısı istikrarlıdır.",
+      "B) İşgücü maliyetlerindeki artış sabittir.",
+      "C) Sermayenin getiri oranı değişkendir.",
+      "D) Uzun dönemde sermaye-emek arasındaki gelir bölüşümü emek lehinedir.",
+      "E) Hiçbiri",
+    ],
+    correctAnswer: "A) Sermaye/hasıla katsayısı istikrarlıdır.",
   },
 ];
 
