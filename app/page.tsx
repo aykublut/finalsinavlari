@@ -94,6 +94,7 @@ export default function QuizApp() {
   const restartQuiz = useQuizStore((s) => s.restartQuiz);
   const retryWrongAnswers = useQuizStore((s) => s.retryWrongAnswers);
   const shuffleQuestions = useQuizStore((s) => s.shuffleQuestions);
+  const jumpToQuestion = useQuizStore((s) => s.jumpToQuestion);
 
   const studyMode = useQuizStore((s) => s.studyMode);
   const studyLessonId = useQuizStore((s) => s.studyLessonId);
@@ -102,6 +103,8 @@ export default function QuizApp() {
   const exitStudyMode = useQuizStore((s) => s.exitStudyMode);
   const nextStudyQuestion = useQuizStore((s) => s.nextStudyQuestion);
   const prevStudyQuestion = useQuizStore((s) => s.prevStudyQuestion);
+  const studyShuffled = useQuizStore((s) => s.studyShuffled);
+  const shuffleStudyQuestions = useQuizStore((s) => s.shuffleStudyQuestions);
 
   const playerId = useQuizStore((s) => s.playerId);
   const playerName = useQuizStore((s) => s.playerName);
@@ -128,7 +131,12 @@ export default function QuizApp() {
     [lessons, studyLessonId],
   );
 
-  const studyQuestion = studyLesson?.questions[studyQuestionIndex] ?? null;
+  // Aktif Tahmin'de "Karıştır" sonrası karışık sıra; yoksa orijinal sıra.
+  const studyQuestions = useMemo(
+    () => studyShuffled ?? studyLesson?.questions ?? [],
+    [studyShuffled, studyLesson],
+  );
+  const studyQuestion = studyQuestions[studyQuestionIndex] ?? null;
 
   const currentQuestionsList = useMemo(
     () =>
@@ -153,6 +161,8 @@ export default function QuizApp() {
       : 0;
 
   const [suspiciousModalOpen, setSuspiciousModalOpen] = useState(false);
+  const [jumpOpen, setJumpOpen] = useState(false); // sınavda "ileri atla" menüsü
+  const [jumpInput, setJumpInput] = useState(""); // manuel soru no girişi
 
   // Yarışma profil taslağı (isim + avatar seçimi)
   const [nameDraft, setNameDraft] = useState("");
@@ -165,12 +175,14 @@ export default function QuizApp() {
   const [othersVisible, setOthersVisible] = useState(false);
   const othersTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Soru değişince reveal state sıfırla
+  // Gösterilen soru değişince (index ya da karıştırma) reveal state'ini sıfırla
+  // — kasıtlı "dış değişime göre yerel UI'ı eşitle" deseni.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setRevealed(false);
     setOthersVisible(false);
     if (othersTimerRef.current) clearTimeout(othersTimerRef.current);
-  }, [studyQuestionIndex]);
+  }, [studyQuestionIndex, studyShuffled]);
 
   useEffect(() => {
     return () => {
@@ -334,14 +346,14 @@ export default function QuizApp() {
               Liste
             </span>
             <span className="ml-auto shrink-0 text-xs text-slate-500 font-semibold">
-              {studyLesson.questions.length} soru
+              {studyQuestions.length} soru
             </span>
           </div>
         </div>
 
         {/* Soru listesi */}
         <div className="flex-1 w-full max-w-3xl mx-auto px-4 py-6 flex flex-col gap-4 z-10">
-          {studyLesson.questions.map((q, idx) => (
+          {studyQuestions.map((q, idx) => (
             <div
               key={q.id}
               className="backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden bg-white/[0.02]"
@@ -380,7 +392,7 @@ export default function QuizApp() {
           ))}
 
           <footer className="pt-4 pb-8 text-center text-[11px] text-slate-600">
-            {studyLesson.questions.length} soru listelendi
+            {studyQuestions.length} soru listelendi
           </footer>
         </div>
       </div>
@@ -390,7 +402,7 @@ export default function QuizApp() {
   // === ÇALIŞMA MODU - AKTİF TAHMİN ===
   if (studyMode === "reveal" && studyLesson && studyQuestion) {
     const studyAccent = ACCENT_STYLES[studyLesson.accent];
-    const totalStudyQuestions = studyLesson.questions.length;
+    const totalStudyQuestions = studyQuestions.length;
     const studyProgress = ((studyQuestionIndex + 1) / totalStudyQuestions) * 100;
     const isLastStudyQuestion = studyQuestionIndex === totalStudyQuestions - 1;
 
@@ -426,8 +438,22 @@ export default function QuizApp() {
               Çalışma
             </span>
           </div>
-          <div className="shrink-0 text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
-            <span className="text-white">{studyQuestionIndex + 1}</span> / {totalStudyQuestions}
+          <div className="shrink-0 flex items-center gap-2">
+            {studyQuestionIndex === 0 && (
+              <button
+                onClick={shuffleStudyQuestions}
+                className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                aria-label="Soruları karıştır"
+              >
+                <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Karıştır
+              </button>
+            )}
+            <div className="text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
+              <span className="text-white">{studyQuestionIndex + 1}</span> / {totalStudyQuestions}
+            </div>
           </div>
         </div>
 
@@ -1044,6 +1070,79 @@ export default function QuizApp() {
               Karıştır
             </button>
           )}
+
+          {!isWrongAnswersMode &&
+            activeQuestionIndex === 0 &&
+            currentQuestionsList.length > 10 && (
+              <div className="relative shrink-0">
+                <button
+                  onClick={() => setJumpOpen((o) => !o)}
+                  className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-sky-500/10 text-sky-400 border-sky-500/20 hover:bg-sky-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                  aria-label="Soruya atla"
+                >
+                  <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                  </svg>
+                  Atla
+                </button>
+                {jumpOpen && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-20"
+                      onClick={() => setJumpOpen(false)}
+                    />
+                    <div className="absolute left-0 top-full mt-1.5 z-30 w-[180px] p-2 rounded-xl border border-white/10 bg-[#0d0d0f]/95 backdrop-blur-xl shadow-2xl shadow-black/50 grid grid-cols-4 gap-1.5">
+                      {Array.from(
+                        { length: Math.floor(currentQuestionsList.length / 10) },
+                        (_, i) => (i + 1) * 10,
+                      ).map((n) => (
+                        <button
+                          key={n}
+                          onClick={() => {
+                            jumpToQuestion(n - 1);
+                            setJumpOpen(false);
+                          }}
+                          className="py-1.5 rounded-lg text-xs font-bold text-slate-200 bg-white/[0.05] border border-white/10 hover:bg-sky-500/20 hover:text-sky-300 hover:border-sky-500/30 active:scale-95 transition-all"
+                        >
+                          {n}
+                        </button>
+                      ))}
+                      <div className="col-span-4 mt-1 flex items-center gap-1.5 border-t border-white/10 pt-2">
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          value={jumpInput}
+                          onChange={(e) =>
+                            setJumpInput(e.target.value.replace(/[^0-9]/g, ""))
+                          }
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              const n = parseInt(jumpInput, 10);
+                              if (!Number.isNaN(n)) jumpToQuestion(n - 1);
+                              setJumpOpen(false);
+                              setJumpInput("");
+                            }
+                          }}
+                          placeholder={`1–${currentQuestionsList.length}`}
+                          className="flex-1 min-w-0 px-2 py-1.5 rounded-lg bg-white/[0.05] border border-white/10 text-xs text-white text-center outline-none focus:border-sky-500/40 placeholder:text-slate-600"
+                        />
+                        <button
+                          onClick={() => {
+                            const n = parseInt(jumpInput, 10);
+                            if (!Number.isNaN(n)) jumpToQuestion(n - 1);
+                            setJumpOpen(false);
+                            setJumpInput("");
+                          }}
+                          className="shrink-0 px-2.5 py-1.5 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-bold hover:bg-sky-500/30 active:scale-95 transition-all"
+                        >
+                          Git
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
 
           {currentSuspicion && (
             <button

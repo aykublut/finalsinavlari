@@ -36,6 +36,7 @@ export const useQuizStore = create<QuizState>()(
       studyMode: "none",
       studyLessonId: null,
       studyQuestionIndex: 0,
+      studyShuffled: null,
 
       playerId: null,
       playerName: null,
@@ -86,6 +87,14 @@ export const useQuizStore = create<QuizState>()(
           return {};
         }),
 
+      // Sınavda belirli bir soruya atla (0 tabanlı index, listeye göre sınırlanır).
+      jumpToQuestion: (index) =>
+        set((state) => {
+          const list = getActiveQuestions(state);
+          const clamped = Math.max(0, Math.min(index, list.length - 1));
+          return { activeQuestionIndex: clamped };
+        }),
+
       finishQuiz: () =>
         set((state) => {
           const list = getActiveQuestions(state);
@@ -128,6 +137,7 @@ export const useQuizStore = create<QuizState>()(
           studyMode: mode,
           studyLessonId: lessonId,
           studyQuestionIndex: 0,
+          studyShuffled: null, // her başlangıçta orijinal sıra
         }),
 
       exitStudyMode: () =>
@@ -135,6 +145,7 @@ export const useQuizStore = create<QuizState>()(
           studyMode: "none",
           studyLessonId: null,
           studyQuestionIndex: 0,
+          studyShuffled: null,
         }),
 
       nextStudyQuestion: () =>
@@ -153,6 +164,16 @@ export const useQuizStore = create<QuizState>()(
             return { studyQuestionIndex: state.studyQuestionIndex - 1 };
           }
           return {};
+        }),
+
+      shuffleStudyQuestions: () =>
+        set((state) => {
+          const base =
+            lessons.find((l) => l.id === state.studyLessonId)?.questions ?? [];
+          return {
+            studyShuffled: fisherYatesShuffle(base),
+            studyQuestionIndex: 0,
+          };
         }),
 
       setPlayerProfile: (name, avatar) =>
@@ -179,6 +200,7 @@ export const useQuizStore = create<QuizState>()(
         studyMode: state.studyMode,
         studyLessonId: state.studyLessonId,
         studyQuestionIndex: state.studyQuestionIndex,
+        studyShuffled: state.studyShuffled,
         playerId: state.playerId,
         playerName: state.playerName,
         playerAvatar: state.playerAvatar,

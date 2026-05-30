@@ -26,6 +26,7 @@ export interface QuizState {
   studyMode: "none" | "list" | "reveal";
   studyLessonId: string | null;
   studyQuestionIndex: number;
+  studyShuffled: Question[] | null;
 
   playerId: string | null;
   playerName: string | null;
@@ -41,10 +42,12 @@ export interface QuizState {
   restartQuiz: () => void;
   retryWrongAnswers: () => void;
   shuffleQuestions: () => void;
+  jumpToQuestion: (index: number) => void;
   startStudyMode: (lessonId: string, mode: "list" | "reveal") => void;
   exitStudyMode: () => void;
   nextStudyQuestion: () => void;
   prevStudyQuestion: () => void;
+  shuffleStudyQuestions: () => void;
   setPlayerProfile: (name: string, avatar: string) => void;
   setPlayerId: (id: string) => void;
   enterCompetition: (lessonId: string) => void;
