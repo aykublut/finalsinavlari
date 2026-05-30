@@ -103,6 +103,10 @@ export default function CompetitionRoom({
   } | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [pendingOption, setPendingOption] = useState<string | null>(null);
+  // Cevap verince sunucu sırayı HEMEN ilerletir (realtime myPart'ı günceller),
+  // ama geri bildirim (yeşil/kırmızı) hâlâ ekranda. Gösterilen soruyu bu süre
+  // boyunca dondur ki yeşil, yanlışlıkla SONRAKİ sorunun cevabını işaretlemesin.
+  const [frozenIndex, setFrozenIndex] = useState<number | null>(null);
 
   // Tik (geri sayımlar ve sayaç için)
   useEffect(() => {
@@ -162,7 +166,11 @@ export default function CompetitionRoom({
   const iFinished = !!myPart?.finished_at;
 
   // Uzun soru/şıklarda kartı taşırmamak için font'u orantılı küçülten "sığdır".
-  const fitRef = useFitScale([myPart?.current_question_index, status]);
+  // Gösterilen (dondurulmuşsa o, değilse canlı) soruyu izle ki doğru ölçsün.
+  const fitRef = useFitScale([
+    frozenIndex ?? myPart?.current_question_index,
+    status,
+  ]);
 
   // Zaman geçişlerini yürüt (lobi başlat / geri sayım bitir / maç bitir).
   // Aktif maçta yalnız "bitirmiş" oyuncular tikler: rakipleri terk ettiyse maçı
@@ -187,6 +195,7 @@ export default function CompetitionRoom({
       if (submitting || feedback || !myPart || !matchId || !pid) return;
       if (myPart.finished_at) return;
       const qIndex = myPart.current_question_index;
+      setFrozenIndex(qIndex); // gösterilen soruyu dondur (sıra ilerlese de)
       setSubmitting(true);
       if (answer !== null) setPendingOption(answer); // anında tıklanma efekti
       try {
@@ -203,7 +212,13 @@ export default function CompetitionRoom({
           correctAnswer: res.correctAnswer,
           picked: answer,
         });
-        setTimeout(() => setFeedback(null), 1300);
+        setTimeout(() => {
+          setFeedback(null);
+          setFrozenIndex(null); // çözülünce canlı (sonraki) soruya geç
+        }, 1300);
+      } catch {
+        setPendingOption(null);
+        setFrozenIndex(null);
       } finally {
         setSubmitting(false);
       }
@@ -472,7 +487,8 @@ export default function CompetitionRoom({
     );
   }
 
-  const myIndex = myPart.current_question_index;
+  // Geri bildirim süresince dondurulmuş soru gösterilir; aksi halde canlı sıra.
+  const myIndex = frozenIndex ?? myPart.current_question_index;
   const qid = match.question_ids[myIndex];
   const question = lesson?.questions.find((q) => q.id === qid) ?? null;
   const total = match.question_ids.length;
