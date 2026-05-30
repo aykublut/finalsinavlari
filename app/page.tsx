@@ -58,8 +58,22 @@ const ACCENT_STYLES: Record<
 };
 
 const AVATARS = [
-  "🦊", "🐼", "🦁", "🐸", "🦉", "🐙", "🦄", "🐲",
-  "🐯", "🐺", "🦅", "🐬", "🦖", "🐝", "🦋", "🐧",
+  "🦊",
+  "🐼",
+  "🦁",
+  "🐸",
+  "🦉",
+  "🐙",
+  "🦄",
+  "🐲",
+  "🐯",
+  "🐺",
+  "🦅",
+  "🐬",
+  "🦖",
+  "🐝",
+  "🦋",
+  "🐧",
 ];
 
 // Easter egg dersinin id'si — bu derste bitiş raporunda özel video oynar.
@@ -334,12 +348,24 @@ export default function QuizApp() {
               onClick={exitStudyMode}
               className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
             >
-              <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                className="w-[14px] h-[14px]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
               Dersler
             </button>
-            <span className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${studyAccent.chip}`}>
+            <span
+              className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${studyAccent.chip}`}
+            >
               {studyLesson.title}
             </span>
             <span className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
@@ -359,7 +385,9 @@ export default function QuizApp() {
               className="backdrop-blur-xl border border-white/[0.06] rounded-2xl overflow-hidden bg-white/[0.02]"
             >
               <div className="px-5 pt-5 pb-3 flex items-start gap-3">
-                <span className={`shrink-0 w-8 h-8 rounded-xl border flex items-center justify-center font-black text-xs ${studyAccent.chip}`}>
+                <span
+                  className={`shrink-0 w-8 h-8 rounded-xl border flex items-center justify-center font-black text-xs ${studyAccent.chip}`}
+                >
                   {idx + 1}
                 </span>
                 <p className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
@@ -373,14 +401,25 @@ export default function QuizApp() {
                     <div
                       key={opt}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-sm font-medium
-                        ${isCorrect
-                          ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-300"
-                          : "border-white/[0.04] bg-white/[0.01] text-slate-500 opacity-40"
+                        ${
+                          isCorrect
+                            ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-300"
+                            : "border-white/[0.04] bg-white/[0.01] text-slate-500 opacity-40"
                         }`}
                     >
                       {isCorrect && (
-                        <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                        <svg
+                          className="w-4 h-4 text-emerald-400 shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2.5"
+                            d="M5 13l4 4L19 7"
+                          />
                         </svg>
                       )}
                       <span className={isCorrect ? "" : "pl-7"}>{opt}</span>
@@ -403,7 +442,8 @@ export default function QuizApp() {
   if (studyMode === "reveal" && studyLesson && studyQuestion) {
     const studyAccent = ACCENT_STYLES[studyLesson.accent];
     const totalStudyQuestions = studyQuestions.length;
-    const studyProgress = ((studyQuestionIndex + 1) / totalStudyQuestions) * 100;
+    const studyProgress =
+      ((studyQuestionIndex + 1) / totalStudyQuestions) * 100;
     const isLastStudyQuestion = studyQuestionIndex === totalStudyQuestions - 1;
 
     return (
@@ -426,12 +466,24 @@ export default function QuizApp() {
               onClick={exitStudyMode}
               className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
             >
-              <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                className="w-[14px] h-[14px]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
               Dersler
             </button>
-            <span className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${studyAccent.chip}`}>
+            <span
+              className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${studyAccent.chip}`}
+            >
               {studyLesson.title}
             </span>
             <span className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
@@ -445,14 +497,25 @@ export default function QuizApp() {
                 className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
                 aria-label="Soruları karıştır"
               >
-                <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                <svg
+                  className="w-[14px] h-[14px]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
                 </svg>
                 Karıştır
               </button>
             )}
             <div className="text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
-              <span className="text-white">{studyQuestionIndex + 1}</span> / {totalStudyQuestions}
+              <span className="text-white">{studyQuestionIndex + 1}</span> /{" "}
+              {totalStudyQuestions}
             </div>
           </div>
         </div>
@@ -476,7 +539,9 @@ export default function QuizApp() {
             <div className="flex-1 min-h-0 flex flex-col justify-center gap-[calc(clamp(0.5rem,1.5dvh,1rem)*var(--fit,1))]">
               {!revealed ? (
                 <div className="flex items-center justify-center py-6">
-                  <p className="text-sm text-slate-600 select-none">Cevabı görmek için dokun</p>
+                  <p className="text-sm text-slate-600 select-none">
+                    Cevabı görmek için dokun
+                  </p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-[calc(clamp(0.5rem,1.5dvh,1rem)*var(--fit,1))]">
@@ -493,8 +558,18 @@ export default function QuizApp() {
                             {opt}
                           </span>
                           <span className="animate-in zoom-in duration-300">
-                            <svg className="w-[clamp(1.2rem,2.5dvh,1.5rem)] h-[clamp(1.2rem,2.5dvh,1.5rem)] text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                            <svg
+                              className="w-[clamp(1.2rem,2.5dvh,1.5rem)] h-[clamp(1.2rem,2.5dvh,1.5rem)] text-emerald-400 shrink-0"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2.5"
+                                d="M5 13l4 4L19 7"
+                              />
                             </svg>
                           </span>
                         </div>
@@ -528,8 +603,18 @@ export default function QuizApp() {
               className="w-[3.5rem] h-[3.5rem] sm:w-[4rem] sm:h-[4rem] flex items-center justify-center bg-white/[0.05] rounded-full text-slate-400 hover:text-white hover:bg-white/10 disabled:opacity-20 transition-all border border-white/5 active:scale-95"
               aria-label="Önceki soru"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
 
@@ -546,8 +631,18 @@ export default function QuizApp() {
                 className="flex-1 h-[3.5rem] sm:h-[4rem] flex items-center justify-center gap-2 bg-white text-black text-[clamp(14px,2dvh,16px)] font-bold rounded-full hover:bg-slate-200 transition-all active:scale-[0.98] tracking-wide"
               >
                 SONRAKİ
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
             )}
@@ -593,12 +688,24 @@ export default function QuizApp() {
               onClick={exitCompetition}
               className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:text-white active:scale-95 transition-all"
             >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
               Geri
             </button>
-            <span className={`px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border truncate ${compAccent.chip}`}>
+            <span
+              className={`px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border truncate ${compAccent.chip}`}
+            >
               {compLesson?.title ?? "Yarışma"}
             </span>
             <span className="shrink-0 px-2.5 py-1 text-[11px] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30 flex items-center gap-1">
@@ -654,9 +761,10 @@ export default function QuizApp() {
                     key={av}
                     onClick={() => setAvatarDraft(av)}
                     className={`aspect-square rounded-2xl flex items-center justify-center text-3xl border-2 transition-all active:scale-90
-                      ${selected
-                        ? "border-fuchsia-400/70 bg-fuchsia-500/15 scale-105 shadow-[0_0_20px_rgba(217,70,239,0.25)]"
-                        : "border-white/[0.06] bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]"
+                      ${
+                        selected
+                          ? "border-fuchsia-400/70 bg-fuchsia-500/15 scale-105 shadow-[0_0_20px_rgba(217,70,239,0.25)]"
+                          : "border-white/[0.06] bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]"
                       }`}
                   >
                     {av}
@@ -730,13 +838,16 @@ export default function QuizApp() {
                 <div
                   key={lesson.id}
                   className={`group relative backdrop-blur-xl border-2 rounded-3xl overflow-hidden transition-all duration-300
-                    ${isLocked
-                      ? "bg-white/[0.015] border-white/5 opacity-50 grayscale"
-                      : `bg-white/[0.03] ${accent.ring} hover:bg-white/[0.05]`
+                    ${
+                      isLocked
+                        ? "bg-white/[0.015] border-white/5 opacity-50 grayscale"
+                        : `bg-white/[0.03] ${accent.ring} hover:bg-white/[0.05]`
                     }`}
                 >
                   {!isLocked && (
-                    <div className={`absolute -top-12 -right-12 w-40 h-40 ${accent.glow} blur-3xl rounded-full pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity`} />
+                    <div
+                      className={`absolute -top-12 -right-12 w-40 h-40 ${accent.glow} blur-3xl rounded-full pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity`}
+                    />
                   )}
 
                   {/* Sınav başlatma alanı */}
@@ -752,8 +863,16 @@ export default function QuizApp() {
                           ${isLocked ? "border-white/10 text-white/30" : accent.chip}`}
                       >
                         {isLocked ? (
-                          <svg className="w-5 h-5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                          <svg
+                            className="w-5 h-5 text-white/30"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                               d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                             />
                           </svg>
@@ -762,10 +881,14 @@ export default function QuizApp() {
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h2 className={`text-lg sm:text-xl font-bold tracking-tight ${isLocked ? "text-white/30" : "text-white"}`}>
+                        <h2
+                          className={`text-lg sm:text-xl font-bold tracking-tight ${isLocked ? "text-white/30" : "text-white"}`}
+                        >
                           {lesson.title}
                         </h2>
-                        <p className={`text-xs sm:text-sm mt-1 line-clamp-2 ${isLocked ? "text-white/20" : "text-slate-400"}`}>
+                        <p
+                          className={`text-xs sm:text-sm mt-1 line-clamp-2 ${isLocked ? "text-white/20" : "text-slate-400"}`}
+                        >
                           {isLocked ? "Yakında açılacak" : lesson.description}
                         </p>
                       </div>
@@ -777,9 +900,16 @@ export default function QuizApp() {
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2.5"
+                              d="M9 5l7 7-7 7"
+                            />
                           </svg>
-                          <span className="text-[10px] text-slate-600 font-semibold">Sınav</span>
+                          <span className="text-[10px] text-slate-600 font-semibold">
+                            Sınav
+                          </span>
                         </div>
                       )}
                     </div>
@@ -794,8 +924,18 @@ export default function QuizApp() {
                           onClick={() => startStudyMode(lesson.id, "list")}
                           className="flex items-center justify-center gap-2 px-3 py-3 rounded-2xl bg-white/[0.05] border border-white/15 text-slate-200 hover:text-white hover:bg-white/[0.09] hover:border-white/25 text-sm font-semibold transition-all active:scale-95 shadow-sm"
                         >
-                          <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                          <svg
+                            className="w-4 h-4 shrink-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2.5"
+                              d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                            />
                           </svg>
                           Liste
                         </button>
@@ -803,9 +943,24 @@ export default function QuizApp() {
                           onClick={() => startStudyMode(lesson.id, "reveal")}
                           className={`flex items-center justify-center gap-2 px-3 py-3 rounded-2xl text-sm font-semibold transition-all active:scale-95 border ${accent.chip} hover:brightness-125 shadow-sm`}
                         >
-                          <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          <svg
+                            className="w-4 h-4 shrink-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                            />
                           </svg>
                           Aktif Tahmin
                         </button>
@@ -817,8 +972,18 @@ export default function QuizApp() {
                         className="group/comp relative w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl font-black text-sm tracking-wide text-white overflow-hidden transition-all active:scale-[0.98] bg-gradient-to-r from-fuchsia-600 via-pink-600 to-rose-600 shadow-lg shadow-fuchsia-500/30 hover:shadow-fuchsia-500/50"
                       >
                         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover/comp:translate-x-full transition-transform duration-700 ease-out" />
-                        <svg className="w-5 h-5 shrink-0 relative" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        <svg
+                          className="w-5 h-5 shrink-0 relative"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                          />
                         </svg>
                         <span className="relative">YARIŞMA!</span>
                         <span className="relative ml-1 px-1.5 py-0.5 rounded-md bg-white/20 text-[9px] font-bold tracking-widest uppercase flex items-center gap-1">
@@ -843,7 +1008,11 @@ export default function QuizApp() {
                 aria-label="Instagram"
                 className="w-10 h-10 flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-slate-400 hover:text-white hover:border-white/25 hover:bg-white/[0.06] active:scale-90 transition-all"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71C3.41 8.48 3.4 8.85 3.4 12s.01 3.52.07 4.76c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.2-1.39-.32-1.71a2.85 2.85 0 00-.69-1.06 2.85 2.85 0 00-1.06-.69c-.32-.13-.81-.28-1.71-.32C15.52 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1112 16.94 4.94 4.94 0 0112 7.06zm0 1.8a3.14 3.14 0 100 6.28 3.14 3.14 0 000-6.28zm5.14-.39a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z" />
                 </svg>
               </a>
@@ -855,7 +1024,11 @@ export default function QuizApp() {
                 aria-label="LinkedIn"
                 className="w-10 h-10 flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-slate-400 hover:text-white hover:border-white/25 hover:bg-white/[0.06] active:scale-90 transition-all"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
                 </svg>
               </a>
@@ -867,7 +1040,11 @@ export default function QuizApp() {
                 aria-label="GitHub"
                 className="w-10 h-10 flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-slate-400 hover:text-white hover:border-white/25 hover:bg-white/[0.06] active:scale-90 transition-all"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.21.7.82.58A12.01 12.01 0 0024 12.5C24 5.87 18.63.5 12 .5z" />
                 </svg>
               </a>
@@ -877,8 +1054,18 @@ export default function QuizApp() {
                 aria-label="E-posta"
                 className="w-10 h-10 flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-slate-400 hover:text-white hover:border-white/25 hover:bg-white/[0.06] active:scale-90 transition-all"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M3 8l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.8"
+                    d="M3 8l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"
+                  />
                 </svg>
               </a>
             </div>
@@ -1005,8 +1192,18 @@ export default function QuizApp() {
               onClick={goToLessonSelection}
               className="w-full py-3 text-slate-400 hover:text-white text-sm font-semibold rounded-2xl transition-colors active:scale-[0.98] flex items-center justify-center gap-2"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
               Derslere Dön
             </button>
@@ -1040,15 +1237,25 @@ export default function QuizApp() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-indigo-600/10 blur-[100px] pointer-events-none rounded-full" />
 
       {/* === ÜST BAR === */}
-      <div className="w-full max-w-3xl mx-auto px-4 pt-4 sm:pt-6 pb-2 flex items-center justify-between shrink-0 z-10 gap-2">
+      <div className="w-full max-w-3xl mx-auto px-4 pt-4 sm:pt-6 pb-2 flex items-center justify-between shrink-0 z-30 gap-2 relative">
         <div className="flex items-center gap-2 min-w-0">
           <button
             onClick={goToLessonSelection}
             className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
             aria-label="Derslere dön"
           >
-            <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              className="w-[14px] h-[14px]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2.5"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
             Dersler
           </button>
@@ -1064,79 +1271,118 @@ export default function QuizApp() {
               onClick={shuffleQuestions}
               className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20 hover:bg-fuchsia-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 animate-in fade-in slide-in-from-left-2 duration-300"
             >
-              <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              <svg
+                className="w-[14px] h-[14px]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
               </svg>
               Karıştır
             </button>
           )}
 
           {!isWrongAnswersMode &&
-            activeQuestionIndex === 0 &&
             currentQuestionsList.length > 10 && (
-              <div className="relative shrink-0">
+              <div className="relative  shrink-0">
                 <button
                   onClick={() => setJumpOpen((o) => !o)}
-                  className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-sky-500/10 text-sky-400 border-sky-500/20 hover:bg-sky-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                  className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-sky-500/10 text-sky-400 border-sky-500/20 hover:bg-sky-500/20  hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
                   aria-label="Soruya atla"
                 >
-                  <svg className="w-[14px] h-[14px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                  <svg
+                    className="w-[14px]  h-[14px]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2.5"
+                      d="M13 5l7 7-7 7M5 5l7 7-7 7"
+                    />
                   </svg>
                   Atla
                 </button>
                 {jumpOpen && (
                   <>
                     <div
-                      className="fixed inset-0 z-20"
+                      className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm"
                       onClick={() => setJumpOpen(false)}
                     />
-                    <div className="absolute left-0 top-full mt-1.5 z-30 w-[180px] p-2 rounded-xl border border-white/10 bg-[#0d0d0f]/95 backdrop-blur-xl shadow-2xl shadow-black/50 grid grid-cols-4 gap-1.5">
-                      {Array.from(
-                        { length: Math.floor(currentQuestionsList.length / 10) },
-                        (_, i) => (i + 1) * 10,
-                      ).map((n) => (
-                        <button
-                          key={n}
-                          onClick={() => {
-                            jumpToQuestion(n - 1);
-                            setJumpOpen(false);
-                          }}
-                          className="py-1.5 rounded-lg text-xs font-bold text-slate-200 bg-white/[0.05] border border-white/10 hover:bg-sky-500/20 hover:text-sky-300 hover:border-sky-500/30 active:scale-95 transition-all"
-                        >
-                          {n}
-                        </button>
-                      ))}
-                      <div className="col-span-4 mt-1 flex items-center gap-1.5 border-t border-white/10 pt-2">
-                        <input
-                          type="text"
-                          inputMode="numeric"
-                          value={jumpInput}
-                          onChange={(e) =>
-                            setJumpInput(e.target.value.replace(/[^0-9]/g, ""))
-                          }
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter") {
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+                      <div
+                        className="pointer-events-auto w-full max-w-xs p-5 rounded-3xl border border-white/10 bg-[#0d0d0f]/95 backdrop-blur-xl shadow-2xl shadow-black/60 animate-in fade-in zoom-in-95 duration-200"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="text-sm font-bold text-white tracking-wide">Soruya Atla</h3>
+                          <button
+                            onClick={() => setJumpOpen(false)}
+                            className="w-8 h-8 flex items-center justify-center rounded-xl bg-white/[0.06] text-slate-400 hover:text-white hover:bg-white/[0.12] active:scale-90 transition-all"
+                          >
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </div>
+                        <div className="grid grid-cols-5 gap-2 mb-4">
+                          {Array.from(
+                            {
+                              length: Math.floor(currentQuestionsList.length / 10),
+                            },
+                            (_, i) => (i + 1) * 10,
+                          ).map((n) => (
+                            <button
+                              key={n}
+                              onClick={() => {
+                                jumpToQuestion(n - 1);
+                                setJumpOpen(false);
+                              }}
+                              className="py-2.5 rounded-xl text-sm font-bold text-slate-200 bg-white/[0.05] border border-white/10 hover:bg-sky-500/20 hover:text-sky-300 hover:border-sky-500/30 active:scale-90 transition-all"
+                            >
+                              {n}
+                            </button>
+                          ))}
+                        </div>
+                        <div className="flex items-center gap-2 border-t border-white/10 pt-4">
+                          <input
+                            type="text"
+                            inputMode="numeric"
+                            value={jumpInput}
+                            onChange={(e) =>
+                              setJumpInput(e.target.value.replace(/[^0-9]/g, ""))
+                            }
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                const n = parseInt(jumpInput, 10);
+                                if (!Number.isNaN(n)) jumpToQuestion(n - 1);
+                                setJumpOpen(false);
+                                setJumpInput("");
+                              }
+                            }}
+                            placeholder={`1–${currentQuestionsList.length}`}
+                            className="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-sm text-white text-center outline-none focus:border-sky-500/40 placeholder:text-slate-600"
+                          />
+                          <button
+                            onClick={() => {
                               const n = parseInt(jumpInput, 10);
                               if (!Number.isNaN(n)) jumpToQuestion(n - 1);
                               setJumpOpen(false);
                               setJumpInput("");
-                            }
-                          }}
-                          placeholder={`1–${currentQuestionsList.length}`}
-                          className="flex-1 min-w-0 px-2 py-1.5 rounded-lg bg-white/[0.05] border border-white/10 text-xs text-white text-center outline-none focus:border-sky-500/40 placeholder:text-slate-600"
-                        />
-                        <button
-                          onClick={() => {
-                            const n = parseInt(jumpInput, 10);
-                            if (!Number.isNaN(n)) jumpToQuestion(n - 1);
-                            setJumpOpen(false);
-                            setJumpInput("");
-                          }}
-                          className="shrink-0 px-2.5 py-1.5 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-bold hover:bg-sky-500/30 active:scale-95 transition-all"
-                        >
-                          Git
-                        </button>
+                            }}
+                            className="shrink-0 px-4 py-2.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30 text-sm font-bold hover:bg-sky-500/30 active:scale-90 transition-all"
+                          >
+                            Git
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </>
@@ -1177,7 +1423,10 @@ export default function QuizApp() {
       </div>
 
       <div className="flex-1 min-h-0 w-full max-w-3xl mx-auto flex flex-col px-4 pb-4 sm:px-6 z-10">
-        <div ref={quizFitRef} className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2.5rem)] flex flex-col shadow-2xl relative">
+        <div
+          ref={quizFitRef}
+          className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2.5rem)] flex flex-col shadow-2xl relative"
+        >
           <div className="shrink-0 mb-[calc(clamp(1rem,3dvh,2.5rem)*var(--fit,1))]">
             <h2 className="text-[calc(clamp(1.1rem,2.8dvh,1.75rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight">
               {currentQuestion.questionText}
@@ -1202,7 +1451,12 @@ export default function QuizApp() {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.5"
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   );
                 } else if (isSelected && !isCorrectAnswer) {
@@ -1215,7 +1469,12 @@ export default function QuizApp() {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.5"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   );
                 } else {
@@ -1307,8 +1566,18 @@ export default function QuizApp() {
             className="w-[3.5rem] h-[3.5rem] sm:w-[4rem] sm:h-[4rem] flex items-center justify-center bg-white/[0.05] rounded-full text-slate-400 hover:text-white hover:bg-white/10 disabled:opacity-20 transition-all border border-white/5 active:scale-95"
             aria-label="Önceki soru"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
           {isLastQuestion ? (
@@ -1326,8 +1595,18 @@ export default function QuizApp() {
               className="flex-1 h-[3.5rem] sm:h-[4rem] flex items-center justify-center gap-2 bg-white text-black text-[clamp(14px,2dvh,16px)] font-bold rounded-full hover:bg-slate-200 disabled:bg-white/10 disabled:text-white/30 transition-all active:scale-[0.98] tracking-wide"
             >
               SONRAKİ
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           )}
