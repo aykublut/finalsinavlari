@@ -67,6 +67,14 @@ const AVATARS = [
 // indirilir). Tek kaynak olarak burada tutuluyor.
 const EASTER_EGG_LESSON_ID = "sabri";
 
+// Kilidi açık derslerin id'leri. Listede olmayanlar "Yakında açılacak" görünür.
+const UNLOCKED_LESSON_IDS = new Set([
+  "Açık Kaynak İşletim Sistemleri",
+  "Dijital Liderlik",
+  "Stratejik Yönetim",
+  "Kalkinma Ekonomisi",
+]);
+
 export default function QuizApp() {
   const lessons = useQuizStore((s) => s.lessons);
   const selectedLessonId = useQuizStore((s) => s.selectedLessonId);
@@ -691,7 +699,7 @@ export default function QuizApp() {
           <div className="grid gap-4 sm:gap-5">
             {lessons.map((lesson) => {
               const accent = ACCENT_STYLES[lesson.accent];
-              const isLocked = lesson.id !== "Açık Kaynak İşletim Sistemleri" && lesson.id !== "Dijital Liderlik" && lesson.id !== "Stratejik Yönetim";
+              const isLocked = !UNLOCKED_LESSON_IDS.has(lesson.id);
               return (
                 <div
                   key={lesson.id}
